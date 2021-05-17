@@ -81,7 +81,6 @@
     <Compile Include="GUI\Rect.cs" />
     <Compile Include="GUI\SliderPane.cs" />
     <Compile Include="GUI\SupportTool.cs" />
-    <Compile Include="GUI\ToolBase.cs" />
     <Compile Include="ToolHelper.cs" />
     <Compile Include="GUI\UIFastList.cs" />
     <Compile Include="mode\CameraPath.cs" />
@@ -93,6 +92,7 @@
     <Compile Include="Segments.cs" />
     <Compile Include="CameraOperatorMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GUI\ToolBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".vs\TollPriceIncreaserMod\v16\.suo" />
