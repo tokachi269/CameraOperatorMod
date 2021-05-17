@@ -10,14 +10,14 @@ namespace CameraOperatorMod.GUI
 	struct TabTemplate
 	{
 		public string name;
-		//public IconSet icons;
 	}
-	// Token: 0x02000013 RID: 19
+
 	public class UIMainWindow : UIPanel
 	{
 		private UILabel title;
 		private UIDragHandle dragHandle;
 		private UIPanel content_;
+
 		public UIPanel Content { get => content_; }
 
 		public override void Awake()
@@ -30,8 +30,8 @@ namespace CameraOperatorMod.GUI
 			content_ = AddUIComponent<UIPanel>();
 
 			dragHandle = AddUIComponent<UIDragHandle>();
-
 		}
+
 		public override void Start()
 		{
 			base.Start();
@@ -53,12 +53,12 @@ namespace CameraOperatorMod.GUI
 			title.height = 200;
 			title.relativePosition =new Vector3(18, 7, 0);
 
-			dragHandle = base.AddUIComponent<UIDragHandle>();
-			dragHandle.target = base.parent;
+			dragHandle = AddUIComponent<UIDragHandle>();
+			dragHandle.target = parent;
 			dragHandle.relativePosition = Vector3.zero;
 			DebugUtils.Log("UIMainWindow created");
 
-			UIButton uibutton = base.AddUIComponent<UIButton>();
+			UIButton uibutton = AddUIComponent<UIButton>();
 			uibutton.size = new Vector2(30f, 30f);
 			uibutton.text = "✕";
 			uibutton.textScale = 0.9f;
@@ -69,10 +69,10 @@ namespace CameraOperatorMod.GUI
 			uibutton.textPadding = new RectOffset(8, 8, 8, 8);
 			uibutton.canFocus = false;
 			uibutton.playAudioEvents = true;
-			uibutton.relativePosition = new Vector3(base.width - uibutton.width, 0f);
-			uibutton.eventClicked += delegate (UIComponent c, UIMouseEventParameter p)
+			uibutton.relativePosition = new Vector3(width - uibutton.width, 0f);
+			uibutton.eventClicked += delegate(UIComponent c, UIMouseEventParameter p)
 			{
-				if (base.isVisible)
+				if (isVisible)
 				{
 					CameraManeger.ToggleUI();
 				}

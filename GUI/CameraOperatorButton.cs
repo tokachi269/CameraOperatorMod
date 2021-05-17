@@ -7,16 +7,16 @@ using UnityEngine;
 namespace CameraOperatorMod.GUI
 {
 	// Token: 0x0200000D RID: 13
-	public class UIMainButton : UIButton
+	public class CameraOperatorButton : UIButton
 	{
 		// Token: 0x06000054 RID: 84 RVA: 0x00004950 File Offset: 0x00002B50
 		public override void Start()
 		{
 			//this.LoadResources();
 			UIComponent uicomponent = base.GetUIView().FindUIComponent<UIComponent>("Freecamera");
-			base.name = "TKC_MainButton";
+			base.name = "CameraOperatorButton";
 			base.tooltipBox = uicomponent.tooltipBox;
-			base.tooltip = "Cinematic Camera Extended  0.5.1";
+			base.tooltip = "Camera Operator Button";
 			base.normalBgSprite = "OptionBase";
 			base.disabledBgSprite = "OptionBaseDisabled";
 			base.hoveredBgSprite = "OptionBaseHovered";
@@ -24,12 +24,12 @@ namespace CameraOperatorMod.GUI
 			base.normalFgSprite = "ClapBoard";
 			base.playAudioEvents = true;
 			base.size = new Vector2(36f, 36f);
-			if (UIMainButton.savedX.value == -1000)
+			if (CameraOperatorButton.savedX.value == -1000)
 			{
 				base.absolutePosition = new Vector2(uicomponent.absolutePosition.x - 2f * base.width - 19f, uicomponent.absolutePosition.y);
 				return;
 			}
-			base.absolutePosition = new Vector2((float)UIMainButton.savedX.value, (float)UIMainButton.savedY.value);
+			base.absolutePosition = new Vector2((float)CameraOperatorButton.savedX.value, (float)CameraOperatorButton.savedY.value);
 		}
 
 		// Token: 0x06000055 RID: 85 RVA: 0x00004A5A File Offset: 0x00002C5A
@@ -59,8 +59,8 @@ namespace CameraOperatorMod.GUI
 				Vector3 mousePosition = Input.mousePosition;
 				mousePosition.y = (float)this.m_OwnerView.fixedHeight - mousePosition.y;
 				base.absolutePosition = mousePosition + this.m_deltaPos;
-				UIMainButton.savedX.value = (int)base.absolutePosition.x;
-				UIMainButton.savedY.value = (int)base.absolutePosition.y;
+				CameraOperatorButton.savedX.value = (int)base.absolutePosition.x;
+				CameraOperatorButton.savedY.value = (int)base.absolutePosition.y;
 			}
 		}
 
@@ -92,10 +92,10 @@ namespace CameraOperatorMod.GUI
 		}
 
 		// Token: 0x0400003E RID: 62
-		public static readonly SavedInt savedX = new SavedInt("mainButtonX", CameraOperatorMod.settingsFileName, -1000, true);
+		public static readonly SavedInt savedX = new SavedInt("mainButtonX", CameraOperatorMod.SettingsFileName, -1000, true);
 
 		// Token: 0x0400003F RID: 63
-		public static readonly SavedInt savedY = new SavedInt("mainButtonY", CameraOperatorMod.settingsFileName, -1000, true);
+		public static readonly SavedInt savedY = new SavedInt("mainButtonY", CameraOperatorMod.SettingsFileName, -1000, true);
 
 		// Token: 0x04000040 RID: 64
 		private Vector3 m_deltaPos;
