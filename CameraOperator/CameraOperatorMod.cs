@@ -1,8 +1,4 @@
-﻿
-using ICities;
-using ColossalFramework;
-using ColossalFramework.UI;
-using CitiesHarmony.API;
+﻿using ICities;
 using UnityEngine;
 
 namespace CameraOperatorMod
@@ -10,29 +6,29 @@ namespace CameraOperatorMod
     public class CameraOperatorMod :  LoadingExtensionBase, IUserMod
     {
         public string Name => "Camera Operator Mod";
+
         public string Description => "Camera Operator Mod Description";
 
         public override void OnLevelLoaded(LoadMode mode)
         {
-            if (this.cameraManeger == null)
+            if (this.CameraManeger == null)
             {
-                this.cameraManeger = new GameObject("{gameObject.name}.CameraOperatorMod");
-                this.cameraManeger.AddComponent<CameraManeger>();
+                this.CameraManeger = new GameObject("{gameObject.name}.CameraOperatorMod");
+                this.CameraManeger.AddComponent<CameraManeger>();
             }
-
         }
+
         public override void OnLevelUnloading()
         {
-            if (this.cameraManeger != null)
+            if (this.CameraManeger != null)
             {
-                UnityEngine.Object.Destroy(this.cameraManeger);
-                this.cameraManeger = null;
+                UnityEngine.Object.Destroy(this.CameraManeger);
+                this.CameraManeger = null;
             }
         }
 
-        public GameObject cameraManeger;
-        // Token: 0x04000024 RID: 36
-        public static readonly string settingsFileName = "CameraOperatorMod";
+        public GameObject CameraManeger;
+        public static readonly string SettingsFileName = "CameraOperatorMod";
     }
 
 }

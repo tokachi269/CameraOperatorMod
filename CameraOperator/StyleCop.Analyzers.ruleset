@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RuleSet Name="Rules for StyleCop.Analyzers internal-only projects" Description="Code analysis rules for StyleCop.Analyzers internal-only projects." ToolsVersion="16.0">
-  <Include Path="D:\VS Code\TollPriceIncreaserMod-master\stylecop.analyzers.ruleset" Action="Default" />
+  <Include Path="d:\github\cameraoperatormod\cameraoperator\stylecop.analyzers.ruleset" Action="Default" />
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
     <Rule Id="SA1005" Action="None" />
     <Rule Id="SA1027" Action="None" />
+    <Rule Id="SA1101" Action="None" />
+    <Rule Id="SA1200" Action="None" />
     <Rule Id="SA1215" Action="None" />
     <Rule Id="SA1305" Action="Warning" />
+    <Rule Id="SA1413" Action="None" />
+    <Rule Id="SA1500" Action="None" />
+    <Rule Id="SA1600" Action="None" />
     <Rule Id="SA1623" Action="None" />
     <Rule Id="SA1628" Action="Warning" />
     <Rule Id="SA1629" Action="None" />

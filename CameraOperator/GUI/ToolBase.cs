@@ -7,125 +7,116 @@ using UnityEngine;
 
 namespace CameraOperatorMod.GUI
 {
-    interface ITool : GUI.IConfigurableComponent<GUI.TabbedWindowConfig>
+    internal interface ITool : GUI.IConfigurableComponent<GUI.TabbedWindowConfig>
     {
 		GUI.TabTemplate[] Tabs { get; }
 
 		void SetVisible(bool flag);
     }
-    abstract class ToolBase : MonoBehaviour, ITool
-	{
 
+    internal abstract class ToolBase : MonoBehaviour, ITool
+    {
         public virtual void Awake()
         {
-			mainButton = UIView.GetAView().AddUIComponent(typeof(UIMainButton)) as UIMainButton;
-
-			mainWindow = UIView.GetAView().AddUIComponent(typeof(UIMainWindow)) as UIMainWindow;
+            Button = UIView.GetAView().AddUIComponent(typeof(CameraOperatorButton)) as CameraOperatorButton;
+            Window = UIView.GetAView().AddUIComponent(typeof(CameraOperator)) as CameraOperator;
         }
-		public virtual void Start()
+
+        public virtual void Start()
 		{
+			Window.clipChildren = true;
+			Window.Content.clipChildren = true;
 
-			mainWindow.clipChildren = true;
-			mainWindow.Content.clipChildren = true;
-
-			tabStrip = mainWindow.Content.AddUIComponent<UITabstrip>();
-			tabStrip.clipChildren = true;
-			tabStrip.width = mainWindow.Content.parent.width;
-			tabStrip.height = 28f;
-			tabStrip.color = new Color32(20, 20, 40, byte.MaxValue);
-			tabStrip.zOrder = 2;
-			tabStrip.backgroundSprite = "WhiteRect";
-			tabStrip.tabPages = mainWindow.AddUIComponent<UITabContainer>();
-			tabStrip.relativePosition = new Vector3(4f, 28f, 20);
-
-			tabStrip.tabPages = mainWindow.Content.AddUIComponent<UITabContainer>();
-			var container = tabStrip.tabContainer;
-			container.relativePosition = Vector2.zero;
-			container.width = tabStrip.width;
-			container.clipChildren = true;
-			container.height = mainWindow.Content.parent.height - tabStrip.height;
-
-			foreach (var v in Tabs.Select((tab, i) => new { tab, i }))
 			{
+				tabStrip = Window.Content.AddUIComponent<UITabstrip>();
+				tabStrip.clipChildren = true;
+				tabStrip.width = Window.Content.parent.width - 10;
+				tabStrip.height = 28f;
+				tabStrip.color = Helper.RGB(33, 33, 41);
+				tabStrip.zOrder = 2;
+				tabStrip.backgroundSprite = "WhiteRect";
+				tabStrip.padding = Helper.Padding(28, 4, 4);
+
+				tabStrip.tabPages = Window.Content.AddUIComponent<UITabContainer>();
+
+				var container = tabStrip.tabContainer;
+				container.relativePosition = Vector2.zero;
+				container.width = tabStrip.width;
+				container.clipChildren = true;
+				container.height = Window.Content.parent.height - tabStrip.height;
+
+				foreach (var v in Tabs.Select((tab, i) => new { tab, i }))
 				{
-					var btn = tabStrip.AddTab(v.tab.name, true);
-					tabStrip.selectedIndex = v.i; // important for setting current target obj
+					{
+						var btn = tabStrip.AddTab(v.tab.name, true);
+						tabStrip.selectedIndex = v.i; // important for setting current target obj
 
-					btn.tabIndex = v.i; // misc value
-					btn.relativePosition = Vector2.zero;
-					btn.text = v.tab.name;
-					btn.tooltip = v.tab.name;
-					btn.height = 25f;
-					
-					//v.tab.icons.AssignTo(ref btn);
+						btn.tabIndex = v.i; // misc value
+						btn.relativePosition = Vector2.zero;
+						btn.text = v.tab.name;
+						btn.tooltip = v.tab.name;
+						btn.height = 25f;
 
-					btn.normalBgSprite = "GenericTab";
-					btn.hoveredBgSprite = "GenericTabHovered";
-					btn.pressedBgSprite = "GenericTabPressed";
-					btn.focusedBgSprite = "GenericTabFocused";
+						// v.tab.icons.AssignTo(ref btn);
+						btn.normalBgSprite = "GenericTab";
+						btn.hoveredBgSprite = "GenericTabHovered";
+						btn.pressedBgSprite = "GenericTabPressed";
+						btn.focusedBgSprite = "GenericTabFocused";
 
-					//btn.spritePadding = Helper.Padding(4, 22);
-					btn.width = 100f;
-					btn.height = 28f;
-					tabStrip.height = Math.Max(tabStrip.height, btn.height);
-				}
+						//btn.spritePadding = Helper.Padding(4, 22);
+						btn.width = tabStrip.width / Tabs.Length;
+						btn.height = 28f;
+						tabStrip.height = Math.Max(tabStrip.height, btn.height);
+					}
 
-				var page = container.components[v.i] as UIPanel;
+					var page = container.components[v.i] as UIPanel;
 
-				//page.clipChildren = true;
-				tabPages_.Add(v.tab.name, page);
+					//page.clipChildren = true;
+					tabPages_.Add(v.tab.name, page);
 
-				//Log.Debug($"{page.name}");
+					page.isVisible = false;
+					page.autoSize = false;
+					page.width = tabStrip.width;
+					page.height = Window.Content.height - tabStrip.height;
 
-				tabPages_.Add(v.tab.name, page);
+					// auto defocus
+					{
+						page.canFocus = true;
+						page.eventClicked += (c, p) => {
+							//Log.Debug($"source: {c}, {p.source}");
 
-				//page.relativePosition = Vector2.zero;
-				page.isVisible = false;
-				page.autoSize = false;
-				page.width = tabStrip.width;
-				page.height = mainWindow.Content.height - tabStrip.height;
+							if (p.source == c)
+							{
+								page.Focus();
+							}
+						};
+					}
 
-				// auto defocus
-				{
-					page.canFocus = true;
-					page.eventClicked += (c, p) => {
-						//Log.Debug($"source: {c}, {p.source}");
-
-						if (p.source == c)
-						{
-							page.Focus();
-						}
+					Window.Content.eventSizeChanged += (c, size) => {
+						page.width = size.x;
+						page.height = c.height - tabStrip.height;
 					};
+					// page.relativePosition = Vector2.zero;
+					//page.SetAutoLayout(LayoutDirection.Vertical);
+					page.SetAutoLayout(LayoutDirection.Vertical);
+					// Log.Debug($"tc: {tabs_.size} {win_.Content.size} | {page.position} {page.size}");
 				}
-
-				//Log.Debug($"{page.position}, {page.size}");
-
-				mainWindow.Content.eventSizeChanged += (c, size) => {
-					page.width = size.x;
-					page.height = c.height - tabStrip.height;
+				tabStrip.eventSelectedIndexChanged += (c, i) => {
+					//Log.Info($"tab: {c.tabIndex}, {i}");
+					Config.SelectedTabIndex = i;
 				};
-
-				// page.relativePosition = Vector2.zero;
-				//page.SetAutoLayout(LayoutDirection.Vertical);
-
-				// Log.Debug($"tc: {tabs_.size} {win_.Content.size} | {page.position} {page.size}");
 			}
-
 		}
+
 		protected void SelectTab(int i)
 		{
 			tabStrip.selectedIndex = i;
 			tabStrip.tabPages.components[i].Show();
 		}
 
+        protected CameraOperatorButton Button { get; private set; }
 
-		private GUI.UIMainButton mainButton;
-		protected GUI.UIMainButton Button { get => mainButton; }
-
-		private GUI.UIMainWindow mainWindow;
-		protected GUI.UIMainWindow Window { get => mainWindow; }
-
-		public UIPanel TabPage(string name) => tabPages_[name];
+        protected CameraOperator Window { get; private set; }
 
 		public void SetVisible(bool flag)
 		{
@@ -141,10 +132,12 @@ namespace CameraOperatorMod.GUI
 				Window.Hide();
 			}
 		}
-
-		public TabTemplate[] Tabs { get; protected set; }
-		private Dictionary<string, UIPanel> tabPages_ = new Dictionary<string, UIPanel>();
 		private UITabstrip tabStrip;
+		public TabTemplate[] Tabs { get; protected set; }
+
+		private Dictionary<string, UIPanel> tabPages_ = new Dictionary<string, UIPanel>();
+		public UIPanel TabPage(string name) => tabPages_[name];
+
 
 		private UIPanel content_;
 		public UIPanel Content { get => content_; }

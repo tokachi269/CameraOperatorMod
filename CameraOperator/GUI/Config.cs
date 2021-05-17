@@ -8,6 +8,7 @@ namespace CameraOperatorMod.GUI
 {
     interface IConfig : ICloneable
     {
+
     }
 
     [Serializable]

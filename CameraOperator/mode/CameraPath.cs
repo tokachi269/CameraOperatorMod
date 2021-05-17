@@ -6,12 +6,13 @@ using UnityEngine;
 
 namespace CameraOperatorMod
 {
-    class CameraPath
+    internal class CameraPath
     {
-        public static float time;
+        public static float Time;
 
         private void Start()
         {
+
         }
 
     }

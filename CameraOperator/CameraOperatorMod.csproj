@@ -18,7 +18,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -70,17 +71,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CameraManeger.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="GUI\Config.cs" />
+    <Compile Include="GUI\Helper.cs" />
     <Compile Include="GUI\IConfigurableComponent.cs" />
+    <Compile Include="GUI\KnotItem.cs" />
+    <Compile Include="GUI\Rotate.cs" />
     <Compile Include="GUI\Path.cs" />
     <Compile Include="GUI\Rect.cs" />
+    <Compile Include="GUI\SliderPane.cs" />
     <Compile Include="GUI\SupportTool.cs" />
+    <Compile Include="ToolHelper.cs" />
     <Compile Include="GUI\UIFastList.cs" />
-    <Compile Include="GUI\UIUtils.cs" />
     <Compile Include="mode\CameraPath.cs" />
     <Compile Include="Debug\DebugUtils.cs" />
-    <Compile Include="GUI\UIMainButton.cs" />
-    <Compile Include="GUI\UIMainWindow.cs" />
+    <Compile Include="GUI\CameraOperatorButton.cs" />
+    <Compile Include="GUI\CameraOperator.cs" />
     <Compile Include="ModInfo.cs" />
     <Compile Include="OptionsKeymapping.cs" />
     <Compile Include="Segments.cs" />
@@ -91,9 +97,7 @@
   <ItemGroup>
     <None Include=".vs\TollPriceIncreaserMod\v16\.suo" />
     <None Include="packages.config" />
-    <None Include="StyleCop.Analyzers.ruleset">
-      <Generator>SettingsSingleFileGenerator</Generator>
-    </None>
+    <None Include="StyleCop.Analyzers.ruleset" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />

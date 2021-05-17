@@ -11,7 +11,7 @@
     {
         private void Start()
         {
-            supportTool = base.gameObject.AddComponent<GUI.SupportTool>();
+            supportTool = gameObject.AddComponent<GUI.SupportTool>();
         }
 
         public static void ToggleUI()
@@ -20,7 +20,7 @@
             {
                 DebugUtils.Log("Exiting Free Camera Mode");
                 UIView.GetAView().FindUIComponent<UIButton>("Freecamera").SimulateClick();
-                //GUI.ToolBase.mainWindow.isVisible = true;
+                //SupportTool.SetVisible(true);
             }
             else
             {
@@ -29,27 +29,25 @@
 
         }
 
-        public static CameraPath cameraPath;
+        public static CameraPath CameraPath;
 
         private SupportTool supportTool = null;
 
-        public static Camera camera;
+        public static Camera Camera;
 
-        public static CameraController cameraController;
+        public static CameraController CameraController;
 
-        public static bool freeCamera = true;
+        public static bool FreeCamera = true;
 
-        public static bool startSimulation = false;
+        public static bool StartSimulation = false;
 
-        public static bool useFps = false;
+        public static bool UseFps = false;
 
-        public static float fps = 15f;
+        public static float Fps = 15f;
 
-        public static float originalFov = 45f;
+        public static float OriginalFov = 45f;
 
-
-        public static bool unlimitedCamera;
-
+        public static bool UnlimitedCamera;
 
         //public static FieldInfo m_notificationAlpha;
 
