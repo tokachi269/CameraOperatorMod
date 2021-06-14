@@ -1,6 +1,5 @@
 ﻿using ColossalFramework.UI;
 using System;
-using TokachiCinematicCameraMod;
 
 namespace CameraOperatorMod.GUI
 {

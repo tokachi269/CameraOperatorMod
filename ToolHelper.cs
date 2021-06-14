@@ -1,7 +1,6 @@
 ﻿using ColossalFramework.UI;
 using UnityEngine;
 using CameraOperatorMod.GUI;
-using TokachiCinematicCameraMod;
 
 namespace CameraOperatorMod.Tool
 {
@@ -50,6 +49,13 @@ namespace CameraOperatorMod.Tool
             }
 
             var pane = Helper.AddSliderPane<T>(ref page, opts);
+            return pane;
+        }
+        public static UIButton AddButton<T>(ref UIPanel page, string label, MouseEventHandler eventClicked, string tooltip, int? labelPadding = null, int? indentPadding = null, Color32? color = null)
+        {
+            //var font = FontStore.Get(11);
+
+            var pane = Helper.AddButton(ref page, label, eventClicked, tooltip, Helper.Padding(0, 0, 2, 0), color: color);
             return pane;
         }
     }

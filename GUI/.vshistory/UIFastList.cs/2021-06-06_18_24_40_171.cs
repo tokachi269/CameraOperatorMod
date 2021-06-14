@@ -1,8 +1,10 @@
 ﻿using ColossalFramework.UI;
+
 using System;
+using CameraOperatorMod.Resources;
 using UnityEngine;
 
-namespace ForestBrush.GUI
+namespace CameraOperatorMod.GUI
 {
     public interface IUIFastListRow
     {
@@ -64,7 +66,7 @@ namespace ForestBrush.GUI
     /// UIFastList myFastList = UIFastList.Create<MyCustomRow>(this);
     /// myFastList.size = new Vector2(200f, 300f);
     /// myFastList.rowHeight = 40f;
-    /// myFastList.rowData = myDataList;
+    /// myFastList.rowsData = myDataList;
     /// 
     /// </summary>
     public class UIFastList : UIComponent
@@ -239,7 +241,7 @@ namespace ForestBrush.GUI
                 }
             }
         }
-        
+
         /// <summary>
         /// Currently selected row
         /// -1 if none selected
@@ -337,7 +339,7 @@ namespace ForestBrush.GUI
         {
             if (m_rowsData == null || m_rowHeight <= 0) return;
 
-            //SetupControls();
+            SetupControls();
 
             m_pos = Mathf.Max(Mathf.Min(pos, m_rowsData.m_size - height / m_rowHeight), 0f);
 
@@ -382,7 +384,7 @@ namespace ForestBrush.GUI
         {
             base.Start();
 
-            //SetupControls();
+            SetupControls();
         }
 
         public override void OnDestroy()
@@ -535,18 +537,18 @@ namespace ForestBrush.GUI
             m_lock = false;
         }
 
-        /**
+
         private void SetupControls()
         {
             if (m_panel != null) return;
 
             // Panel 
             m_panel = AddUIComponent<UIPanel>();
-            m_panel.atlas =  ResourceLoader.Atlas;
+            m_panel.atlas = ResourceLoader.Atlas;
             m_panel.width = width - 10f;
             m_panel.height = height;
             m_panel.padding = new RectOffset(2, 2, 2, 2);
-            m_panel.backgroundSprite = ResourceLoader.LevelBarBackground;
+            m_panel.backgroundSprite = "LevelBarBackground";
             m_panel.color = m_color;
             m_panel.clipChildren = true;
             m_panel.relativePosition = Vector2.zero;
@@ -561,24 +563,25 @@ namespace ForestBrush.GUI
             m_scrollbar.minValue = 0;
             m_scrollbar.value = 0;
             m_scrollbar.incrementAmount = 60;
+            m_scrollbar.spriteName = "ScrollbarThumb";
 
             UISlicedSprite tracSprite = m_scrollbar.AddUIComponent<UISlicedSprite>();
-            tracSprite.atlas =  ResourceLoader.Atlas;
-            tracSprite.relativePosition = new Vector3(0 , 0);
+            tracSprite.atlas = ResourceLoader.Atlas;
+            tracSprite.relativePosition = new Vector3(0, 0);
             tracSprite.autoSize = true;
             tracSprite.size = tracSprite.parent.size;
             tracSprite.fillDirection = UIFillDirection.Vertical;
-            tracSprite.spriteName = ResourceLoader.LevelBarBackground;
+            tracSprite.spriteName = "LevelBarBackground";
 
             m_scrollbar.trackObject = tracSprite;
 
             UISlicedSprite thumbSprite = tracSprite.AddUIComponent<UISlicedSprite>();
-            thumbSprite.atlas =  ResourceLoader.Atlas;
+            thumbSprite.atlas = ResourceLoader.Atlas;
             thumbSprite.relativePosition = Vector2.zero;
             thumbSprite.fillDirection = UIFillDirection.Vertical;
             thumbSprite.autoSize = true;
             thumbSprite.width = 12f;
-            thumbSprite.spriteName = ResourceLoader.LevelBarForeground;
+            thumbSprite.spriteName = "LevelBarBackground";
 
             m_scrollbar.thumbObject = thumbSprite;
 
@@ -594,7 +597,7 @@ namespace ForestBrush.GUI
                 listPosition = m_scrollbar.value * (m_rowsData.m_size - height / m_rowHeight) / (height - m_scrollbar.scrollSize - 1f);
                 m_lock = false;
             };
-        }*/
+        }
         #endregion
     }
 }

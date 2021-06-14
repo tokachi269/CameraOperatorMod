@@ -14,36 +14,61 @@ namespace CameraOperatorMod.GUI
 		void SetVisible(bool flag);
     }
 
-    internal abstract class ToolBase : MonoBehaviour, ITool
+	public class ToolBase : UIPanel
     {
-        public virtual void Awake()
-        {
-            Button = UIView.GetAView().AddUIComponent(typeof(CameraOperatorButton)) as CameraOperatorButton;
-            Window = UIView.GetAView().AddUIComponent(typeof(CameraOperator)) as CameraOperator;
-        }
-
-        public virtual void Start()
+		private void CreateEditor<TabPage>() where TabPage : BaseTabPage
 		{
-			Window.clipChildren = true;
-			Window.Content.clipChildren = true;
+			var tabPage = AddUIComponent<TabPage>();
+			tabPage.Active = false;
+			//tabPage.Init(this);
+			tabStrip.AddTab(tabPage.Name);
+		}
+		public virtual void CreatePanel()
+		{
+			Button = UIView.GetAView().AddUIComponent(typeof(CameraOperatorButton)) as CameraOperatorButton;
+			UIView.GetAView().AddUIComponent(typeof(ToolBase));
+		}
+		private void CreatePages()
+        {
+			CreateEditor<Path>();
+		}
+		public virtual void Awake()
+        {
+			CreatePanel();
+
+			Tabs = new[] {
+			new TabTemplate() {
+				name = "Path" },
+			new TabTemplate() {
+				name = "Rotate" },
+			new TabTemplate() {
+				name = "Aerial" },
+			new TabTemplate() {
+				name = "Fixed" }
+			};
+
+			size = new Vector2(SupportTool.DefaultRect.width, SupportTool.DefaultRect.height);
+
+			clipChildren = true;
+			Content.clipChildren = true;
 
 			{
-				tabStrip = Window.Content.AddUIComponent<UITabstrip>();
+				tabStrip = Content.AddUIComponent<UITabstrip>();
 				tabStrip.clipChildren = true;
-				tabStrip.width = Window.Content.parent.width - 10;
+				tabStrip.width = Content.parent.width - 10;
 				tabStrip.height = 28f;
 				tabStrip.color = Helper.RGB(33, 33, 41);
 				tabStrip.zOrder = 2;
 				tabStrip.backgroundSprite = "WhiteRect";
 				tabStrip.padding = Helper.Padding(28, 4, 4);
 
-				tabStrip.tabPages = Window.Content.AddUIComponent<UITabContainer>();
+				tabStrip.tabPages = Content.AddUIComponent<UITabContainer>();
 
 				var container = tabStrip.tabContainer;
 				container.relativePosition = Vector2.zero;
 				container.width = tabStrip.width;
 				container.clipChildren = true;
-				container.height = Window.Content.parent.height - tabStrip.height;
+				container.height = Content.parent.height - tabStrip.height;
 
 				foreach (var v in Tabs.Select((tab, i) => new { tab, i }))
 				{
@@ -77,7 +102,7 @@ namespace CameraOperatorMod.GUI
 					page.isVisible = false;
 					page.autoSize = false;
 					page.width = tabStrip.width;
-					page.height = Window.Content.height - tabStrip.height;
+					page.height = Content.height - tabStrip.height;
 
 					// auto defocus
 					{
@@ -92,7 +117,7 @@ namespace CameraOperatorMod.GUI
 						};
 					}
 
-					Window.Content.eventSizeChanged += (c, size) => {
+					Content.eventSizeChanged += (c, size) => {
 						page.width = size.x;
 						page.height = c.height - tabStrip.height;
 					};
@@ -101,11 +126,38 @@ namespace CameraOperatorMod.GUI
 					page.SetAutoLayout(LayoutDirection.Vertical);
 					// Log.Debug($"tc: {tabs_.size} {win_.Content.size} | {page.position} {page.size}");
 				}
-				tabStrip.eventSelectedIndexChanged += (c, i) => {
-					//Log.Info($"tab: {c.tabIndex}, {i}");
-					Config.SelectedTabIndex = i;
-				};
+				//tabStrip.eventSelectedIndexChanged += (c, i) => {
+				//	//Log.Info($"tab: {c.tabIndex}, {i}");
+				//	Config.SelectedTabIndex = i;
+				//};
 			}
+			//{
+			//	var page = TabPage("Path");
+			//	Path.Setup(ref page);
+			//}
+			//
+			//{
+			//	var page = TabPage("Rotate");
+			//	Rotate.Setup(ref page);
+			//}
+
+			SelectTab(Config.SelectedTabIndex);
+			// var page = TabPage("Path");
+			// Window.AddUIComponent<UIPanel>();
+			Content.clipChildren = true;
+			clipChildren = false;
+			Show();
+
+
+
+			CreatePages();
+
+
+        }
+
+        public virtual void Start()
+		{
+			
 		}
 
 		protected void SelectTab(int i)
@@ -124,20 +176,19 @@ namespace CameraOperatorMod.GUI
 
 			if (flag)
 			{
-				Window.Show();
+				Show();
 
 			}
 			else
 			{
-				Window.Hide();
+				Hide();
 			}
 		}
 		private UITabstrip tabStrip;
-		public TabTemplate[] Tabs { get; protected set; }
+		private TabTemplate[] Tabs { get;  set; }
 
 		private Dictionary<string, UIPanel> tabPages_ = new Dictionary<string, UIPanel>();
 		public UIPanel TabPage(string name) => tabPages_[name];
-
 
 		private UIPanel content_;
 		public UIPanel Content { get => content_; }
