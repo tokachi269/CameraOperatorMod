@@ -72,30 +72,40 @@
   <ItemGroup>
     <Compile Include="CameraManeger.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="GUI\Panel\AdvancedScrollablePanel.cs" />
+    <Compile Include="GUI\Panel\CameraConfigPanel.cs" />
     <Compile Include="GUI\Config.cs" />
     <Compile Include="GUI\Helper.cs" />
     <Compile Include="GUI\IConfigurableComponent.cs" />
-    <Compile Include="GUI\KnotItem.cs" />
-    <Compile Include="GUI\Rotate.cs" />
-    <Compile Include="GUI\Path.cs" />
+    <Compile Include="GUI\Page\BaseTabPage.cs" />
+    <Compile Include="GUI\List\KnotItem.cs" />
+    <Compile Include="GUI\Panel\PlaybackPanel.cs" />
+    <Compile Include="GUI\Page\Rotate.cs" />
+    <Compile Include="GUI\Page\Path.cs" />
     <Compile Include="GUI\Rect.cs" />
     <Compile Include="GUI\SliderPane.cs" />
     <Compile Include="GUI\SupportTool.cs" />
     <Compile Include="GUI\ToolBase.cs" />
+    <Compile Include="GUI\List\UIFastList.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="GUI\UIExtension.cs" />
+    <Compile Include="mode\ControlPoint.cs" />
+    <Compile Include="mode\Easing.cs" />
+    <Compile Include="Resources\ResourceLoader.cs" />
     <Compile Include="ToolHelper.cs" />
-    <Compile Include="GUI\UIFastList.cs" />
     <Compile Include="mode\CameraPath.cs" />
     <Compile Include="Debug\DebugUtils.cs" />
     <Compile Include="GUI\CameraOperatorButton.cs" />
     <Compile Include="GUI\CameraOperator.cs" />
     <Compile Include="ModInfo.cs" />
     <Compile Include="OptionsKeymapping.cs" />
-    <Compile Include="Segments.cs" />
     <Compile Include="CameraOperatorMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".vs\TollPriceIncreaserMod\v16\.suo" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
     <None Include="StyleCop.Analyzers.ruleset" />
   </ItemGroup>

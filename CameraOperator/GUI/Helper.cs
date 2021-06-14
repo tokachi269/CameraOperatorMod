@@ -262,8 +262,8 @@ namespace CameraOperatorMod.GUI
 
             pane.wrapper.width = pane.wrapper.parent.width - parent.padding.horizontal;
             pane.wrapper.autoSize = false;
-            //panel.SetAutoLayout(LayoutDirection.Horizontal);
-            //panel.backgroundSprite = "Menubar";
+            //pane.SetAutoLayout(LayoutDirection.Horizontal);
+            //pane.backgroundSprite = "Menubar";
             pane.wrapper.pivot = UIPivotPoint.MiddleLeft;
 
             pane.slider = pane.wrapper.AddUIComponent<UISlider>();
@@ -359,6 +359,32 @@ namespace CameraOperatorMod.GUI
             pane.slider.value = opts.initialValue;
             //pane.wrapper.height = pane.slider.height + (pane.field?.height).GetValueOrDefault(0);
             return pane;
+        }
+
+        public static UIButton AddButton(ref UIPanel parent, string label, MouseEventHandler eventClicked, string tooltip = "", RectOffset padding = null, Color32? color = null)
+        {
+            var button = parent.AddUIComponent<UIButton>();
+            button.anchor = UIAnchorStyle.Top | UIAnchorStyle.Left | UIAnchorStyle.Right;
+
+            button = parent.AddUIComponent<UIButton>();
+            //button.atlas = ResourceLoader.Atlas;
+            //button.textScale = Constants.UITextScale;
+            button.textPadding = padding;
+            button.pivot = UIPivotPoint.TopRight;
+            button.anchor = UIAnchorStyle.Right;
+            button.zOrder = 0;
+            button.normalBgSprite = "ButtonSmall";
+            button.hoveredBgSprite = "ButtonSmallHovered";
+            button.pressedBgSprite = "ButtonSmallPressed";
+            button.focusedBgSprite = "ButtonSmall";
+            button.text = label;
+            button.tooltip = tooltip;
+            button.eventClicked += eventClicked;
+            button.autoSize = true;
+
+            if (color.HasValue) button.color = color.Value;
+
+            return button;
         }
 
     }

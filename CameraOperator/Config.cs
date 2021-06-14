@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace TokachiCinematicCameraMod
+namespace CameraOperatorMod
 {
     public class Config
     {

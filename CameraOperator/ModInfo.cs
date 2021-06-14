@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace TokachiCinematicCameraMod
+namespace CameraOperatorMod
 {
     public static class ModInfo
     {

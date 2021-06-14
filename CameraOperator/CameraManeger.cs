@@ -5,12 +5,14 @@
     using System.Reflection;
     using ColossalFramework.UI;
     using global::CameraOperatorMod.GUI;
+    using global::CameraOperatorMod.mode;
     using UnityEngine;
 
     internal class CameraManeger : MonoBehaviour
     {
         private void Start()
         {
+            
             supportTool = gameObject.AddComponent<GUI.SupportTool>();
         }
 
