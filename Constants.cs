@@ -6,12 +6,6 @@ using System.Text;
 
 namespace CameraOperatorMod
 {
-	public class Constants
-    {
-		public const float UIItemHeight = 40f;
-		public const float UITitleBarHeight = 40f;
-		public const float UIButtonHeight = 30f;
-	}
 	public class ApplyItems
 	{
 		[DefaultValue(true)]
@@ -34,6 +28,4 @@ namespace CameraOperatorMod
 			this.fov = fov;
 		}
 	}
-
-
 }

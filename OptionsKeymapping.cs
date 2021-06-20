@@ -233,16 +233,16 @@ namespace CameraOperatorMod
 		private string m_EditingBindingCategory;
 
 		// Token: 0x04000039 RID: 57
-		public static readonly SavedInputKey toggleUI = new SavedInputKey("toggleUI", CameraOperatorMod.SettingsFileName, SavedInputKey.Encode(KeyCode.C, false, false, false), true);
+		public static readonly SavedInputKey toggleUI = new SavedInputKey("toggleUI", UserMod.SettingsFileName, SavedInputKey.Encode(KeyCode.C, false, false, false), true);
 
 		// Token: 0x0400003A RID: 58
-		public static readonly SavedInputKey addPoint = new SavedInputKey("addPoint", CameraOperatorMod.SettingsFileName, SavedInputKey.Encode(KeyCode.KeypadPlus, false, false, false), true);
+		public static readonly SavedInputKey addPoint = new SavedInputKey("addPoint", UserMod.SettingsFileName, SavedInputKey.Encode(KeyCode.KeypadPlus, false, false, false), true);
 
 		// Token: 0x0400003B RID: 59
-		public static readonly SavedInputKey removePoint = new SavedInputKey("removePoint", CameraOperatorMod.SettingsFileName, SavedInputKey.Encode(KeyCode.KeypadMinus, false, false, false), true);
+		public static readonly SavedInputKey removePoint = new SavedInputKey("removePoint", UserMod.SettingsFileName, SavedInputKey.Encode(KeyCode.KeypadMinus, false, false, false), true);
 
 		// Token: 0x0400003C RID: 60
-		public static readonly SavedInputKey play = new SavedInputKey("play", CameraOperatorMod.SettingsFileName, SavedInputKey.Encode(KeyCode.KeypadEnter, false, false, false), true);
+		public static readonly SavedInputKey play = new SavedInputKey("play", UserMod.SettingsFileName, SavedInputKey.Encode(KeyCode.KeypadEnter, false, false, false), true);
 
 		// Token: 0x0400003D RID: 61
 		private int count;
