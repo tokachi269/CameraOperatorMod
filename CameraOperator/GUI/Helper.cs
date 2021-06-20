@@ -65,9 +65,9 @@ namespace CameraOperatorMod.GUI
             return new RectOffset(top: top, right: right.Value, bottom: bottom.Value, left: left.Value);
         }
 
-        public static UILabel AddLabel(ref UIPanel parent, string label, string tooltip = "",  RectOffset padding = null, Color32? color = null, string bullet = null)
+        public static UILabel AddLabel(UIPanel panel, string label, string tooltip = "",  RectOffset padding = null, Color32? color = null, string bullet = null)
         {
-            var obj = parent.AddUIComponent<UILabel>();
+            var obj = panel.AddUIComponent<UILabel>();
             obj.text = label;
             obj.tooltip = tooltip;
             if (color.HasValue) {
@@ -88,9 +88,9 @@ namespace CameraOperatorMod.GUI
             return obj;
         }
 
-        public static UIPanel AddIconLabel(ref UIPanel parent, string icon, string label, string tooltip = "", UIFont font = null, Color32? color = null, float? wrapperWidth = null, bool isInverted = false)
+        public static UIPanel AddIconLabel(UIPanel panel, string icon, string label, string tooltip = "", UIFont font = null, Color32? color = null, float? wrapperWidth = null, bool isInverted = false)
         {
-            var wrapper = parent.AddUIComponent<UIPanel>();
+            var wrapper = panel.AddUIComponent<UIPanel>();
             wrapper.anchor = UIAnchorStyle.Top | UIAnchorStyle.Left | UIAnchorStyle.Right;
             wrapper.autoSize = true;
             //wrapper.SetAutoLayout(LayoutDirection.Horizontal);
@@ -123,9 +123,9 @@ namespace CameraOperatorMod.GUI
             return wrapper;
         }
 
-        public static UICheckBox AddCheckBox(ref UIPanel parent, string label, string tooltip, bool initialValue, PropertyChangedEventHandler<bool> onCheckChanged, UIFont font = null, int? indentPadding = null)
+        public static UICheckBox AddCheckBox(UIPanel panel, string label, string tooltip, bool initialValue, PropertyChangedEventHandler<bool> onCheckChanged, UIFont font = null, int? indentPadding = null)
         {
-            var box = parent.AddUIComponent<UICheckBox>();
+            var box = panel.AddUIComponent<UICheckBox>();
             box.anchor = UIAnchorStyle.Top | UIAnchorStyle.Left | UIAnchorStyle.Right;
 
 
@@ -150,7 +150,7 @@ namespace CameraOperatorMod.GUI
             }
 
             box.label.relativePosition = new Vector2(0, -(box.label.font.size - 10));
-            box.label.FitTo(parent);
+            box.label.FitTo(panel);
             box.height = box.label.height;
 
 
@@ -204,9 +204,9 @@ namespace CameraOperatorMod.GUI
             c.autoLayoutPadding = padding ?? Helper.ZeroOffset;
         }
 
-        public static UICheckBox AddCheckBox(ref UIPanel parent, string label, string tooltip, bool initialValue, PropertyChangedEventHandler<bool> onCheckChanged)
+        public static UICheckBox AddCheckBox(UIPanel panel, string label, string tooltip, bool initialValue, PropertyChangedEventHandler<bool> onCheckChanged)
         {
-            var box = parent.AddUIComponent<UICheckBox>();
+            var box = panel.AddUIComponent<UICheckBox>();
             box.anchor = UIAnchorStyle.Top | UIAnchorStyle.Left | UIAnchorStyle.Right;
 
             box.label = box.AddUIComponent<UILabel>();
@@ -226,7 +226,7 @@ namespace CameraOperatorMod.GUI
             box.label.padding.left = box.label.font.size + 6;
 
             box.label.relativePosition = new Vector2(0, -(box.label.font.size - 10));
-            box.label.FitTo(parent);
+            box.label.FitTo(panel);
             box.height = box.label.height;
 
             var uncheckedSprite = box.AddUIComponent<UISprite>() as UISprite;
@@ -251,16 +251,16 @@ namespace CameraOperatorMod.GUI
             return box;
         }
 
-        public static SliderPane AddSliderPane<T>(ref UIPanel parent, SliderOption<T> opts, UIFont font = null)
+        public static SliderPane AddSliderPane<T>(UIPanel panel, SliderOption<T> opts, UIFont font = null)
         {
             var pane = new SliderPane()
             {
-                wrapper = parent.AddUIComponent<UIPanel>(),
+                wrapper = panel.AddUIComponent<UIPanel>(),
             };
 
             pane.wrapper.padding.top = 4;
 
-            pane.wrapper.width = pane.wrapper.parent.width - parent.padding.horizontal;
+            //pane.wrapper.width = pane.wrapper.parent.width - panel.padding.horizontal;
             pane.wrapper.autoSize = false;
             //pane.SetAutoLayout(LayoutDirection.Horizontal);
             //pane.backgroundSprite = "Menubar";
@@ -275,7 +275,7 @@ namespace CameraOperatorMod.GUI
             pane.slider.minValue = opts.minValue;
             pane.slider.maxValue = opts.maxValue;
             pane.slider.stepSize = opts.stepSize;
-            pane.slider.scrollWheelAmount = pane.slider.stepSize * 2 + float.Epsilon;
+            pane.slider.scrollWheelAmount = (pane.slider.stepSize * 2) + float.Epsilon;
             pane.slider.backgroundSprite = "BudgetSlider";
 
             {
@@ -303,8 +303,8 @@ namespace CameraOperatorMod.GUI
                 pane.field = pane.wrapper.AddUIComponent<UITextField>();
 
                 pane.field.autoSize = false;
-                pane.field.width = parent.width - pane.slider.width - parent.padding.horizontal - 20 - 6;
-                pane.field.relativePosition = new Vector2(pane.field.parent.width - pane.field.width, 0);
+                pane.field.width = panel.width - pane.slider.width - panel.padding.horizontal - 20 - 6;
+                //pane.field.relativePosition = new Vector2(pane.field.parent.width - pane.field.width, 0);
                 pane.field.anchor = UIAnchorStyle.CenterVertical | UIAnchorStyle.Right;
                 pane.field.height -= 4;
 
@@ -361,12 +361,12 @@ namespace CameraOperatorMod.GUI
             return pane;
         }
 
-        public static UIButton AddButton(ref UIPanel parent, string label, MouseEventHandler eventClicked, string tooltip = "", RectOffset padding = null, Color32? color = null)
+        public static UIButton AddButton(UIPanel panel, string label, MouseEventHandler eventClicked, string tooltip = "", RectOffset padding = null, Color32? color = null)
         {
-            var button = parent.AddUIComponent<UIButton>();
+            var button = panel.AddUIComponent<UIButton>();
             button.anchor = UIAnchorStyle.Top | UIAnchorStyle.Left | UIAnchorStyle.Right;
 
-            button = parent.AddUIComponent<UIButton>();
+            button = panel.AddUIComponent<UIButton>();
             //button.atlas = ResourceLoader.Atlas;
             //button.textScale = Constants.UITextScale;
             button.textPadding = padding;

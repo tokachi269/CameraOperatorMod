@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
-using ColossalFramework;
+﻿using CameraOperatorMod.GUI.Panel;
 using ColossalFramework.UI;
-
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CameraOperatorMod.GUI
@@ -11,78 +9,100 @@ namespace CameraOperatorMod.GUI
 	{
 		public string name;
 	}
+	internal interface ITool : GUI.IConfigurableComponent<GUI.TabbedWindowConfig>
+    {
+		GUI.TabTemplate[] Tabs { get; }
+
+		void SetVisible(bool flag);
+    }
 
 	public class CameraOperator : UIPanel
 	{
-		private UILabel title;
-		private UIDragHandle dragHandle;
-		private UIPanel content_;
-        public UIPanel Content { get => content_; }
+		private HeaderPanel Header { get; set; }
+		private TabstripPanel tabStrip;
 
-		public override void Awake()
-        {
+		private float HeaderHeight => 30f;
+		private float TabStripHeight => 28f;
+
+		private Vector2 EditorSize => size - new Vector2(0, Header.height + tabStrip.height);
+		private Vector2 EditorPosition => new Vector2(0, tabStrip.relativePosition.y + tabStrip.height);
+		
+		public static void CreatePanel()
+		{
+			UIView.GetAView().AddUIComponent(typeof(CameraOperatorButton));
+			UIView.GetAView().AddUIComponent(typeof(CameraOperator));
+		}
+
+		public void Awake()
+		{
 			base.Awake();
 
-			title = AddUIComponent<UILabel>();
-
-			clipChildren = true; // IMPORTANT
-			content_ = AddUIComponent<UIPanel>();
-
-			dragHandle = AddUIComponent<UIDragHandle>();
+			clipChildren = true;
+			CreateHeader();
+			size = new Vector2(DefaultRect.width, DefaultRect.height);
+			CreateTabStrip();
+			CreatePages();
+			Show();
 		}
 
-		public override void Start()
+		private void CreatePages()
 		{
-			base.Start();
-
-			//base.name = "CameraOperator";
-			backgroundSprite = "MenuPanel2";
-			autoLayout = false;
-			isInteractive = true;
-			anchor = UIAnchorStyle.Top | UIAnchorStyle.Left | UIAnchorStyle.Right;
-			color = Helper.RGB(255, 255, 255);
-			size = new Vector2(SupportTool.DefaultRect.width, SupportTool.DefaultRect.height);
-
-			content_.color = Helper.RGB(255, 255, 255);
-			content_.zOrder = 0;
-			content_.clipChildren = true;
-
-			title.text = "Camera Operator";
-			title.width = 100;
-			title.height = 200;
-			title.relativePosition = new Vector3(18, 7, 0);
-			var bulletSize = title.font.size + 4;
-			var sprite = AddUIComponent<UISprite>();
-			title.padding.left += bulletSize + 3;
-			title.padding.left += 3;
-			sprite.width = sprite.height = bulletSize;
-			sprite.relativePosition = new Vector2(2, 0);
-			sprite.spriteName = "InfoPanelIconFreecamera";
-
-			dragHandle.target = parent;
-			dragHandle.relativePosition = Vector3.zero;
-			DebugUtils.Log("Camera Operator MainWindow created");
-
-			UIButton uibutton = AddUIComponent<UIButton>();
-			uibutton.size = new Vector2(30f, 30f);
-			uibutton.text = "✕";
-			uibutton.textScale = 0.9f;
-			uibutton.textColor = Helper.RGB(118, 123, 123);
-			uibutton.focusedTextColor = Helper.RGB(118, 123, 123);
-			uibutton.hoveredTextColor = Helper.RGB(140, 142, 142);
-			uibutton.pressedTextColor = Helper.RGBA(99, 102, 102, 102);
-			uibutton.textPadding = new RectOffset(8, 8, 8, 8);
-			uibutton.canFocus = false;
-			uibutton.playAudioEvents = true;
-			uibutton.relativePosition = new Vector3(width - uibutton.width, 0f);
-			uibutton.eventClicked += delegate(UIComponent c, UIMouseEventParameter p)
-			{
-				if (isVisible)
-				{
-					CameraManeger.ToggleUI();
-				}
-			};
+			CreateTabPage<Path>();
+			CreateTabPage<Rotate>();
 		}
 
-	}
+		private void CreateTabPage<TabPage>()
+			where TabPage : BaseTabPage
+		{
+			var page = tabStrip.tabContainer.AddTabPage(typeof(TabPage).Name);
+			page.size = tabStrip.tabContainer.size;
+			page.AddUIComponent<TabPage>();
+			tabStrip.AddTabButton(typeof(TabPage).Name);
+			// tabPages_.Add(typeof(TabPage).Name, page);
+		}
+
+
+		private void CreateHeader()
+		{
+			Header = AddUIComponent<HeaderPanel>();
+			Header.Init(HeaderHeight);
+		}
+
+        private void CreateTabStrip()
+        {
+			tabStrip = AddUIComponent<TabstripPanel>();
+			tabStrip.clipChildren = false;
+			tabStrip.width = DefaultRect.width;
+			tabStrip.height = TabStripHeight;
+			tabStrip.color = Helper.RGB(33, 33, 41);
+			tabStrip.zOrder = 2;
+			tabStrip.backgroundSprite = "WhiteRect";
+			tabStrip.padding = Helper.Padding(0, 4, 4);
+			tabStrip.relativePosition = new Vector2(0f, HeaderHeight);
+			Debug.Log("tabStrip initialized");
+			tabStrip.tabPages = AddUIComponent<UITabContainer>();
+
+			// var container = tabStrip.tabPages;
+			tabStrip.tabPages.relativePosition = new Vector2(0f, HeaderHeight + TabStripHeight);
+			tabStrip.tabPages.width = tabStrip.width;
+			tabStrip.tabPages.clipChildren = true;
+			tabStrip.tabPages.height = DefaultRect.height - HeaderHeight - TabStripHeight;
+			Debug.Log("container initialized");
+		}
+
+        protected void SelectTab(int i)
+		{
+			tabStrip.selectedIndex = i;
+			tabStrip.tabPages.components[i].Show();
+		}
+
+		public static readonly Rect DefaultRect = new Rect(
+			0f, 0f, 500f, 600f
+		);
+
+
+
+		private Dictionary<string, UIPanel> tabPages_ = new Dictionary<string, UIPanel>();
+        public UIPanel TabPage(string name) => tabPages_[name];
+    }
 }

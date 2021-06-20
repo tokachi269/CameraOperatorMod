@@ -92,10 +92,10 @@ namespace CameraOperatorMod.GUI
 		}
 
 		// Token: 0x0400003E RID: 62
-		public static readonly SavedInt savedX = new SavedInt("mainButtonX", CameraOperatorMod.SettingsFileName, -1000, true);
+		public static readonly SavedInt savedX = new SavedInt("mainButtonX", UserMod.SettingsFileName, -1000, true);
 
 		// Token: 0x0400003F RID: 63
-		public static readonly SavedInt savedY = new SavedInt("mainButtonY", CameraOperatorMod.SettingsFileName, -1000, true);
+		public static readonly SavedInt savedY = new SavedInt("mainButtonY", UserMod.SettingsFileName, -1000, true);
 
 		// Token: 0x04000040 RID: 64
 		private Vector3 m_deltaPos;

@@ -1,10 +1,11 @@
 ﻿using ColossalFramework.UI;
+using UnityEngine;
 
 namespace CameraOperatorMod.GUI
 {
-    public abstract class BaseTabPage : UIPanel
+    public abstract class BaseTabPage : UIComponent
     {
-        public abstract string Name { get; }
+        public abstract string TabName { get; }
 
         public abstract bool AvailableSetting { get; set; }
         public abstract bool AvailableContent { get; set; }
@@ -24,8 +25,9 @@ namespace CameraOperatorMod.GUI
         }
 
         protected abstract void ActiveEditor();
-       // public abstract void UpdateEditor();
-       // public abstract void RefreshEditor();
+        // public abstract void UpdateEditor();
+        // public abstract void RefreshEditor();
+
 
         public virtual void Render(RenderManager.CameraInfo cameraInfo) { }
         //public virtual bool OnShortcut(Event e) => false;
@@ -73,7 +75,25 @@ namespace CameraOperatorMod.GUI
         }
 
         #endregion
+
+        public override void Awake()
+        {
+            isVisible = false;
+            autoSize = false;
+            clipChildren = true;
+            relativePosition = Vector2.zero;
+            // backgroundSprite = "UnlockingItemBackground";
+
+            CameraSettingPanel = AddUIComponent<CameraSettingPanelType>();
+            CameraSettingPanel.backgroundSprite = "ScrollbarTrack";
+            CameraSettingPanel.name = nameof(CameraSettingPanelType);
+            CameraSettingPanel.clipChildren = false;
+
+            ListPanel = AddUIComponent<ListPanelType>();
+            ListPanel.backgroundSprite = "UnlockingItemBackground";
+            ListPanel.name = nameof(ListPanelType);
+            ListPanel.clipChildren = false;
+
+        }
     }
-
-
 }

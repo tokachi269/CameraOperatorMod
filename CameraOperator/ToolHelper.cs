@@ -22,13 +22,13 @@ namespace CameraOperatorMod.Tool
             }
         }
 
-        public static SliderPane AddConfig<T>(ref UIPanel page, string label, string tooltip, SliderOption<T> opts, int? labelPadding = null, int? indentPadding = null, Color32? color = null, string bullet = null)
+        public static SliderPane AddConfig<T>(UIPanel page, string label, string tooltip, SliderOption<T> opts, int? labelPadding = null, int? indentPadding = null, Color32? color = null, string bullet = null)
         {
             //var font = FontStore.Get(11);
 
             if (opts.onSwitched != null) { // has switch
                 var cb = Helper.AddCheckBox(
-                    ref page,
+                    page,
                     label: label,
                     tooltip: tooltip,
                     initialValue: opts.isEnabled,
@@ -45,17 +45,17 @@ namespace CameraOperatorMod.Tool
                 }
 
             } else {
-                Helper.AddLabel(ref page, label, tooltip, Helper.Padding(0, 0, 2, 0), color: color, bullet: bullet);
+                Helper.AddLabel(page, label, tooltip, Helper.Padding(0, 0, 2, 0), color: color, bullet: bullet);
             }
 
-            var pane = Helper.AddSliderPane<T>(ref page, opts);
+            var pane = Helper.AddSliderPane<T>(page, opts);
             return pane;
         }
-        public static UIButton AddButton<T>(ref UIPanel page, string label, MouseEventHandler eventClicked, string tooltip, int? labelPadding = null, int? indentPadding = null, Color32? color = null)
+        public static UIButton AddButton<T>(UIPanel page, string label, MouseEventHandler eventClicked, string tooltip, int? labelPadding = null, int? indentPadding = null, Color32? color = null)
         {
             //var font = FontStore.Get(11);
 
-            var pane = Helper.AddButton(ref page, label, eventClicked, tooltip, Helper.Padding(0, 0, 2, 0), color: color);
+            var pane = Helper.AddButton(page, label, eventClicked, tooltip, Helper.Padding(0, 0, 2, 0), color: color);
             return pane;
         }
     }
