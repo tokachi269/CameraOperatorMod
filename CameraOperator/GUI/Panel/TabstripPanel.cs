@@ -10,15 +10,54 @@ namespace CameraOperatorMod.GUI.Panel
 {
     class TabstripPanel: UITabstrip
     {
-        public void AddTabButton(string name)
-        {
-            TabButton(name, true);
-        }
+		int defaultWidth = 80;
+		public UIButton AddTabImp(string text)
+		{
+			UIButton btn = base.AddUIComponent<UIButton>();
+			btn.name = text;
+			btn.atlas = this.atlas;
 
-        private void TabButton(string name, bool fillText)
+			btn.group = this;
+
+			if (this.tabPages != null)
+			{
+				// this.tabPages.AddTabPage(text);
+			}
+			this.ArrangeTabs();
+			this.Invalidate();
+			return btn;
+		}
+
+		private bool ArrangeInProgress { get; set; }
+		public void ArrangeTabs()
+		{
+			var tabsArray = tabs.Where(t => t.isVisible).ToArray();
+			if (!tabsArray.Any() || ArrangeInProgress)
+				return;
+
+			ArrangeInProgress = true;
+
+			foreach (var tab in tabsArray)
+			{
+				//tab.autoSize = true;
+				//tab.autoSize = false;
+			}
+
+			//var tabRows = FillTabRows(tabsArray);
+			//ArrangeTabRows(tabRows);
+			//PlaceTabRows(tabRows);
+
+			FitChildrenVertically();
+
+			ArrangeInProgress = false;
+		}
+
+        public UIButton AddTab(string name)
         {
-			var btn = AddTab(name, true);
-			//tabStrip.selectedIndex = tabStrip.tabCount; // important for setting current target obj
+			// ColossalFramework.UI.UITabstripはAddTabしたときにpageも生成してしまうのでtabのみ生成すよう再定義
+
+			var btn = AddTabImp(name);
+
 			btn.width = 80f;
 			btn.relativePosition = new Vector2(0f, -height);
 			btn.textPadding = Helper.Padding(3, 1, 2);
@@ -33,6 +72,7 @@ namespace CameraOperatorMod.GUI.Panel
 
 			btn.width = width / tabCount;
 			btn.height = 28f;
+			return btn;
 		}
     }
 }
