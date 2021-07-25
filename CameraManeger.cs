@@ -32,29 +32,5 @@
 
         }
 
-
-        public static Camera Camera;
-
-        public static CameraController CameraController;
-
-        public static bool FreeCamera = true;
-
-        public static bool StartSimulation = false;
-
-        public static bool UseFps = false;
-
-        public static float Fps = 15f;
-
-        public static float OriginalFov = 45f;
-
-        public static bool UnlimitedCamera;
-
-        //public static FieldInfo m_notificationAlpha;
-
-        public static object EZC_config;
-
-        public static FieldInfo EZC_fovSmoothing;
-
-        public static bool EZC_originalFovSmoothing;
     }
 }
