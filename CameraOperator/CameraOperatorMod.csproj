@@ -71,6 +71,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CameraManeger.cs" />
+    <Compile Include="CameraOperator\Bezier\Bezier3D.cs" />
+    <Compile Include="CameraOperator\Bezier\BezierControls.cs" />
+    <Compile Include="CameraOperator\Bezier\BezierUtil.cs" />
+    <Compile Include="CameraOperator\Bezier\ExtendBezierControls.cs" />
+    <Compile Include="CameraOperator\Bezier\KCurves.cs" />
+    <Compile Include="CameraOperator\CameraDirector.cs" />
+    <Compile Include="CameraOperator\CameraMover.cs" />
+    <Compile Include="CameraOperator\Constant.cs" />
+    <Compile Include="CameraOperator\Math3D.cs" />
+    <Compile Include="CameraOperator\Mode\BaseCameraMode.cs" />
+    <Compile Include="CameraOperator\Mode\CameraUtil.cs" />
+    <Compile Include="CameraOperator\Mode\ControlPoint.cs" />
+    <Compile Include="CameraOperator\Mode\Easing.cs" />
+    <Compile Include="CameraOperator\Mode\Path\Path.cs" />
+    <Compile Include="CameraOperator\Mode\PerlinCameraShake.cs" />
+    <Compile Include="CameraOperator\Mode\Rotate\Rotate.cs" />
+    <Compile Include="CameraOperator\PipeMeshGenerator.cs" />
+    <Compile Include="CameraOperator\QuaternionEx.cs" />
+    <Compile Include="CameraOperator\Squad.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="GUI\HeaderPanel.cs" />
     <Compile Include="GUI\Panel\AdvancedScrollablePanel.cs" />
@@ -104,9 +123,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".vs\TollPriceIncreaserMod\v16\.suo" />
+    <None Include="CameraOperator\LICENSE" />
+    <None Include="CameraOperator\MyAssembly.asmdef" />
+    <None Include="CameraOperator\Plugins\QuaternionExtensions\QuaternionExtensions.boo" />
+    <None Include="CameraOperator\Plugins\QuaternionExtensions\SQUAD.boo" />
+    <None Include="CameraOperator\Resources\BillingMode.json" />
+    <None Include="CameraOperator\Scenes\SampleScene.unity" />
+    <None Include="CameraOperator\SimpleVertexColorShader.shader" />
+    <None Include="CameraOperator\SQUADExample\Materials\group_ArrowMat.mat" />
+    <None Include="CameraOperator\SQUADExample\Materials\Sphere.mat" />
+    <None Include="CameraOperator\SQUADExample\Materials\TrailMaterial.mat" />
+    <None Include="CameraOperator\SQUADExample\SQUAD.unity" />
+    <None Include="CameraOperator\SQUADExample\SQUADSettings.lighting" />
+    <None Include="CameraOperator\SQUADExample\SQUADTesting.boo" />
+    <None Include="CameraOperator\SQUADExample\UnitArrow.obj" />
+    <None Include="CameraOperator\StyleCop.Analyzers.ruleset" />
     <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
     <None Include="StyleCop.Analyzers.ruleset" />
   </ItemGroup>
@@ -119,6 +151,9 @@
   <ItemGroup>
     <Analyzer Include="packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CameraOperator\Plugins\QuaternionExtensions\QuaternionExtensions.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
