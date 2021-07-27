@@ -11,6 +11,7 @@ namespace CameraOperatorMod.GUI
             base.Awake();
             CameraSettingPanel.padding = Helper.Padding(56, 2, 2, 2);
             CameraSettingPanel.SetAutoLayout(LayoutDirection.Vertical, Helper.Padding(56, 2, 2, 2));
+
         }
     }
 }

@@ -1,11 +1,8 @@
 ﻿namespace CameraOperatorMod
 {
     extern alias Cities;
-
-    using System.Reflection;
     using ColossalFramework.UI;
-    using global::CameraOperatorMod.GUI;
-    using global::CameraOperatorMod.mode;
+
     using UnityEngine;
 
     public class CameraManeger : MonoBehaviour

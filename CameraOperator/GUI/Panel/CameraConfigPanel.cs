@@ -9,6 +9,7 @@ namespace CameraOperatorMod.GUI
     {
         private UISlider FOVSlider;
         private UITextField TextField;
+        private UILabel label;
         public CameraConfigPanel()
         {            
             size = new Vector2(CameraOperator.DefaultRect.width, 200);

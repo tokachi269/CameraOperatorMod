@@ -117,7 +117,7 @@ namespace CameraOperatorMod.GUI
 			Debug.Log("container initialized");
 		}
 
-        protected void SelectTab(int i)
+		protected void SelectTab(int i)
 		{
 			tabStrip.selectedIndex = i;
 			tabStrip.tabPages.components[i].Show();
@@ -127,9 +127,8 @@ namespace CameraOperatorMod.GUI
 			0f, 0f, 500f, 600f
 		);
 
-
-
 		private Dictionary<string, UIPanel> tabPages_ = new Dictionary<string, UIPanel>();
-        public UIPanel TabPage(string name) => tabPages_[name];
+
+		public UIPanel TabPage(string name) => tabPages_[name];
     }
 }
