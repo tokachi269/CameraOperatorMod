@@ -1,5 +1,4 @@
-﻿using CameraOperatorMod.GUI;
-using CameraOperatorMod.mode;
+﻿using CameraOperatorMod;
 using ColossalFramework.UI;
 using System;
 using UnityEngine;

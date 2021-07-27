@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
+
 
 namespace CameraOperatorMod
 {
@@ -20,6 +19,13 @@ namespace CameraOperatorMod
 		[DefaultValue(true)]
 		public bool LookAt { get; set; }
 
+		public ControlPoint ControlPoint
+		{
+			get => default;
+			set
+			{
+			}
+		}
 
 		public ApplyItems(bool position, bool rotation, bool fov)
 		{

@@ -98,22 +98,26 @@
     <Compile Include="GUI\Helper.cs" />
     <Compile Include="GUI\IConfigurableComponent.cs" />
     <Compile Include="GUI\Page\BaseTabPage.cs" />
-    <Compile Include="GUI\List\KnotItem.cs" />
+    <Compile Include="GUI\Panel\List\KnotItem.cs" />
     <Compile Include="GUI\Panel\PlaybackPanel.cs" />
     <Compile Include="GUI\Page\Rotate.cs" />
     <Compile Include="GUI\Page\Path.cs" />
     <Compile Include="GUI\Panel\TabstripPanel.cs" />
+    <Compile Include="GUI\Property\BoolProperty.cs" />
+    <Compile Include="GUI\Property\ButtonPanel.cs" />
+    <Compile Include="GUI\Property\base\EditorItem.cs" />
+    <Compile Include="GUI\Property\base\EditorPropertyItem.cs" />
+    <Compile Include="GUI\Property\FieldProperty.cs" />
+    <Compile Include="GUI\Property\FieldType.cs" />
+    <Compile Include="GUI\Property\Vector2Property.cs" />
+    <Compile Include="GUI\Property\Vector3Property.cs" />
     <Compile Include="GUI\Rect.cs" />
     <Compile Include="GUI\SliderPane.cs" />
     <Compile Include="GUI\CameraOperator.cs" />
-    <Compile Include="GUI\List\UIFastList.cs" />
-    <Compile Include="Constants.cs" />
+    <Compile Include="GUI\Panel\List\UIFastList.cs" />
     <Compile Include="GUI\UIExtension.cs" />
-    <Compile Include="mode\ControlPoint.cs" />
-    <Compile Include="mode\Easing.cs" />
     <Compile Include="Resources\ResourceLoader.cs" />
     <Compile Include="ToolHelper.cs" />
-    <Compile Include="mode\CameraPath.cs" />
     <Compile Include="Debug\DebugUtils.cs" />
     <Compile Include="GUI\CameraOperatorButton.cs" />
     <Compile Include="GUI\UIBase.cs" />
@@ -123,22 +127,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CameraOperator\LICENSE" />
-    <None Include="CameraOperator\MyAssembly.asmdef" />
-    <None Include="CameraOperator\Plugins\QuaternionExtensions\QuaternionExtensions.boo" />
-    <None Include="CameraOperator\Plugins\QuaternionExtensions\SQUAD.boo" />
-    <None Include="CameraOperator\Resources\BillingMode.json" />
-    <None Include="CameraOperator\Scenes\SampleScene.unity" />
     <None Include="CameraOperator\SimpleVertexColorShader.shader" />
-    <None Include="CameraOperator\SQUADExample\Materials\group_ArrowMat.mat" />
-    <None Include="CameraOperator\SQUADExample\Materials\Sphere.mat" />
-    <None Include="CameraOperator\SQUADExample\Materials\TrailMaterial.mat" />
-    <None Include="CameraOperator\SQUADExample\SQUAD.unity" />
-    <None Include="CameraOperator\SQUADExample\SQUADSettings.lighting" />
-    <None Include="CameraOperator\SQUADExample\SQUADTesting.boo" />
-    <None Include="CameraOperator\SQUADExample\UnitArrow.obj" />
-    <None Include="CameraOperator\StyleCop.Analyzers.ruleset" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
     <None Include="StyleCop.Analyzers.ruleset" />
   </ItemGroup>
@@ -151,9 +141,6 @@
   <ItemGroup>
     <Analyzer Include="packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="CameraOperator\Plugins\QuaternionExtensions\QuaternionExtensions.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>

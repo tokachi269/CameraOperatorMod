@@ -1,8 +1,8 @@
-﻿using System;
-
+﻿
+using System;
 using UnityEngine;
 
-namespace CameraOperatorMod.mode
+namespace CameraOperatorMod
 {
     [Flags]
     public enum EasingMode : byte
@@ -44,10 +44,9 @@ namespace CameraOperatorMod.mode
         //Backが始値と終値の差分の10％となる値
         private const float EasingBack = 1.70158f;
 
-        public static float GetEasing(EasingMode mode, float num, float denom)
+        public static float GetEasing(EasingMode mode, float rate)
         {
             float t;
-            float rate = num / denom;
             switch (mode)
             {
                 case EasingMode.NoneNone:
@@ -66,7 +65,8 @@ namespace CameraOperatorMod.mode
                     t = EaseInSine(rate);
                     break;
                 case EasingMode.AutoAuto:
-                    t = EaseInOutSine(rate);
+                    t = rate;
+                    //t = EaseInOutSine(rate);
                     break;
                 case EasingMode.AutoEaseInOut:
                     t = EaseInOutSine(rate);
@@ -102,7 +102,7 @@ namespace CameraOperatorMod.mode
                     t = rate;
                     break;
             }
-            return t * denom;
+            return t;
         }
 
         public static float EaseInOutSine(float t)
@@ -129,21 +129,26 @@ namespace CameraOperatorMod.mode
               : (Math.Pow(2 * t - 2, 2) * ((num + 1) * (t * 2 - 2) + num) + 2) / 2);
         }
 
-        private static float EaseOutBackSin(float t)
+        public static float EaseOutBackSin(float t)
         {
             float num = EasingBack + 1;
 
             return (float)(1 + num * Math.Pow(t - 1, 3) + EasingBack * Math.Pow(t - 1, 2));
         }
 
-        private static float EaseInBackSin(float t)
+        public static float EaseInBackSin(float t)
         {
             float num = EasingBack + 1;
 
             return num * t * t * t - EasingBack * t * t;
         }
 
-        private static void EasingModeFlagGenerater(){
+        public static float easeInOutQuad(float t) {
+        return (float)(t < 0.5 ? 2 * t* t : 1 - Math.Pow(-2 * t + 2, 2) / 2);
+
+        }
+
+    private static void EasingModeFlagGenerater(){
             for (byte n = 0; n <= 3; n++)
             {
                 for (byte m = 0; m <= 3; m++)
