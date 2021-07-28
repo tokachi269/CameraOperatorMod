@@ -16,7 +16,7 @@ namespace TokachiCinematicCameraMod.GUI.Property
             Field = Content.AddUIComponent<FieldType>();
             //Field.SetDefaultStyle();
             Field.name = nameof(Field);
-
+            m_AutoLayout = true;
             //Field.OnValueChanged += ValueChanged;
         }
     }

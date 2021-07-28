@@ -7,5 +7,10 @@ namespace TokachiCinematicCameraMod.GUI.Property
 {
     class Vector2Property : EditorPropertyItem
     {
+        public Vector2Property()
+        {
+            m_AutoLayout = true;
+
+        }
     }
 }
