@@ -1,17 +1,20 @@
 ﻿using CameraOperatorMod.Tool;
 using ColossalFramework.UI;
 using System;
+using TokachiCinematicCameraMod.GUI.Property;
 using UnityEngine;
 
 namespace CameraOperatorMod.GUI
 {
     public class CameraConfigPanel :UIPanel
     {
+        private FieldProperty field;
         private UISlider FOVSlider;
         private UITextField TextField;
         private UILabel label;
         public CameraConfigPanel()
-        {            
+        {
+            field = AddUIComponent<FieldProperty>();
             size = new Vector2(CameraOperator.DefaultRect.width, 200);
             padding = Helper.Padding(4, 12, 4, 0);
             autoFitChildrenVertically = true;

@@ -2,7 +2,13 @@
 
 namespace TokachiCinematicCameraMod.GUI.Property
 {
-    internal class FieldType: UITextField
+    internal class FieldType: UIPanel
     {
+        UITextField textField;
+        public FieldType()
+        {
+            textField = AddUIComponent<UITextField>();
+            m_AutoLayout = true;
+        }
     }
 }
