@@ -15,6 +15,7 @@ namespace CameraOperatorMod.GUI
         public CameraConfigPanel()
         {
             field = AddUIComponent<FieldProperty>();
+            field.Init();
             size = new Vector2(CameraOperator.DefaultRect.width, 200);
             padding = Helper.Padding(4, 12, 4, 0);
             autoFitChildrenVertically = true;
