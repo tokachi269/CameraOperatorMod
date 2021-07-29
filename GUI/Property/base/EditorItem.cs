@@ -44,5 +44,6 @@ namespace TokachiCinematicCameraMod.GUI.Property
             else
                 return parent.width;
         }
+
     }
 }

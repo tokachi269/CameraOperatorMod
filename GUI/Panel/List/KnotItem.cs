@@ -8,14 +8,13 @@ namespace CameraOperatorMod.GUI
     public class KnotItem : UIPanel, IUIFastListRow
     {
         static float ItemHeight = 20f;
-        UITextField probabilityTextField;
         
         UILabel IndexLabel;
 
         UILabel posLabel;
         bool initialized;
-
-        private void Initialize(ControlPoint cp, int index)
+        public void Initialize() => Initialize(null, 0);
+        public void Initialize(ControlPoint cp, int index)
         {
             width = parent.width;
             height = ItemHeight;
@@ -32,7 +31,7 @@ namespace CameraOperatorMod.GUI
             IndexLabel.width = 255.0f;
 
             posLabel = AddUIComponent<UILabel>();
-            posLabel.text = cp.position.x.ToString();
+           // posLabel.text = cp.position.x.ToString();
             posLabel.autoSize = false;
             posLabel.width = 255.0f;
         }
@@ -50,11 +49,6 @@ namespace CameraOperatorMod.GUI
         public void Select(bool isRowOdd)
         {
             throw new NotImplementedException();
-        }
-
-        private void Initialize()
-        {
-            probabilityTextField = AddUIComponent<UITextField>();
         }
 
     }

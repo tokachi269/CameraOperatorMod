@@ -10,5 +10,6 @@ namespace TokachiCinematicCameraMod.GUI.Property
             textField = AddUIComponent<UITextField>();
             m_AutoLayout = true;
         }
+
     }
 }
