@@ -90,7 +90,7 @@
     <Position X="1" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAAAAAEAAAIQAAAAAAAAAAAAAAAAAAQA=</HashCode>
-      <FileName>CameraOperator\Mode\BaseCameraMode.cs</FileName>
+      <FileName>CameraOperator\Mode\Base\BaseCameraMode.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CameraOperatorMod.CameraUtil" Collapsed="true">
@@ -197,7 +197,7 @@
   <Class Name="CameraOperatorMod.GUI.KnotItem" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="8.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAJAAIQAAAAAAAQAAAAIAAAAAAEAAQAIAAAA=</HashCode>
+      <HashCode>AAAAAAAAAJAAAQAAAAAAAQAAAAIAAAAAAEAAQAIAAAA=</HashCode>
       <FileName>GUI\Panel\List\KnotItem.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -324,21 +324,21 @@
   <Class Name="TokachiCinematicCameraMod.GUI.Property.BoolProperty" Collapsed="true">
     <Position X="2.5" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAABAAAAAAAAAAIAAAAAAAAAAAAAAACAAEAAAA=</HashCode>
       <FileName>GUI\Property\BoolProperty.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TokachiCinematicCameraMod.GUI.Property.ButtonPanel" Collapsed="true">
     <Position X="4.25" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAABABAAAAAAAAAAIAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
       <FileName>GUI\Property\ButtonPanel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TokachiCinematicCameraMod.GUI.Property.FieldProperty" Collapsed="true">
     <Position X="1" Y="11" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAgAA=</HashCode>
+      <HashCode>AAAAAAAABAAAAAAAAAAIAAAAAAAAAAEAAAACAAAAgAA=</HashCode>
       <FileName>GUI\Property\FieldProperty.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -353,14 +353,14 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAABAAAAAAAAAAIAAAAAAAAAAEAAAACAAAAgAA=</HashCode>
       <FileName>GUI\Property\Vector2Property.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TokachiCinematicCameraMod.GUI.Property.Vector3Property" Collapsed="true">
     <Position X="4.5" Y="11" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
       <FileName>GUI\Property\Vector3Property.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -389,7 +389,7 @@
     <Position X="8.5" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAgAAAAEAAAAA=</HashCode>
-      <FileName>CameraOperator\Mode\BaseCameraMode.cs</FileName>
+      <FileName>CameraOperator\Mode\Base\BaseCameraMode.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="CameraOperatorMod.ISerialize" Collapsed="true">

@@ -5,7 +5,7 @@ using System.IO;
 
 namespace CameraOperatorMod
 {
-    public class CameraDirector : MonoBehaviour
+    public class CameraDirector :MonoBehaviour
     {
         [SerializeField]
         public Path path;
