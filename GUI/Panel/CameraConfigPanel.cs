@@ -1,13 +1,14 @@
 ﻿using CameraOperatorMod.Tool;
 using ColossalFramework.UI;
 using System;
-using TokachiCinematicCameraMod.GUI.Property;
 using UnityEngine;
 
 namespace CameraOperatorMod.GUI
 {
     public class CameraConfigPanel :UIPanel
     {
+        int DefaultHeight = 160;
+
         private FieldProperty field;
         private UISlider FOVSlider;
         private UITextField TextField;
@@ -16,7 +17,7 @@ namespace CameraOperatorMod.GUI
         {
             field = AddUIComponent<FieldProperty>();
             field.Init();
-            size = new Vector2(CameraOperator.DefaultRect.width, 200);
+            size = new Vector2(CameraOperator.DefaultRect.width, DefaultHeight);
             padding = Helper.Padding(4, 12, 4, 0);
             autoFitChildrenVertically = true;
             clipChildren = false;
@@ -60,6 +61,9 @@ namespace CameraOperatorMod.GUI
             FOVSlider.stepSize = 0.1f;
             FOVSlider.value = 60f;
             FOVSlider.scrollWheelAmount = (FOVSlider.stepSize * 2) + 1.192093E-07f;
+            FOVSlider.backgroundSprite = "WhiteRect";
+            FOVSlider.color = Helper.RGB(136, 136, 136);
+            FOVSlider.size = new Vector2(345, 6);
             FOVSlider.eventValueChanged += (c, value) => {
                 if (TextField != null)
                 {

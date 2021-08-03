@@ -96,6 +96,10 @@ namespace CameraOperatorMod.GUI
             ListPanel.name = typeof(ListPanelType).Name;
             ListPanel.clipChildren = false;
 
+            PlayPanel = AddUIComponent<PlayPanelType>();
+            PlayPanel.backgroundSprite = "UnlockingItemBackground";
+            PlayPanel.name = typeof(ListPanelType).Name;
+            PlayPanel.clipChildren = false;
         }
     }
 }

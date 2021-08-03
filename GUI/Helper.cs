@@ -2,7 +2,7 @@
 using UnityEngine;
 using System;
 
-namespace CameraOperatorMod.GUI
+namespace CameraOperatorMod
 {
     public static class Helper
     {

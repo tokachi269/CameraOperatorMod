@@ -151,14 +151,14 @@
       <FileName>CameraOperator\Mode\PerlinCameraShake.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CameraOperatorMod.GUI.CameraOperator" Collapsed="true">
+  <Class Name="CameraOperatorMod.CameraOperator" Collapsed="true">
     <Position X="10.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BASCAAAAAAIAAAAAAEMAAgBAKCAgAAAEAAgAAAAAAEA=</HashCode>
       <FileName>GUI\CameraOperator.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CameraOperatorMod.GUI.CameraOperatorButton" Collapsed="true">
+  <Class Name="CameraOperatorMod.CameraOperatorButton" Collapsed="true">
     <Position X="12" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAIAgCCBAAAAAAIACAAAAAAAA=</HashCode>
@@ -180,14 +180,14 @@
       <FileName>GUI\Config.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CameraOperatorMod.GUI.HeaderPanel" Collapsed="true">
+  <Class Name="CameraOperatorMod.HeaderPanel" Collapsed="true">
     <Position X="15.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAAAAQCAAAAAAAAAAAAAAAAAAAAAAAAACAAAIAEA=</HashCode>
       <FileName>GUI\HeaderPanel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CameraOperatorMod.GUI.Helper" Collapsed="true">
+  <Class Name="CameraOperatorMod.Helper" Collapsed="true">
     <Position X="17.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAIQABAAQAAAgAgAAAIAAACQIABIBAAAQ=</HashCode>
@@ -209,14 +209,14 @@
       <FileName>GUI\Panel\List\UIFastList.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CameraOperatorMod.GUI.BaseTabPage" Collapsed="true">
+  <Class Name="CameraOperatorMod.BaseTabPage" Collapsed="true">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAgAQAAAAAAAAAAAAAAAAAACAAAgABAAAAACCAA=</HashCode>
       <FileName>GUI\Page\BaseTabPage.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CameraOperatorMod.GUI.BaseTabPage&lt;CameraSettingPanelType, ListPanelType, PlayPanelType&gt;" Collapsed="true">
+  <Class Name="CameraOperatorMod.BaseTabPage&lt;CameraSettingPanelType, ListPanelType, PlayPanelType&gt;" Collapsed="true">
     <Position X="2.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAhAAAAAAAAAAAAAAAAAAAACAAEAAAEEAAACAEA=</HashCode>
@@ -237,35 +237,35 @@
       <FileName>GUI\Page\Rotate.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CameraOperatorMod.GUI.AdvancedScrollablePanel" Collapsed="true">
+  <Class Name="CameraOperatorMod.AdvancedScrollablePanel" Collapsed="true">
     <Position X="8.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
       <FileName>GUI\Panel\AdvancedScrollablePanel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CameraOperatorMod.GUI.CameraConfigPanel" Collapsed="true">
+  <Class Name="CameraOperatorMod.CameraConfigPanel" Collapsed="true">
     <Position X="15.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AECAAAAAAAAAABAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AECAAAAAAAAAABAAAAAAAAgAAAAAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>GUI\Panel\CameraConfigPanel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CameraOperatorMod.GUI.PlaybackPanel" Collapsed="true">
     <Position X="19" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AECAAAAAAAAAABAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GUI\Panel\PlaybackPanel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CameraOperatorMod.GUI.SliderOption&lt;T&gt;" Collapsed="true">
+  <Class Name="CameraOperatorMod.SliderOption&lt;T&gt;" Collapsed="true">
     <Position X="12" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAIARAAAAAIAAAAEAAAACAAAAABAAAAAAA=</HashCode>
       <FileName>GUI\SliderPane.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CameraOperatorMod.GUI.SliderPane" Collapsed="true">
+  <Class Name="CameraOperatorMod.SliderPane" Collapsed="true">
     <Position X="13.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAEAAAAAAA=</HashCode>
@@ -307,18 +307,11 @@
       <FileName>ToolHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TokachiCinematicCameraMod.GUI.Property.EditorItem" Collapsed="true">
+  <Class Name="CameraOperatorMod.EditorItem" Collapsed="true">
     <Position X="1" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>oAAACAAACAAAAAAAAAAAAAAAAAAAgAAAAAACAFAIAAA=</HashCode>
       <FileName>GUI\Property\base\EditorItem.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="TokachiCinematicCameraMod.GUI.Property.EditorPropertyItem" Collapsed="true">
-    <Position X="1" Y="9.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IAAACAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
-      <FileName>GUI\Property\base\EditorPropertyItem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TokachiCinematicCameraMod.GUI.Property.BoolProperty" Collapsed="true">
@@ -335,7 +328,7 @@
       <FileName>GUI\Property\ButtonPanel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TokachiCinematicCameraMod.GUI.Property.FieldProperty" Collapsed="true">
+  <Class Name="CameraOperatorMod.FieldProperty" Collapsed="true">
     <Position X="1" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAABAAAAAAAAAAIAAAAAAAAAAEAAAACAAAAgAA=</HashCode>
@@ -344,14 +337,6 @@
   </Class>
   <Class Name="TokachiCinematicCameraMod.GUI.Property.Vector2Property" Collapsed="true">
     <Position X="2.75" Y="11" Width="1.5" />
-    <InheritanceLine Type="TokachiCinematicCameraMod.GUI.Property.EditorPropertyItem" FixedToPoint="true">
-      <Path>
-        <Point X="1.75" Y="9.941" />
-        <Point X="1.75" Y="10.625" />
-        <Point X="3.625" Y="10.625" />
-        <Point X="3.625" Y="11" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAABAAAAAAAAAAIAAAAAAAAAAEAAAACAAAAgAA=</HashCode>
       <FileName>GUI\Property\Vector2Property.cs</FileName>
@@ -371,7 +356,14 @@
       <FileName>CameraOperator\CameraMover.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Struct Name="CameraOperatorMod.GUI.TabTemplate" Collapsed="true">
+  <Class Name="CameraOperatorMod.EditorPropertyItem" Collapsed="true">
+    <Position X="1" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAACAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>GUI\Property\base\EditorPropertyItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="CameraOperatorMod.TabTemplate" Collapsed="true">
     <Position X="8.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
@@ -399,7 +391,7 @@
       <FileName>CameraOperator\Mode\Path\Path.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="CameraOperatorMod.GUI.ITool" Collapsed="true">
+  <Interface Name="CameraOperatorMod.ITool" Collapsed="true">
     <Position X="6" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>

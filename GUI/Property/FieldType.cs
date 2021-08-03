@@ -1,6 +1,6 @@
 ﻿using ColossalFramework.UI;
 
-namespace TokachiCinematicCameraMod.GUI.Property
+namespace CameraOperatorMod.GUI
 {
     internal class FieldType: UIPanel
     {

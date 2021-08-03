@@ -40,6 +40,7 @@ namespace CameraOperatorMod.GUI
 			title.width = 100;
 			title.height = 200;
 			title.relativePosition = new Vector3(18, 7, 0);
+			title.textColor = Helper.RGB(220, 220, 220);
 			var bulletSize = title.font.size + 4;
 			var sprite = AddUIComponent<UISprite>();
 			title.padding.left += bulletSize + 3;
