@@ -1,7 +1,7 @@
 ﻿using ColossalFramework.UI;
 using System;
 
-namespace CameraOperatorMod.GUI
+namespace CameraOperatorMod
 {
     public class SliderOption<T>
     {

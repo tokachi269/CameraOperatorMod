@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace TokachiCinematicCameraMod.GUI.Property
+namespace CameraOperatorMod.GUI
 {
     public abstract class EditorItem : UIPanel
     {

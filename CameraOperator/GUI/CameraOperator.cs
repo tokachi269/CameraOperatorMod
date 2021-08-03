@@ -1,5 +1,4 @@
-﻿using CameraOperatorMod.GUI.Panel;
-using ColossalFramework.UI;
+﻿using ColossalFramework.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -104,7 +103,7 @@ namespace CameraOperatorMod.GUI
 			tabStrip.color = Helper.RGB(33, 33, 41);
 			tabStrip.zOrder = 2;
 			tabStrip.backgroundSprite = "WhiteRect";
-			tabStrip.padding = Helper.Padding(0, 4, 4);
+			tabStrip.padding = Helper.Padding(3, 4, 4);
 			tabStrip.relativePosition = new Vector2(0f, HeaderHeight);
 			Debug.Log("tabStrip initialized");
 			tabStrip.tabPages = AddUIComponent<UITabContainer>();

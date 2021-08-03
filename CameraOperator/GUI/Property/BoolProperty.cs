@@ -5,7 +5,7 @@ using System.Text;
 using ColossalFramework.UI;
 using UnityEngine;
 
-namespace TokachiCinematicCameraMod.GUI.Property
+namespace CameraOperatorMod.GUI
 {
     class BoolProperty : EditorItem
     {

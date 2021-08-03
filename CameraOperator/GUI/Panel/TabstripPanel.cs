@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI.Panel
+namespace CameraOperatorMod.GUI
 {
     class TabstripPanel: UITabstrip
     {
-		int defaultWidth = 80;
+		float defaultWidth = 80;
+		float defaultHeight = 28;
 		public UIButton AddTabImp(string text)
 		{
 			UIButton btn = base.AddUIComponent<UIButton>();
@@ -57,21 +58,21 @@ namespace CameraOperatorMod.GUI.Panel
 			// ColossalFramework.UI.UITabstripはAddTabしたときにpageも生成してしまうのでtabのみ生成すよう再定義
 
 			var btn = AddTabImp(name);
-
+			btn.autoSize = false;
 			btn.width = 80f;
-			btn.relativePosition = new Vector2(0f, -height);
-			btn.textPadding = Helper.Padding(3, 1, 2);
+			btn.relativePosition = new Vector2(0f, -(defaultHeight + 2));
+			btn.textPadding = Helper.Padding(4, 1, 2);
 			btn.text = name;
 			btn.tooltip = name;
 			btn.height = height - 3f;
-
 			btn.normalBgSprite = "GenericTab";
 			btn.hoveredBgSprite = "GenericTabHovered";
-			btn.pressedBgSprite = "GenericTabPressed";
-			btn.focusedBgSprite = "GenericTabFocused";
-
-			btn.width = width / tabCount;
-			btn.height = 28f;
+			btn.pressedBgSprite = "GenericTab";
+			btn.focusedBgSprite = "GenericTab";
+			btn.color = Helper.RGB(158, 158, 158);
+			btn.focusedColor = Helper.RGB(246, 246, 246);
+			btn.hoveredColor = Helper.RGB(158, 158, 158);
+			btn.height = defaultHeight - 2f;
 			return btn;
 		}
     }
