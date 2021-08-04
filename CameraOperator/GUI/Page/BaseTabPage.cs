@@ -1,4 +1,5 @@
 ﻿using ColossalFramework.UI;
+using System;
 using UnityEngine;
 
 namespace CameraOperatorMod.GUI
@@ -100,6 +101,13 @@ namespace CameraOperatorMod.GUI
             PlayPanel.backgroundSprite = "UnlockingItemBackground";
             PlayPanel.name = typeof(ListPanelType).Name;
             PlayPanel.clipChildren = false;
+
+            setPosition();
+        }
+
+        private void setPosition()
+        {
+            ListPanel.relativePosition = new Vector2(0,CameraSettingPanel.height);
         }
     }
 }

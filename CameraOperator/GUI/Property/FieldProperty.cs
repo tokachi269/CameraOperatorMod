@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace CameraOperatorMod.GUI
 {
-    class FieldProperty : EditorPropertyItem
+    public class FieldProperty : EditorPropertyItem
     {
-        protected FieldType Field { get; set; }
+        private FieldType Field;
         private float Height => 20f;
 
         public event Action<ValueType> OnValueChanged;

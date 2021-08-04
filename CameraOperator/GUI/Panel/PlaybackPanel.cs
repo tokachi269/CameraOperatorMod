@@ -19,6 +19,7 @@ namespace CameraOperatorMod.GUI
             padding = Helper.Padding(4, 12, 4, 0);
             autoFitChildrenVertically = true;
             clipChildren = false;
+            relativePosition = new Vector2(0, CameraOperator.DefaultRect.height - DefaultHeight);
         }
     }
 }
