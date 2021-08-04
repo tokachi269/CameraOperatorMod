@@ -9,8 +9,8 @@ namespace CameraOperatorMod.GUI
 {
     public abstract class EditorItem : UIPanel
     {
-        protected virtual float DefaultHeight => 30;
-        protected virtual int ItemsPadding => 5;
+        protected virtual float DefaultHeight => 40;
+        protected virtual int ItemsPadding => 14;
         public virtual bool EnableControl { get; set; } = true;
         private UIPanel Even { get; }
         public virtual bool SupportEven => false;
@@ -22,8 +22,11 @@ namespace CameraOperatorMod.GUI
         public EditorItem()
         {
             Even = AddUIComponent<UIPanel>();
-            Even.color = new Color32(0, 0, 0, 48);
+            Even.color = Helper.RGB(50, 50, 50);
+            Even.padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
+            Even.autoLayout = false;
             IsEven = false;
+
         }
         public virtual void Init() => Init(null);
         public virtual void DeInit()

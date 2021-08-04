@@ -74,7 +74,7 @@ namespace CameraOperatorMod.GUI
 
 			var page = tabStrip.tabContainer.AddUIComponent<TabPage>();
 			page.name = typeof(TabPage).Name;
-			var tab = tabStrip.AddTab(typeof(TabPage).Name);
+			var tab = tabStrip.AddTabOnly(typeof(TabPage).Name);
 
 			int index = tabStrip.tabCount - 1;
 			tab.tabIndex = tabStrip.tabCount;

@@ -53,9 +53,9 @@ namespace CameraOperatorMod.GUI
 			ArrangeInProgress = false;
 		}
 
-        public UIButton AddTab(string name)
+		//tabのみ追加する(ColossalFramework.UI.UITabstrip.AddTab()はpageも同時に生成するため)
+		public UIButton AddTabOnly(string name)
         {
-			// ColossalFramework.UI.UITabstripはAddTabしたときにpageも生成してしまうのでtabのみ生成すよう再定義
 
 			var btn = AddTabImp(name);
 			btn.autoSize = false;

@@ -7,11 +7,10 @@ using UnityEngine;
 
 namespace CameraOperatorMod.GUI
 {
-    class EditorPropertyItem :EditorItem
+    public abstract class EditorPropertyItem :EditorItem
     {
-        private UILabel Label { get; set; }
-        protected ContentPanel Content { get; set; }
-
+        public UILabel Label { get; set; }
+        public ContentPanel Content { get; set; }
         public string Text
         {
             get => Label.text;
@@ -24,7 +23,7 @@ namespace CameraOperatorMod.GUI
         }
         public override bool SupportEven => true;
 
-        public EditorPropertyItem()
+        public EditorPropertyItem():base()
         {
             Label = AddUIComponent<UILabel>();
             Label.textScale = 0.75f;
@@ -32,14 +31,14 @@ namespace CameraOperatorMod.GUI
             Label.autoHeight = true;
             Label.wordWrap = true;
             Label.padding = new RectOffset(0, 0, 2, 0);
-            Label.disabledTextColor = new Color32(160, 160, 160, 255);
+            Label.disabledTextColor = Helper.RGB(160, 160, 160);
             Label.name = nameof(Label);
             //Label.eventTextChanged += (_, _) => SetLabel();
 
             Content = AddUIComponent<ContentPanel>();
         }
 
-        protected class ContentPanel : UIPanel
+        public class ContentPanel : UIPanel
         {
             public ContentPanel()
             {
