@@ -2,13 +2,10 @@
 
 namespace CameraOperatorMod.GUI
 {
-    internal class FieldType: UIPanel
+    public class FieldType: UITextField
     {
-        UITextField textField;
         public FieldType()
         {
-            textField = AddUIComponent<UITextField>();
-            m_AutoLayout = true;
         }
 
     }

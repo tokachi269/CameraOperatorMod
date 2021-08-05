@@ -10,7 +10,6 @@ namespace CameraOperatorMod.GUI
     public abstract class EditorPropertyItem :EditorItem
     {
         public UILabel Label { get; set; }
-        public ContentPanel Content { get; set; }
         public string Text
         {
             get => Label.text;
@@ -18,13 +17,15 @@ namespace CameraOperatorMod.GUI
         }
         public override bool EnableControl
         {
-            get => Content.isEnabled;
-            set => Content.isEnabled = value;
+            get => isEnabled;
+            set => isEnabled = value;
         }
-        public override bool SupportEven => true;
+       // public override bool SupportEven => true;
 
         public EditorPropertyItem():base()
         {
+            autoLayout = false;
+
             Label = AddUIComponent<UILabel>();
             Label.textScale = 0.75f;
             Label.autoSize = false;
@@ -35,32 +36,6 @@ namespace CameraOperatorMod.GUI
             Label.name = nameof(Label);
             //Label.eventTextChanged += (_, _) => SetLabel();
 
-            Content = AddUIComponent<ContentPanel>();
-        }
-
-        public class ContentPanel : UIPanel
-        {
-            public ContentPanel()
-            {
-                autoLayoutDirection = LayoutDirection.Horizontal;
-                autoFitChildrenHorizontally = true;
-                autoLayoutPadding = new RectOffset(5, 0, 0, 0);
-                name = nameof(Content);
-            }
-
-            protected override void OnSizeChanged()
-            {
-                base.OnSizeChanged();
-                Refresh();
-            }
-            public void Refresh()
-            {
-                autoLayout = true;
-                autoLayout = false;
-
-                foreach (var item in components)
-                    item.relativePosition = new Vector2(item.relativePosition.x, (height - item.height) / 2);
-            }
         }
     }
 }

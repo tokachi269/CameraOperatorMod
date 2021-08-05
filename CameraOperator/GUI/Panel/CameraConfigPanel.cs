@@ -18,11 +18,13 @@ namespace CameraOperatorMod.GUI
             padding = Helper.Padding(4, 12, 4, 0);
             clipChildren = false;
             // autoFitChildrenVertically = true; //いらない
-
+            autoLayout = false;
             FovSlider = AddUIComponent<SliderProperty>();
+            FovSlider.Init(minValue: 1f, maxValue: 150f, stepSize: 0.1f, defaultValue: 60f);
             FovSlider.autoLayout = true;
 
             ZoomSlider = AddUIComponent<SliderProperty>();
+            FovSlider.Init(minValue: 1f, maxValue: 150f, stepSize: 0.1f, defaultValue: 60f);
             ZoomSlider.autoLayout = true;
 
         }
