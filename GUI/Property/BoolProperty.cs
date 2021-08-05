@@ -10,7 +10,18 @@ namespace CameraOperatorMod.GUI
     class BoolProperty : EditorItem
     {
         protected UICheckBox checkBox;
+        protected UILabel label;
         private float Height => 20f;
+
+        public BoolProperty()
+        {
+            size = new Vector2(CameraOperator.DefaultRect.width, Height);
+            checkBox = AddUIComponent<UICheckBox>();
+
+            label = AddUIComponent<UILabel>();
+            label.text = "";
+            label.padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
+        }
 
         public override void Init()
         {

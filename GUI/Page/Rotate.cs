@@ -10,8 +10,6 @@ namespace CameraOperatorMod.GUI
         public void Awake()
         {
             base.Awake();
-
-            //TODO
         }
     }
 }

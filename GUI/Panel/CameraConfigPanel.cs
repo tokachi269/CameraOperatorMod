@@ -8,17 +8,22 @@ namespace CameraOperatorMod.GUI
     public class CameraConfigPanel :UIPanel
     {
         int DefaultHeight = 160;
-        public SliderProperty SliderProperty;
+        public SliderProperty FovSlider;
+        public SliderProperty ZoomSlider;
+
 
         public CameraConfigPanel()
         {
-            SliderProperty = AddUIComponent<SliderProperty>();
-            SliderProperty.autoLayout = true;
             size = new Vector2(CameraOperator.DefaultRect.width, DefaultHeight);
             padding = Helper.Padding(4, 12, 4, 0);
-            // autoFitChildrenVertically = true; //いらない
             clipChildren = false;
+            // autoFitChildrenVertically = true; //いらない
 
+            FovSlider = AddUIComponent<SliderProperty>();
+            FovSlider.autoLayout = true;
+
+            ZoomSlider = AddUIComponent<SliderProperty>();
+            ZoomSlider.autoLayout = true;
 
         }
     }
