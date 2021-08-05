@@ -22,11 +22,13 @@ namespace CameraOperatorMod.GUI
 
             TimeLineSlider = AddUIComponent<SliderProperty>();
             TimeLineSlider.autoLayout = true;
+            TimeLineSlider.Init(minValue: 0f, maxValue: 1f, stepSize: 0.0001f, defaultValue: 0f);
 
             Button = AddUIComponent<ButtonPanel>();
             Button.autoLayout = true;
 
             Fps = AddUIComponent<FieldProperty>();
+            Fps.Init();
             Fps.autoLayout = true;
         }
     }

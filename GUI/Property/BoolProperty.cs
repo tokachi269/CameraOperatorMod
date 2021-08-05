@@ -9,8 +9,8 @@ namespace CameraOperatorMod.GUI
 {
     class BoolProperty : EditorItem
     {
-        protected UICheckBox checkBox;
-        protected UILabel label;
+        protected UICheckBox checkBox { get; set; }
+        protected UILabel label { get; set; }
         private float Height => 20f;
 
         public BoolProperty()

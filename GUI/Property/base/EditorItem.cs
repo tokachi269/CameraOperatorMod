@@ -12,28 +12,32 @@ namespace CameraOperatorMod.GUI
         protected virtual float DefaultHeight => 40;
         protected virtual int ItemsPadding => 14;
         public virtual bool EnableControl { get; set; } = true;
-        private UIPanel Even { get; }
-        public virtual bool SupportEven => false;
-        public bool IsEven
-        {
-            get => Even.isVisible;
-            set => Even.isVisible = value;
-        }
+        //public UIPanel Content { get; }
+        //public virtual bool SupportEven => false;
+        //public bool IsEven
+        //{
+        //    get => Content.isVisible;
+        //    set => Content.isVisible = value;
+        //}
         public EditorItem()
         {
-            Even = AddUIComponent<UIPanel>();
-            Even.color = Helper.RGB(50, 50, 50);
-            Even.padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
-            Even.autoLayout = false;
-            IsEven = false;
+            //Content = AddUIComponent<UIPanel>();
+            //Content.color = Helper.RGB(50, 50, 50);
+            //Content.padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
+            //Content.autoLayout = false;
+            //Content.name = "Content";
+            //IsEven = false;
+            color = Helper.RGB(50, 50, 50);
+            padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
+            autoLayout = false;
 
         }
         public virtual void Init() => Init(null);
-        public virtual void DeInit()
-        {
-            IsEven = false;
-            EnableControl = true;
-        }
+        //public virtual void DeInit()
+        //{
+        //    IsEven = false;
+        //    EnableControl = true;
+        //}
         public void Init(float? height = null)
         {
             size = new Vector2(GetWidth(), height ?? DefaultHeight);
