@@ -2,7 +2,7 @@
 
 namespace CameraOperatorMod
 {
-    internal abstract class BaseContoroller<TItem>
+    public abstract class BaseContoroller<TItem>
         where TItem : BaseCameraMode
     {
         public Dictionary<string, TItem> Items = new Dictionary<string, TItem>();

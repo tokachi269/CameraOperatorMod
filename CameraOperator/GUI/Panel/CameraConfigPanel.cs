@@ -19,14 +19,15 @@ namespace CameraOperatorMod.GUI
             clipChildren = false;
             // autoFitChildrenVertically = true; //いらない
             autoLayout = false;
+
             FovSlider = AddUIComponent<SliderProperty>();
             FovSlider.Init(minValue: 1f, maxValue: 150f, stepSize: 0.1f, defaultValue: 60f);
-            FovSlider.autoLayout = true;
 
             ZoomSlider = AddUIComponent<SliderProperty>();
-            FovSlider.Init(minValue: 1f, maxValue: 150f, stepSize: 0.1f, defaultValue: 60f);
-            ZoomSlider.autoLayout = true;
+            ZoomSlider.Init(minValue: 1f, maxValue: 150f, stepSize: 0.1f, defaultValue: 60f);
 
+            autoLayoutDirection = LayoutDirection.Vertical;
+            autoLayout = true;
         }
     }
 }

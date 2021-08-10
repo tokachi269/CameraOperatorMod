@@ -3,7 +3,7 @@ using ColossalFramework.UI;
 
 namespace CameraOperatorMod.GUI
 {
-    public class Rotate : BaseTabPage<CameraConfigPanel, AdvancedScrollablePanel, PlaybackPanel>
+    public class Rotate : BaseTabPage<CameraConfigPanel, ScrollablePanel, PlaybackPanel>
     {
         public override string TabName => "Rotate";
 

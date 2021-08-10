@@ -11,7 +11,6 @@ namespace CameraOperatorMod.GUI
         
         UILabel IndexLabel;
 
-        UILabel posLabel;
         bool initialized;
         public void Initialize() => Initialize(null, 0);
         public void Initialize(ControlPoint cp, int index)
@@ -29,12 +28,17 @@ namespace CameraOperatorMod.GUI
             IndexLabel.text = index.ToString();
             IndexLabel.autoSize = false;
             IndexLabel.width = 255.0f;
-
-            posLabel = AddUIComponent<UILabel>();
-           // posLabel.text = cp.position.x.ToString();
-            posLabel.autoSize = false;
-            posLabel.width = 255.0f;
         }
+
+        internal void InitDisplay(int index, bool pos, bool rot, bool fov, bool zoom)
+        {
+            IndexLabel.text = index.ToString();
+            if (pos)
+            {
+                AddUIComponent<UISprite>();
+            }
+        }
+
         public void Deselect(bool isRowOdd)
         {
             throw new NotImplementedException();
