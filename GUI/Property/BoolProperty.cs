@@ -7,10 +7,9 @@ using UnityEngine;
 
 namespace CameraOperatorMod.GUI
 {
-    class BoolProperty : EditorItem
+    class BoolProperty : EditorPropertyItem
     {
         protected UICheckBox checkBox { get; set; }
-        protected UILabel label { get; set; }
         private float Height => 20f;
 
         public BoolProperty()
@@ -18,12 +17,12 @@ namespace CameraOperatorMod.GUI
             size = new Vector2(CameraOperator.DefaultRect.width, Height);
             checkBox = AddUIComponent<UICheckBox>();
 
-            label = AddUIComponent<UILabel>();
-            label.text = "";
-            label.padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
+            Label = AddUIComponent<UILabel>();
+            Label.text = "";
+            Label.padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
         }
 
-        public override void Init()
+        public void Init(bool defaultValue, string text)
         {
             base.Init();
             SetSize();

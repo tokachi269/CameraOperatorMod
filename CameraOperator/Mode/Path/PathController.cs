@@ -6,8 +6,10 @@ using System.Text;
 
 namespace CameraOperatorMod
 {
-    class PathController : BaseContoroller<Path>
+    public class PathController : BaseContoroller<Path>
     {
+        public static PathController Instance;
+
         public override void AddItem(Path item)
         {
             if (!Items.ContainsKey(item.name))

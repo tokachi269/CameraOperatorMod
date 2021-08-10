@@ -9,8 +9,8 @@ namespace CameraOperatorMod
     static class Squad
     {
 		// Returns a smoothed quaternion along the set of quaternions making up the spline, each quaternion is along an equidistant value in t
-		public static Quaternion Spline(List<ControlPoint> knots ,int knotIndex, int count,float  t )
-        {			
+		public static Quaternion Spline(List<ControlPoint> knots, int knotIndex, int count, float t)
+        {
 			if (knotIndex == 0)
 			{
 				return SplineSegment(knots[knotIndex].rotation, knots[knotIndex].rotation, knots[knotIndex + 1].rotation, knots[knotIndex + 2].rotation, t);
@@ -21,6 +21,7 @@ namespace CameraOperatorMod
 			else if (knotIndex >= 1 && knotIndex < count - 2){
 				return SplineSegment(knots[knotIndex - 1].rotation, knots[knotIndex].rotation, knots[knotIndex + 1].rotation, knots[knotIndex + 2].rotation, t);
 			}
+
 			return Quaternion.identity;
 		}
 
@@ -47,7 +48,7 @@ namespace CameraOperatorMod
 
 			Quaternion r = q1 * c3;
 			Debug.Log(r);
-			//r.Normalize();
+			// r.Normalize();
 			return r;
 		}
 

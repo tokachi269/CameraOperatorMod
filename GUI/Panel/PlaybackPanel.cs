@@ -18,18 +18,19 @@ namespace CameraOperatorMod.GUI
             padding = Helper.Padding(4, 12, 4, 0);
             autoFitChildrenVertically = true;
             clipChildren = false;
+            autoLayout = false;
+
             relativePosition = new Vector2(0, CameraOperator.DefaultRect.height - DefaultHeight);
 
             TimeLineSlider = AddUIComponent<SliderProperty>();
-            TimeLineSlider.autoLayout = true;
-            TimeLineSlider.Init(minValue: 0f, maxValue: 1f, stepSize: 0.0001f, defaultValue: 0f);
+            TimeLineSlider.Init(minValue: 0f, maxValue: 100, stepSize: 0.01f, defaultValue: 0f);
 
             Button = AddUIComponent<ButtonPanel>();
-            Button.autoLayout = true;
 
             Fps = AddUIComponent<FieldProperty>();
-            Fps.Init();
-            Fps.autoLayout = true;
+
+            autoLayoutDirection = LayoutDirection.Vertical;
+            autoLayout = true;
         }
     }
 }

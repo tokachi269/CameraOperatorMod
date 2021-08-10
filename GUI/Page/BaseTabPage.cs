@@ -37,11 +37,10 @@ namespace CameraOperatorMod.GUI
 
     public abstract class BaseTabPage<CameraSettingPanelType, ListPanelType, PlayPanelType> : BaseTabPage
         where CameraSettingPanelType : CameraConfigPanel
-        where ListPanelType : AdvancedScrollablePanel
+        where ListPanelType : ScrollablePanel
         where PlayPanelType : PlaybackPanel
     {
         protected bool NeedUpdate { get; set; }
-
 
         protected CameraSettingPanelType CameraSettingPanel { get; set; }
         protected ListPanelType ListPanel { get; set; }
@@ -98,7 +97,8 @@ namespace CameraOperatorMod.GUI
             ListPanel.clipChildren = false;
 
             PlayPanel = AddUIComponent<PlayPanelType>();
-            PlayPanel.backgroundSprite = "UnlockingItemBackground";
+            PlayPanel.backgroundSprite = "ScrollbarTrack";
+            PlayPanel.relativePosition = new Vector2(0, CameraSettingPanel.height + ListPanel.height);
             PlayPanel.name = typeof(PlayPanelType).Name;
             PlayPanel.clipChildren = false;
 

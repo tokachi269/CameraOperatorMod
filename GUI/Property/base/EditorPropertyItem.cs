@@ -10,6 +10,7 @@ namespace CameraOperatorMod.GUI
     public abstract class EditorPropertyItem :EditorItem
     {
         public UILabel Label { get; set; }
+        public bool hasLabel = false;
         public string Text
         {
             get => Label.text;
@@ -20,21 +21,24 @@ namespace CameraOperatorMod.GUI
             get => isEnabled;
             set => isEnabled = value;
         }
-       // public override bool SupportEven => true;
+        public override bool SupportAlignment => true;
 
-        public EditorPropertyItem():base()
+        public EditorPropertyItem()
         {
             autoLayout = false;
 
-            Label = AddUIComponent<UILabel>();
-            Label.textScale = 0.75f;
-            Label.autoSize = false;
-            Label.autoHeight = true;
-            Label.wordWrap = true;
-            Label.padding = new RectOffset(0, 0, 2, 0);
-            Label.disabledTextColor = Helper.RGB(160, 160, 160);
-            Label.name = nameof(Label);
-            //Label.eventTextChanged += (_, _) => SetLabel();
+            if (hasLabel)
+            {
+                Label = AddUIComponent<UILabel>();
+                Label.textScale = 0.75f;
+                Label.autoSize = false;
+                Label.autoHeight = true;
+                Label.wordWrap = true;
+                Label.padding = new RectOffset(0, 0, 2, 0);
+                Label.disabledTextColor = Helper.RGB(160, 160, 160);
+                Label.name = nameof(Label);
+                //Label.eventTextChanged += (_, _) => SetLabel();
+            }
 
         }
     }
