@@ -6,7 +6,7 @@ namespace CameraOperatorMod.GUI
     public class PlaybackPanel: UIPanel
     {
         int DefaultHeight = 120;
-        public SliderProperty TimeLineSlider;
+        public SliderPanel TimeLineSlider;
 
         private FieldProperty Fps;
         private UILabel Label;
@@ -22,8 +22,8 @@ namespace CameraOperatorMod.GUI
 
             relativePosition = new Vector2(0, CameraOperator.DefaultRect.height - DefaultHeight);
 
-            TimeLineSlider = AddUIComponent<SliderProperty>();
-            TimeLineSlider.Init(minValue: 0f, maxValue: 100, stepSize: 0.01f, defaultValue: 0f);
+            TimeLineSlider = AddUIComponent<SliderPanel>();
+            // TimeLineSlider.Init(minValue: 0f, maxValue: 100, stepSize: 0.01f, defaultValue: 0f);
 
             Button = AddUIComponent<ButtonPanel>();
 

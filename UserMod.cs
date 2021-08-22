@@ -10,14 +10,36 @@ namespace CameraOperatorMod
 
         public string Description => "Camera Operator Mod Description";
 
-        public void OnEnabled(){
+        public void OnEnabled() {
             if (this.CameraManegerGameObject == null)
             {
                 this.CameraManegerGameObject = new GameObject("CameraManeger");
                 CameraManeger.Instance = CameraManegerGameObject.AddComponent<CameraManeger>();
                 CameraManeger.Instance.Initialize();
+                Debug.Log("OnEnabled");
+
             }
         }
+        public void OnDisabled()
+        {
+            if (this.CameraManegerGameObject == null)
+            {
+                if (this.CameraManegerGameObject != null)
+                {
+                    Object.Destroy(this.CameraManegerGameObject);
+                    this.CameraManegerGameObject = null;
+                }
+                Debug.Log("OnDisabled");
+
+            }
+        }
+        public void OnSettingsUI(UIHelperBase helper)
+        {
+            UIHelperBase group = helper.AddGroup("Stereoscopic View");
+
+            group.AddButton("UI Initialize", () => CameraManeger.Instance.Initialize());
+        }
+
 
         public override void OnLevelLoaded(LoadMode mode)
         {
@@ -26,6 +48,8 @@ namespace CameraOperatorMod
                 this.CameraManegerGameObject = new GameObject("CameraManeger");
                 CameraManeger.Instance = CameraManegerGameObject.AddComponent<CameraManeger>();
                 CameraManeger.Instance.Initialize();
+                Debug.Log("OnLevelLoaded");
+
             }
 
         }

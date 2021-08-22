@@ -13,10 +13,11 @@ namespace CameraOperatorMod.GUI
         protected virtual int ItemsPadding => 14;
         public virtual bool EnableControl { get; set; } = true;
 
-        //autoLayoutで並べるとUIComponentが端によってしまう
-        //整列用のPanelを作成して中央揃えができるようにする
+        // autoLayoutで並べるとbaseのUIPanelも含めてUIComponentが端によってしまう
+        // 整列用のPanelを作成して中央揃えができるようにする
+        //autoLayout
         public UIPanel Alignment { get; }
-        public virtual bool SupportAlignment => false;
+        public virtual bool SupportAlignment => true;
 
         public bool IsAlignment
         {
@@ -26,10 +27,15 @@ namespace CameraOperatorMod.GUI
 
         public EditorItem()
         {
-            Alignment = AddUIComponent<UIPanel>();
-            // Alignment.atlas = base.atlas;
-            // Alignment.backgroundSprite = "EmptySprite";
-            Alignment.color = new Color32(0, 0, 0, 48);
+
+                Alignment = AddUIComponent<UIPanel>();
+                // Alignment.atlas = base.atlas;
+                // Alignment.backgroundSprite = "EmptySprite";
+                Alignment.name = "Alignment";
+                Alignment.color = new Color32(0, 0, 0, 48);
+                Alignment.size = new Vector2(CameraOperator.DefaultRect.width, DefaultHeight);
+            
+
             IsAlignment = false;
             color = Helper.RGB(50, 50, 50);
             padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
