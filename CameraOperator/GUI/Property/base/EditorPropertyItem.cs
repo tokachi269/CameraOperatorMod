@@ -39,7 +39,23 @@ namespace CameraOperatorMod.GUI
                 Label.name = nameof(Label);
                 //Label.eventTextChanged += (_, _) => SetLabel();
             }
-
         }
+
+        protected override void OnSizeChanged()
+        {
+            base.OnSizeChanged();
+            //Refresh(false);
+        }
+
+        //protected void Refresh(bool refreshContent = true)
+        //{
+        //    if (refreshContent)
+        //        //Alignment.Refresh();
+        //
+        //    Alignment.height = height;
+        //    Alignment.relativePosition = new Vector2(width - Alignment.width - ItemsPadding, 0f);
+        //
+        //   // SetLabel();
+        //}
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace CameraOperatorMod.GUI
 {
-    class ButtonPanel : EditorItem
+    public class ButtonPanel : EditorItem
     {
         UIButton button;
         private float Height => 20f;

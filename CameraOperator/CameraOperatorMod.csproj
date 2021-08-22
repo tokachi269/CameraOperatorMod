@@ -115,7 +115,7 @@
     <Compile Include="GUI\Property\Vector2Property.cs" />
     <Compile Include="GUI\Property\Vector3Property.cs" />
     <Compile Include="GUI\Rect.cs" />
-    <Compile Include="GUI\Property\SliderProperty.cs" />
+    <Compile Include="GUI\Property\SliderPanel.cs" />
     <Compile Include="GUI\CameraOperator.cs" />
     <Compile Include="GUI\Panel\List\UIFastList.cs" />
     <Compile Include="GUI\SliderPane.cs" />
