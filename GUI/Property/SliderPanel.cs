@@ -13,19 +13,20 @@ namespace CameraOperatorMod.GUI
         public bool HasField = true;
         public bool hasButton = true;
 
-        public int ItemsPadding = 10;
+        public int ItemsPadding = 0;
         public override bool SupportAlignment => false;
         public  SliderPanel()
         {
             autoLayoutDirection = LayoutDirection.Horizontal;
 
             size = new Vector2(CameraOperator.DefaultRect.width, DefaultHeight);
-            padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
+            //padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
             // autoFitChildrenVertically = true; //いらない
             clipChildren = false;
             autoLayout = true;
 
             TextField = AddUIComponent<FieldProperty>();
+            TextField.Init();
             InitTextField();
 
             FieldSlider = AddUIComponent<SliderProperty>();
@@ -33,15 +34,14 @@ namespace CameraOperatorMod.GUI
             FieldSlider.Slider.eventValueChanged += (c, value) => {
                 if (TextField != null)
                 {
-                    TextField.Field.text = value.ToString();
+                    TextField.Content.text = value.ToString();
                 }
             };
-
         }
 
         private void InitTextField()
         {
-            TextField.relativePosition = new Vector2(0, (DefaultHeight - TextField.height) / 2);
+            TextField.relativePosition = new Vector2(0,(DefaultHeight - TextField.height) / 2);
 
             //TextField.eventTextSubmitted += (c, text) => {
             //    if (text == "") return;
@@ -71,6 +71,7 @@ namespace CameraOperatorMod.GUI
         {
             public UISlider Slider { get; set; }
             public UISlicedSprite Thumb { get; set; }
+            private float SliderWidth { get; set; }
             SliderProperty()
             {
                 size = new Vector2(CameraOperator.DefaultRect.width, DefaultHeight);
@@ -85,20 +86,24 @@ namespace CameraOperatorMod.GUI
                 Slider.backgroundSprite = "WhiteRect";
                 Slider.color = Helper.RGB(40, 40, 40);
                 Slider.size = new Vector2(345f, 6f);
-                Slider.relativePosition = new Vector2(0, DefaultHeight / 2);
+                Slider.relativePosition = new Vector2(0f, DefaultHeight / 2);
 
                 Thumb.atlas = base.atlas;
                 Thumb.spriteName = "SliderBudget";
                 Thumb.size = new Vector2(14f, 18f);
-                Thumb.relativePosition = new Vector2(0f, 8f);
+                Thumb.relativePosition = new Vector2(0f,(DefaultHeight / 2) + 8f);
+
+                Alignment.width = 345f;
 
                 Slider.thumbObject = Thumb;
             }
+
             protected override void OnSizeChanged()
             {
                 base.OnSizeChanged();
                 SetSize();
             }
+
             public override void Init()
             {
                 base.Init();
