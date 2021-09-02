@@ -38,7 +38,7 @@ namespace CameraOperatorMod.GUI
 
             IsAlignment = false;
             color = Helper.RGB(50, 50, 50);
-            padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
+           // padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
             autoLayout = false;
 
         }

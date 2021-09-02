@@ -6,7 +6,7 @@ namespace CameraOperatorMod.GUI
 {
     public class FieldProperty : EditorPropertyItem
     {
-        public FieldType Field { get; set; }
+        public FieldType Content { get; set; }
         public float DefaultHeight => 20f;
 
         public event Action<ValueType> OnValueChanged;
@@ -17,35 +17,39 @@ namespace CameraOperatorMod.GUI
 
             autoLayout = false;
 
-            Field = AddUIComponent<FieldType>();
+            Content = AddUIComponent<FieldType>();
             //Field.SetDefaultStyle();
-            Field.name = nameof(Field);
-            Field.cursorBlinkTime = 1f;
-            Field.cursorWidth = 2;
+            Content.name = nameof(Content);
+            Content.cursorBlinkTime = 1f;
+            Content.cursorWidth = 2;
             //Field.OnValueChanged += ValueChanged;
-            Field.readOnly = false;
-            Field.numericalOnly = true;
-            Field.allowFloats = true;
-            Field.builtinKeyNavigation = true;
-            Field.canFocus = true;
-            Field.selectOnFocus = true;
-            Field.submitOnFocusLost = true;
-            Field.selectionSprite = "EmptySprite";
-            Field.normalBgSprite = "TextFieldPanel";
-            Field.focusedBgSprite = "TextFieldPanel";
-            Field.clipChildren = true;
-            Field.colorizeSprites = true;
-            Field.color = Helper.RGB(50, 50, 50);
-            Field.textColor = Helper.RGB(250, 250, 250);
-            Field.horizontalAlignment = UIHorizontalAlignment.Left;
-            Field.padding = Helper.Padding(0, 6);
-            Field.relativePosition = new Vector2(0, 0);
-            Field.size = new Vector2(50, 22);
+            Content.readOnly = false;
+            Content.numericalOnly = true;
+            Content.allowFloats = true;
+            Content.builtinKeyNavigation = true;
+            Content.canFocus = true;
+            Content.selectOnFocus = true;
+            Content.submitOnFocusLost = true;
+            Content.selectionSprite = "EmptySprite";
+            Content.normalBgSprite = "TextFieldPanel";
+            Content.focusedBgSprite = "TextFieldPanel";
+            Content.clipChildren = true;
+            Content.colorizeSprites = true;
+            Content.color = Helper.RGB(50, 50, 50);
+            Content.textColor = Helper.RGB(250, 250, 250);
+            Content.horizontalAlignment = UIHorizontalAlignment.Left;
+            Content.padding = Helper.Padding(0, 6);
+            Content.relativePosition = new Vector2(0f, DefaultHeight / 2);
+            Content.size = new Vector2(50, 22);
+
         }
+
         protected override void OnSizeChanged()
         {
             SetSize();
+            Refresh(false);
         }
+
         public override void Init()
         {
             base.Init();
@@ -54,16 +58,30 @@ namespace CameraOperatorMod.GUI
 
         protected virtual void SetSize(float? width = null, float? height = null)
         {
-            if (!(Field is null))
+            if (!(Content is null))
             {
-                if (!(width is null)) base.width = Field.width;
+                if (!(width is null)) base.width = Content.width;
                 //if (!(height is null)) Field.height = (float)height;
 
-                base.size = Field.size;
+                base.size = Content.size;
             }
             base.OnSizeChanged();
-
         }
 
+        protected void Refresh(bool refreshContent = true)
+        {
+            if (!(Content is null))
+            {
+                Content.height = height;
+              // Content.relativePosition = new Vector2(width - Content.width - ItemsPadding, 0f);
+            }
+        }
+
+        private void SetLabel()
+        {
+            Label.width = width - Content.width - ItemsPadding * 2;
+            Label.MakePixelPerfect(false);
+            Label.relativePosition = new Vector2(5, (height - Label.height) / 2);
+        }
     }
 }

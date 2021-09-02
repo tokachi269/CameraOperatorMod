@@ -21,11 +21,10 @@ namespace CameraOperatorMod.GUI
             clipChildren = false;
 
             FovSlider = AddUIComponent<SliderPanel>();
-            //TODO Initでnull落ち
-            // FovSlider.Init(minValue: 1f, maxValue: 150f, stepSize: 0.1f, defaultValue: 60f);
+            FovSlider.Init(minValue: 1f, maxValue: 150f, stepSize: 0.1f, defaultValue: 60f);
 
-            // ZoomSlider = AddUIComponent<SliderPanel>();
-            // ZoomSlider.Init(minValue: 1f, maxValue: 150f, stepSize: 0.1f, defaultValue: 60f);
+            ZoomSlider = AddUIComponent<SliderPanel>();
+            ZoomSlider.Init(minValue: 1f, maxValue: 150f, stepSize: 0.1f, defaultValue: 60f);
 
             autoLayoutDirection = LayoutDirection.Vertical;
 
