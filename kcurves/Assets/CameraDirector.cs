@@ -36,7 +36,7 @@ namespace Assets
 
             path.Time = 10;
 
-            path.Render();
+            path.render.Display();
             path.IsCameraShake = true;
 
             rotate.AddKnot(new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 1), 60);
@@ -50,31 +50,36 @@ namespace Assets
             Vector3 pos = Input.mousePosition;
             Ray ray = Camera.main.ScreenPointToRay(pos);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetKey("h"))
             {
-                path.findClosest(hit.point);
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (Physics.Raycast(ray, out hit))
+                path.GetCursorPositionPath();
+
+                if (Input.GetMouseButtonDown(0))
                 {
-                    float t = path.findClosest(hit.point);
-                    path.AddKnot(CameraUtil.CameraPosition(),t);
-                    Debug.Log("Insert Knot Succeed");
-                    path.Render();
+                    path.AddKnotMiddle();
                 }
             }
+            if (Input.GetKey("f"))
+            {
+                path.MoveKnot();
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    path.AddKnotMiddle();
+                }
+            }
+
             if (Input.GetKeyDown("k"))
             {
                 path.AddKnot(CameraUtil.CameraPosition());
                 Debug.Log("Add Knot Succeed");
-                path.Render();
+                path.render.Display();
             }
             if (Input.GetKeyDown("j"))
             {
                 path.RemoveKnot();
                 Debug.Log("Remove Knot Succeed");
-                path.Render();
+                path.render.Display();
             }
             if (Input.GetKeyDown("t"))
             {
@@ -97,7 +102,7 @@ namespace Assets
             {
                 if (path != null)
                 {
-                    path.Serialize("xx");
+                    path.serializer.Serialize("xx");
                 }
                 Debug.Log("path Serialized");
             }

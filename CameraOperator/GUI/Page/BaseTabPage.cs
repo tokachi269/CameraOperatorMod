@@ -1,4 +1,5 @@
 ﻿using ColossalFramework.UI;
+using System;
 using UnityEngine;
 
 namespace CameraOperatorMod.GUI
@@ -36,11 +37,10 @@ namespace CameraOperatorMod.GUI
 
     public abstract class BaseTabPage<CameraSettingPanelType, ListPanelType, PlayPanelType> : BaseTabPage
         where CameraSettingPanelType : CameraConfigPanel
-        where ListPanelType : AdvancedScrollablePanel
+        where ListPanelType : ScrollablePanel
         where PlayPanelType : PlaybackPanel
     {
         protected bool NeedUpdate { get; set; }
-
 
         protected CameraSettingPanelType CameraSettingPanel { get; set; }
         protected ListPanelType ListPanel { get; set; }
@@ -78,6 +78,8 @@ namespace CameraOperatorMod.GUI
 
         public override void Awake()
         {
+            base.Awake();
+
             isVisible = false;
             autoSize = false;
             clipChildren = true;
@@ -86,14 +88,26 @@ namespace CameraOperatorMod.GUI
 
             CameraSettingPanel = AddUIComponent<CameraSettingPanelType>();
             CameraSettingPanel.backgroundSprite = "ScrollbarTrack";
-            CameraSettingPanel.name = nameof(CameraSettingPanelType);
+            CameraSettingPanel.name = typeof(CameraSettingPanelType).Name;
             CameraSettingPanel.clipChildren = false;
 
             ListPanel = AddUIComponent<ListPanelType>();
             ListPanel.backgroundSprite = "UnlockingItemBackground";
-            ListPanel.name = nameof(ListPanelType);
+            ListPanel.name = typeof(ListPanelType).Name;
             ListPanel.clipChildren = false;
 
+            PlayPanel = AddUIComponent<PlayPanelType>();
+            PlayPanel.backgroundSprite = "ScrollbarTrack";
+            PlayPanel.relativePosition = new Vector2(0, CameraSettingPanel.height + ListPanel.height);
+            PlayPanel.name = typeof(PlayPanelType).Name;
+            PlayPanel.clipChildren = false;
+
+            setPosition();
+        }
+
+        private void setPosition()
+        {
+            ListPanel.relativePosition = new Vector2(0,CameraSettingPanel.height);
         }
     }
 }

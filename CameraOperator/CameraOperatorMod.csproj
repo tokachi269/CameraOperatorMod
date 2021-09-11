@@ -71,30 +71,57 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CameraManeger.cs" />
+    <Compile Include="CameraOperator\Bezier\Bezier3D.cs" />
+    <Compile Include="CameraOperator\Bezier\BezierControls.cs" />
+    <Compile Include="CameraOperator\Bezier\BezierUtil.cs" />
+    <Compile Include="CameraOperator\Bezier\ExtendBezierControls.cs" />
+    <Compile Include="CameraOperator\Bezier\KCurves.cs" />
+    <Compile Include="CameraOperator\CameraDirector.cs" />
+    <Compile Include="CameraOperator\CameraMover.cs" />
+    <Compile Include="CameraOperator\Constant.cs" />
+    <Compile Include="CameraOperator\Math3D.cs" />
+    <Compile Include="CameraOperator\Mode\Base\BaseCameraMode.cs" />
+    <Compile Include="CameraOperator\Mode\CameraUtil.cs" />
+    <Compile Include="CameraOperator\Mode\ControlPoint.cs" />
+    <Compile Include="CameraOperator\Mode\Easing.cs" />
+    <Compile Include="CameraOperator\Mode\Path\Path.cs" />
+    <Compile Include="CameraOperator\Mode\Path\PathController.cs" />
+    <Compile Include="CameraOperator\Mode\Base\BaseContoroller.cs" />
+    <Compile Include="CameraOperator\Mode\PerlinCameraShake.cs" />
+    <Compile Include="CameraOperator\Mode\Rotate\Rotate.cs" />
+    <Compile Include="CameraOperator\PipeMeshGenerator.cs" />
+    <Compile Include="CameraOperator\QuaternionEx.cs" />
+    <Compile Include="CameraOperator\Squad.cs" />
+    <Compile Include="CameraOperator\ToolModeType.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="GUI\HeaderPanel.cs" />
-    <Compile Include="GUI\Panel\AdvancedScrollablePanel.cs" />
+    <Compile Include="GUI\Panel\ScrollablePanel.cs" />
     <Compile Include="GUI\Panel\CameraConfigPanel.cs" />
     <Compile Include="GUI\Config.cs" />
     <Compile Include="GUI\Helper.cs" />
     <Compile Include="GUI\IConfigurableComponent.cs" />
     <Compile Include="GUI\Page\BaseTabPage.cs" />
-    <Compile Include="GUI\List\KnotItem.cs" />
+    <Compile Include="GUI\Panel\List\KnotItem.cs" />
     <Compile Include="GUI\Panel\PlaybackPanel.cs" />
     <Compile Include="GUI\Page\Rotate.cs" />
     <Compile Include="GUI\Page\Path.cs" />
     <Compile Include="GUI\Panel\TabstripPanel.cs" />
+    <Compile Include="GUI\Property\BoolProperty.cs" />
+    <Compile Include="GUI\Property\ButtonPanel.cs" />
+    <Compile Include="GUI\Property\base\EditorItem.cs" />
+    <Compile Include="GUI\Property\base\EditorPropertyItem.cs" />
+    <Compile Include="GUI\Property\FieldProperty.cs" />
+    <Compile Include="GUI\Property\FieldType.cs" />
+    <Compile Include="GUI\Property\Vector2Property.cs" />
+    <Compile Include="GUI\Property\Vector3Property.cs" />
     <Compile Include="GUI\Rect.cs" />
-    <Compile Include="GUI\SliderPane.cs" />
+    <Compile Include="GUI\Property\SliderPanel.cs" />
     <Compile Include="GUI\CameraOperator.cs" />
-    <Compile Include="GUI\List\UIFastList.cs" />
-    <Compile Include="Constants.cs" />
+    <Compile Include="GUI\Panel\List\UIFastList.cs" />
+    <Compile Include="GUI\SliderPane.cs" />
     <Compile Include="GUI\UIExtension.cs" />
-    <Compile Include="mode\ControlPoint.cs" />
-    <Compile Include="mode\Easing.cs" />
     <Compile Include="Resources\ResourceLoader.cs" />
     <Compile Include="ToolHelper.cs" />
-    <Compile Include="mode\CameraPath.cs" />
     <Compile Include="Debug\DebugUtils.cs" />
     <Compile Include="GUI\CameraOperatorButton.cs" />
     <Compile Include="GUI\UIBase.cs" />
@@ -104,9 +131,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".vs\TollPriceIncreaserMod\v16\.suo" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
+    <None Include="CameraOperator\SimpleVertexColorShader.shader" />
+    <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
     <None Include="StyleCop.Analyzers.ruleset" />
   </ItemGroup>

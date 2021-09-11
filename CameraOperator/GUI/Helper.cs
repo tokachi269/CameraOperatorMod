@@ -1,8 +1,9 @@
 ﻿using ColossalFramework.UI;
 using UnityEngine;
 using System;
+using CameraOperatorMod.GUI;
 
-namespace CameraOperatorMod.GUI
+namespace CameraOperatorMod
 {
     public static class Helper
     {

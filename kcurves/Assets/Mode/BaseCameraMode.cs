@@ -11,18 +11,17 @@ namespace Assets
         IEnumerator Play();
         void AddKnot(Vector3 position, Quaternion rotation, float fov);
         void RemoveKnot();
-        void Render();
     }
     public abstract class BaseCameraMode : MonoBehaviour
     {
         public abstract string Name { get; set; }
         //ユーザー制御点
-        protected abstract List<ControlPoint> Knots { get; set; }
+        protected abstract List<CameraConfig> Knots { get; set; }
 
         public int Time { get; set; }
 
         public bool IsCameraShake { get; set; }
 
-        protected ControlPoint DefaultCameraPosition { get; }
+        protected CameraConfig DefaultCameraPosition { get; }
     }
 }
