@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace CameraOperatorMod
+namespace CameraOperator.Tool
 {
     public static class KCurves
     {
@@ -201,14 +201,14 @@ namespace CameraOperatorMod
             }
 
             //入出力ベクトルを拡張
-            var extendedPs = new ExtendedKnots(ps, cs);
+            var extendedPs = new ExtendKnots(ps, cs);
             var extendedCs = new ExtendedBezierControls(cs);
 
             //連立方程式を解く
             SolveTridiagonalEquation(A, extendedCs, extendedPs);
         }
 
-        static void SolveTridiagonalEquation(double[] A, ExtendedBezierControls x, ExtendedKnots b)
+        static void SolveTridiagonalEquation(double[] A, ExtendedBezierControls x, ExtendKnots b)
         {
             var n = A.Length / 3 - 2;
 
@@ -295,7 +295,7 @@ namespace CameraOperatorMod
             }
             public BezierControls Result => C;
         }
-        struct ExtendedKnots
+        struct ExtendKnots
         {
             Vector3 top;
             Vector3[] ps;
@@ -312,7 +312,7 @@ namespace CameraOperatorMod
                 }
             }
 
-            public ExtendedKnots(Vector3[] ps, BezierControls cs)
+            public ExtendKnots(Vector3[] ps, BezierControls cs)
             {
                 top = cs[cs.SegmentCount - 1, 1];
                 this.ps = ps;

@@ -1,7 +1,6 @@
 ﻿using ColossalFramework.UI;
 using UnityEngine;
 using System;
-using CameraOperatorMod.GUI;
 
 namespace CameraOperatorMod
 {

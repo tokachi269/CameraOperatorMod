@@ -9,9 +9,13 @@
     {
         public static CameraManeger Instance;
 
+        public static Camera mainCamera;
+        public static CameraController cameraController;
         internal void Initialize()
         {
             GUI.CameraOperator.CreatePanel();
+            mainCamera = Camera.main;
+            cameraController = mainCamera.GetComponent<CameraController>();
         }
 
         public static void ToggleUI()

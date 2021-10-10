@@ -2,9 +2,9 @@
 using UnityEngine;
 using System.ComponentModel;
 
-namespace CameraOperatorMod
+namespace CameraOperator.Tool
 {
-	public class ControlPoint : MonoBehaviour
+	public class CameraConfig : MonoBehaviour
 	{
 		public Vector3 position;
 
@@ -29,8 +29,9 @@ namespace CameraOperatorMod
 
 		[DefaultValue(EasingMode.Auto)]
 		public EasingMode easingMode;
+		public bool isLookAt;
 
-		public ControlPoint(Vector3 position, Quaternion rotation, float fov)
+		public CameraConfig(Vector3 position, Quaternion rotation, float fov ,bool? isLookAt = null)
 		{
 			this.position = position;
 			this.rotation = rotation;
@@ -38,16 +39,17 @@ namespace CameraOperatorMod
 			//this.CaptureCamera();
 			this.easingMode = EasingMode.Auto;
 			delay = 0f;
+			this.isLookAt = isLookAt != null && (bool)isLookAt;
 		}
 
 		//public void CaptureCamera()
 		//{
-		//	this.position = CameraDirector.cameraController.m_currentPosition;
-		//	this.size = CameraDirector.cameraController.m_currentSize;
-		//	this.height = CameraDirector.cameraController.m_currentHeight;
-		//	this.fov = CameraDirector.camera.fieldOfView;
-		//	float num = this.size * (1f - this.height / CameraDirector.cameraController.m_maxDistance) / Mathf.Tan(0.017453292f * this.fov);
-		//	Vector2 currentAngle = CameraDirector.cameraController.m_currentAngle;
+		//	this.position = ToolController.cameraController.m_currentPosition;
+		//	this.size = ToolController.cameraController.m_currentSize;
+		//	this.height = ToolController.cameraController.m_currentHeight;
+		//	this.fov = ToolController.camera.fieldOfView;
+		//	float num = this.size * (1f - this.height / ToolController.cameraController.m_maxDistance) / Mathf.Tan(0.017453292f * this.fov);
+		//	Vector2 currentAngle = ToolController.cameraController.m_currentAngle;
 		//	this.rotation = Quaternion.AngleAxis(currentAngle.x, Vector3.up) * Quaternion.AngleAxis(currentAngle.y, Vector3.right);
 		//	Vector3 worldPos = this.position + this.rotation * new Vector3(0f, 0f, -num);
 		//	this.position.y = this.position.y + Knot.CalculateCameraHeightOffset(worldPos, num);

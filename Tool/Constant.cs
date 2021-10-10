@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 
 
-namespace CameraOperatorMod
+namespace CameraOperator.Tool
 {
 	public class ApplyItems
 	{
@@ -19,7 +19,7 @@ namespace CameraOperatorMod
 		[DefaultValue(true)]
 		public bool LookAt { get; set; }
 
-		public ControlPoint ControlPoint
+		public CameraConfig ControlPoint
 		{
 			get => default;
 			set

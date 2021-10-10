@@ -79,7 +79,7 @@ namespace CameraOperatorMod.GUI
 
         private Type m_rowType;
         private string m_backgroundSprite;
-        private Color32 m_color = new Color32(255, 255, 255, 255);
+        private Color32 m_color = new Color32(120, 120, 120, 120);
         private float m_rowHeight = -1;
         private float m_pos = -1;
         private float m_stepSize = 0;
@@ -552,6 +552,9 @@ namespace CameraOperatorMod.GUI
             m_panel.color = m_color;
             m_panel.clipChildren = true;
             m_panel.relativePosition = Vector2.zero;
+            m_panel.autoLayout = true;
+            m_panel.autoLayoutDirection = LayoutDirection.Vertical;
+            m_panel.autoLayoutPadding = new RectOffset(2,0,1,1);
 
             // Scrollbar
             m_scrollbar = AddUIComponent<UIScrollbar>();

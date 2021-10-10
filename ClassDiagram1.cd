@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CameraOperatorMod.CameraManeger" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAQAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>CameraManeger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.BezierControls" Collapsed="true">
+    <Position X="3.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgABACAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CameraOperator\Bezier\BezierControls.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.BezierUtil" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAgAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>CameraOperator\Bezier\BezierUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.ExtendBezierControls" Collapsed="true">
+    <Position X="3.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAEAgQAAABAAIAAAAAAAAYAAAAAAAA=</HashCode>
+      <FileName>CameraOperator\Bezier\ExtendBezierControls.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.KCurves" Collapsed="true">
+    <Position X="18.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAACAAAAAAABAIAAAAAAAEAAEEAAAAIAAI=</HashCode>
+      <FileName>CameraOperator\Bezier\KCurves.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.CameraDirector" Collapsed="true">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAASAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>CameraOperator\CameraDirector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.ApplyItems" Collapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAACgIAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>CameraOperator\Constant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.Math3D" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAYAKQABAAQAAkBAAEAAAAQAQIQAJMQCAAAAAwA=</HashCode>
+      <FileName>CameraOperator\Math3D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.BaseCameraMode" Collapsed="true">
+    <Position X="6.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAEAAAIQAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>CameraOperator\Mode\Base\BaseCameraMode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.BaseContoroller&lt;TItem&gt;" Collapsed="true">
+    <Position X="8.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAgAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>CameraOperator\Mode\Base\BaseContoroller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.CameraUtil" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CameraOperator\Mode\CameraUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.ControlPoint" Collapsed="true">
+    <Position X="20" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAQAAICgIAhAABBAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CameraOperator\Mode\ControlPoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.Easing" Collapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAIAAAIAAAAAAAACAACBAAAAAAABAACAgIA=</HashCode>
+      <FileName>CameraOperator\Mode\Easing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.Path" Collapsed="true">
+    <Position X="7.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQCBADAcAAIIAQBAkGsAowAAGAABBAA4QAFQEAQAUA=</HashCode>
+      <FileName>CameraOperator\Mode\Path\Path.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CameraOperatorMod.PathController" Collapsed="true">
+    <Position X="8.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAwAAAAAAAAAA=</HashCode>
+      <FileName>CameraOperator\Mode\Path\PathController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.Rotate" Collapsed="true">
+    <Position X="5.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAkAAAIwACAAAACAAgBAAAEAAAQA=</HashCode>
+      <FileName>CameraOperator\Mode\Rotate\Rotate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CameraOperatorMod.PipeMeshGenerator" Collapsed="true">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AggABESIACAACAAAAAQAAAgAQAFIAIAEQAJAgACAAiA=</HashCode>
+      <FileName>CameraOperator\PipeMeshGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.QuaternionEx" Collapsed="true">
+    <Position X="20" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAAAAQAAAEQIAAAAAAEgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CameraOperator\QuaternionEx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.Squad" Collapsed="true">
+    <Position X="18.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAJAAAAQ=</HashCode>
+      <FileName>CameraOperator\Squad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.ToolModeType" Collapsed="true">
+    <Position X="23.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CameraOperator\ToolModeType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.Config" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Config.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.DebugUtils" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAABAAAAgSAAAAAAAAIAgAAAA=</HashCode>
+      <FileName>Debug\DebugUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.Helper" Collapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAIQABAAQAAAgAgAAAIAAACQIABIBAAAQ=</HashCode>
+      <FileName>GUI\Helper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.SliderOption&lt;T&gt;" Collapsed="true">
+    <Position X="25.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAIARAAAAAIAAAAEAAAACAAAAABAAAAAAA=</HashCode>
+      <FileName>GUI\SliderPane.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.SliderPane" Collapsed="true">
+    <Position X="14.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAEAAAAAAA=</HashCode>
+      <FileName>GUI\SliderPane.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.ModInfo" Collapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAEAgAAAAAAAAAAQAAAAAAAgAABAAAAAAAAA=</HashCode>
+      <FileName>ModInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.OptionsKeymapping" Collapsed="true">
+    <Position X="25.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACkSABAAgAAAAEEARAAAAAQAQACAIAAOAEAAAAAADEA=</HashCode>
+      <FileName>OptionsKeymapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.UserMod" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAgAgAIAAAMAABAQAAAAAAAAAQAAAAAAACAA=</HashCode>
+      <FileName>UserMod.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CameraMover" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEYAEAAQCCAAACAAAAAAAAAAAAhAgAABIACgBAAQAIA=</HashCode>
+      <FileName>CameraOperator\CameraMover.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerlinCameraShake" Collapsed="true">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgIAIgCBBEQAEhEAAAAoBAgQBAiIAUAABADBACIA=</HashCode>
+      <FileName>CameraOperator\Mode\PerlinCameraShake.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.CameraOperator" Collapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BASCAAAAAAIAAAAAAEMAAgBAKCAgAAAEAAgAAAAAAEA=</HashCode>
+      <FileName>GUI\CameraOperator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.CameraOperatorButton" Collapsed="true">
+    <Position X="14.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAIAgCCBAAAAAAIACAAAAAAAA=</HashCode>
+      <FileName>GUI\CameraOperatorButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.WindowConfig" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAACAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>GUI\Config.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.TabbedWindowConfig" Collapsed="true">
+    <Position X="0.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\Config.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.HeaderPanel" Collapsed="true">
+    <Position X="14.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAQCAAAAAAAAAAAAAAAAAAAAAAAAACAAAIAEA=</HashCode>
+      <FileName>GUI\HeaderPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.BaseTabPage" Collapsed="true">
+    <Position X="1.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAQAAAAAAAAAAAAAAAAAACAAAgABAAAAACCAA=</HashCode>
+      <FileName>GUI\Page\BaseTabPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.BaseTabPage&lt;CameraSettingPanelType, ListPanelType, PlayPanelType&gt;" Collapsed="true">
+    <Position X="1.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAhAAAAAAAAAAAAAAAACAAACAAEAAAEEAAACAEA=</HashCode>
+      <FileName>GUI\Page\BaseTabPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.Path" Collapsed="true">
+    <Position X="2.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACEA=</HashCode>
+      <FileName>GUI\Page\Path.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.Rotate" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACEA=</HashCode>
+      <FileName>GUI\Page\Rotate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.CameraConfigPanel" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgIAAQ=</HashCode>
+      <FileName>GUI\Panel\CameraConfigPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.KnotItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAJAAAQAAAAAAAQAAAAIAAAAAAEAAQAAAAAA=</HashCode>
+      <FileName>GUI\Panel\List\KnotItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.UIFastList" Collapsed="true">
+    <Position X="16.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMBiAYAoCTBFACEAABAQEAQECAAgEwEFAAIAEzRAAg=</HashCode>
+      <FileName>GUI\Panel\List\UIFastList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.PlaybackPanel" Collapsed="true">
+    <Position X="18.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAEAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAYAAA=</HashCode>
+      <FileName>GUI\Panel\PlaybackPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.ScrollablePanel" Collapsed="true">
+    <Position X="23.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAEAAAAAAAAIAEA=</HashCode>
+      <FileName>GUI\Panel\ScrollablePanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.TabstripPanel" Collapsed="true">
+    <Position X="20" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAQAgAAAAAABAAAAAAAAAAAAAAAAAAAgAAAAAAAQ=</HashCode>
+      <FileName>GUI\Panel\TabstripPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.EditorItem" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIAAAAAABAABAAAEACAAAAAAAAAAgAAAAAACAFQIAAA=</HashCode>
+      <FileName>GUI\Property\base\EditorItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.EditorPropertyItem" Collapsed="true">
+    <Position X="5.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAACAFAABAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>GUI\Property\base\EditorPropertyItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.BoolProperty" Collapsed="true">
+    <Position X="1" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAIAAAAAAAAAAAAAAACAAEAAAA=</HashCode>
+      <FileName>GUI\Property\BoolProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.ButtonPanel" Collapsed="true">
+    <Position X="12.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAIAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>GUI\Property\ButtonPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.FieldProperty" Collapsed="true">
+    <Position X="3.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgBBAAAAAAAIAAAAAAABAAEAAAACAAAIAAA=</HashCode>
+      <FileName>GUI\Property\FieldProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.FieldType" Collapsed="true">
+    <Position X="25.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\Property\FieldType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.SliderPanel" Collapsed="true">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAABAAAAAAAAAAAAAAAAAAAgAAAACACCAAAEgA=</HashCode>
+      <FileName>GUI\Property\SliderPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.SliderPane" Collapsed="true">
+    <Position X="16.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAEAAAAAAA=</HashCode>
+      <FileName>GUI\Property\SliderPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.Vector2Property" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAIAAAAAAAAAAEAAAACAAAAgAA=</HashCode>
+      <FileName>GUI\Property\Vector2Property.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.Vector3Property" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>GUI\Property\Vector3Property.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.UIBase" Collapsed="true">
+    <Position X="25.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>GUI\UIBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.GUI.UIExtension" Collapsed="true">
+    <Position X="14.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\UIExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.Resources.ResourceLoader" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAIAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\ResourceLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraOperatorMod.Tool.ToolHelper" Collapsed="true">
+    <Position X="21.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAACAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>ToolHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="CameraOperatorMod.GUI.TabTemplate" Collapsed="true">
+    <Position X="14.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\CameraOperator.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CameraOperatorMod.GUI.UIRect" Collapsed="true">
+    <Position X="16.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAQEQYAAIAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>GUI\Rect.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="CameraOperatorMod.ICameraMode" Collapsed="true">
+    <Position X="14.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAgAAAAEAAAAA=</HashCode>
+      <FileName>CameraOperator\Mode\Base\BaseCameraMode.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CameraOperatorMod.ISerialize" Collapsed="true">
+    <Position X="18.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CameraOperator\Mode\Path\Path.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CameraOperatorMod.GUI.ITool" Collapsed="true">
+    <Position X="5.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\CameraOperator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CameraOperatorMod.GUI.IConfig" Collapsed="true">
+    <Position X="16.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\Config.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CameraOperatorMod.GUI.IConfigurableComponent&lt;ConfigT&gt;" Collapsed="true">
+    <Position X="5.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\IConfigurableComponent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CameraOperatorMod.GUI.IUIFastListRow" Collapsed="true">
+    <Position X="20" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACAAAAAIAAAAAAQACAAQAEAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>GUI\Panel\List\UIFastList.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="CameraOperatorMod.EasingMode" Collapsed="true">
+    <Position X="14.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAAAAQAABCAAAAIAEAAAgBADAAABECACEAAEg=</HashCode>
+      <FileName>CameraOperator\Mode\Easing.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Yu Gothic UI" Size="9" />
+</ClassDiagram>

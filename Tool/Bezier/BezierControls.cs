@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace CameraOperatorMod
+namespace CameraOperator.Tool
 {
     public class BezierControls
     {

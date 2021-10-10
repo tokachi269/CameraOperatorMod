@@ -1,5 +1,4 @@
 ﻿using ColossalFramework.UI;
-using System;
 using UnityEngine;
 
 namespace CameraOperatorMod.GUI
@@ -13,14 +12,16 @@ namespace CameraOperatorMod.GUI
         public bool HasField = true;
         public bool hasButton = true;
 
-        public int ItemsPadding = 0;
+        public int ItemsPadding = 8;
         public override bool SupportAlignment => false;
         public  SliderPanel()
         {
             autoLayoutDirection = LayoutDirection.Horizontal;
 
             size = new Vector2(CameraOperator.DefaultRect.width, DefaultHeight);
-            //padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
+            autoLayoutPadding = Helper.Padding(0, ItemsPadding, 0, 0);
+            padding = Helper.Padding(0, 0, 0, 14);
+
             // autoFitChildrenVertically = true; //いらない
             clipChildren = false;
             autoLayout = true;
