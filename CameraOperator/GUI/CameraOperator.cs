@@ -4,18 +4,7 @@ using UnityEngine;
 
 namespace CameraOperatorMod.GUI
 {
-	struct TabTemplate
-	{
-		public string name;
-	}
-	internal interface ITool : GUI.IConfigurableComponent<GUI.TabbedWindowConfig>
-    {
-		GUI.TabTemplate[] Tabs { get; }
-
-		void SetVisible(bool flag);
-    }
-
-	public class CameraOperator : UIPanel
+    public class CameraOperator : UIPanel
 	{
 		private HeaderPanel Header { get; set; }
 		private TabstripPanel tabStrip;
@@ -115,6 +104,11 @@ namespace CameraOperatorMod.GUI
 			tabStrip.tabPages.height = DefaultRect.height - HeaderHeight - TabStripHeight;
 			Debug.Log("container initialized");
 		}
+
+       public void Toggle()
+        {
+            isVisible = !isVisible;
+        }
 
 		protected void SelectTab(int i)
 		{

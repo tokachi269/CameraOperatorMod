@@ -1,5 +1,4 @@
-﻿using CameraOperatorMod;
-using ColossalFramework.UI;
+﻿using ColossalFramework.UI;
 using UnityEngine;
 
 namespace CameraOperatorMod.GUI
@@ -12,20 +11,22 @@ namespace CameraOperatorMod.GUI
         public void Awake()
         {
             size = new Vector2(CameraOperator.DefaultRect.width, DefaultHeight);
-            padding = Helper.Padding(4, 12, 4, 0);
             autoFitChildrenVertically = true;
-            autoLayout = false;
+            autoLayout = true;
+
             clipChildren = false;
-           // ListPanel = UIFastList.Create<KnotItem>(this);
-           // ListPanel.size = new Vector2(CameraOperator.DefaultRect.width / 3, DefaultHeight);
-           // ListPanel.relativePosition = new Vector2(0,0);
-           // ListPanel.rowHeight = 40f;
+            ListPanel = UIFastList.Create<KnotItem>(this);
+            ListPanel.size = new Vector2(CameraOperator.DefaultRect.width / 3, DefaultHeight);
+            ListPanel.relativePosition = new Vector2(0,0);
+            ListPanel.rowHeight = 40f;
+            ListPanel.autoHideScrollbar = true;
         }
-        public void addRows(int index, bool pos, bool rot, bool fov, bool zoom)
+        public void addRow(int index, bool pos, bool rot, bool fov, bool zoom)
         {
+
             var row = AddUIComponent<KnotItem>();
             row.InitDisplay(index, pos, rot, fov, zoom);
-           // ListPanel.rowsData.Add(row);
+            ListPanel.rowsData.Add(row);
 
         }
     }

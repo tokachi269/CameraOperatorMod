@@ -1,5 +1,4 @@
 ﻿using ColossalFramework.UI;
-using System;
 using UnityEngine;
 
 namespace CameraOperatorMod.GUI
@@ -28,6 +27,8 @@ namespace CameraOperatorMod.GUI
         protected abstract void ActiveEditor();
         // public abstract void UpdateEditor();
         // public abstract void RefreshEditor();
+
+        public abstract void AddKnot();
 
 
         public virtual void Render(RenderManager.CameraInfo cameraInfo) { }
@@ -91,6 +92,7 @@ namespace CameraOperatorMod.GUI
             CameraSettingPanel.name = typeof(CameraSettingPanelType).Name;
             CameraSettingPanel.clipChildren = false;
 
+
             ListPanel = AddUIComponent<ListPanelType>();
             ListPanel.backgroundSprite = "UnlockingItemBackground";
             ListPanel.name = typeof(ListPanelType).Name;
@@ -109,5 +111,6 @@ namespace CameraOperatorMod.GUI
         {
             ListPanel.relativePosition = new Vector2(0,CameraSettingPanel.height);
         }
+
     }
 }

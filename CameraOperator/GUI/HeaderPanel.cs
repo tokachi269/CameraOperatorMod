@@ -39,15 +39,17 @@ namespace CameraOperatorMod.GUI
 			title.text = "Camera Operator";
 			title.width = 100;
 			title.height = 200;
-			title.relativePosition = new Vector3(18, 7, 0);
+			title.relativePosition = new Vector3(18f, 8f, 0f);
 			title.textColor = Helper.RGB(220, 220, 220);
 			var bulletSize = title.font.size + 4;
-			var sprite = AddUIComponent<UISprite>();
 			title.padding.left += bulletSize + 3;
 			title.padding.left += 3;
-			sprite.width = sprite.height = bulletSize;
-			sprite.relativePosition = new Vector2(2, 0);
+
+            var sprite = AddUIComponent<UISprite>();
+            sprite.width = sprite.height = bulletSize;
+			sprite.relativePosition = new Vector2(12f, 4.5f);
 			sprite.spriteName = "InfoPanelIconFreecamera";
+            sprite.size = new Vector2(23f, 23f);
 
 			dragHandle.target = parent;
 			dragHandle.relativePosition = Vector3.zero;
@@ -67,11 +69,8 @@ namespace CameraOperatorMod.GUI
 			uibutton.relativePosition = new Vector3(width - uibutton.width, 0f);
 			uibutton.eventClicked += delegate (UIComponent c, UIMouseEventParameter p)
 			{
-				if (isVisible)
-				{
-					CameraManeger.ToggleUI();
-				}
-			};
+                parent.isVisible = !isVisible;
+            };
 		}
 
 		public void Init(float? height = null)
