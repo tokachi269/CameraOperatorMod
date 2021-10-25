@@ -5,15 +5,16 @@ namespace CameraOperatorMod.GUI
 {
     public class SliderPanel : EditorPropertyItem
     {
-        //TODO 各UIComponentをEditorItemを継承したものに変更する
         public FieldProperty TextField { get; set; }
+
         public SliderProperty FieldSlider { get; set; }
 
         public bool HasField = true;
         public bool hasButton = true;
-
         public int ItemsPadding = 8;
+
         public override bool SupportAlignment => false;
+
         public  SliderPanel()
         {
             autoLayoutDirection = LayoutDirection.Horizontal;

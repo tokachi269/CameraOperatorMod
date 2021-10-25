@@ -14,8 +14,8 @@ namespace CameraOperatorMod
             if (this.CameraManegerGameObject == null)
             {
                 this.CameraManegerGameObject = new GameObject("CameraManeger");
-                CameraManeger.Instance = CameraManegerGameObject.AddComponent<CameraManeger>();
-                CameraManeger.Instance.Initialize();
+                CameraOperator.Instance = CameraManegerGameObject.AddComponent<CameraOperator>();
+                CameraOperator.Instance.Initialize();
                 Debug.Log("OnEnabled");
 
             }
@@ -37,7 +37,7 @@ namespace CameraOperatorMod
         {
             UIHelperBase group = helper.AddGroup("Stereoscopic View");
 
-            group.AddButton("UI Initialize", () => CameraManeger.Instance.Initialize());
+            group.AddButton("UI Initialize", () => CameraOperator.Instance.Initialize());
         }
 
 
@@ -46,8 +46,8 @@ namespace CameraOperatorMod
             if (this.CameraManegerGameObject == null)
             {
                 this.CameraManegerGameObject = new GameObject("CameraManeger");
-                CameraManeger.Instance = CameraManegerGameObject.AddComponent<CameraManeger>();
-                CameraManeger.Instance.Initialize();
+                CameraOperator.Instance = CameraManegerGameObject.AddComponent<CameraOperator>();
+                CameraOperator.Instance.Initialize();
                 Debug.Log("OnLevelLoaded");
 
             }
@@ -65,10 +65,10 @@ namespace CameraOperatorMod
 
         public static void Remove()
         {
-            if (CameraManeger.Instance is null)
+            if (CameraOperator.Instance is null)
             {
                 //Destroy(CameraManeger.Instance);
-                CameraManeger.Instance = null;
+                CameraOperator.Instance = null;
             }
         }
         public GameObject CameraManegerGameObject;

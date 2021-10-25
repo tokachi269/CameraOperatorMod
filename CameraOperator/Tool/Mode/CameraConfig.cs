@@ -53,7 +53,6 @@ namespace CameraOperator.Tool
 		//	this.rotation = Quaternion.AngleAxis(currentAngle.x, Vector3.up) * Quaternion.AngleAxis(currentAngle.y, Vector3.right);
 		//	Vector3 worldPos = this.position + this.rotation * new Vector3(0f, 0f, -num);
 		//	this.position.y = this.position.y + Knot.CalculateCameraHeightOffset(worldPos, num);
-		//}
-
-	}
+		// }
+    }
 }

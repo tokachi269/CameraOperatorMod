@@ -34,15 +34,19 @@ namespace CameraOperatorMod.GUI
 			clipChildren = true;
 			CreateHeader();
 			size = new Vector2(DefaultRect.width, DefaultRect.height);
+            color = Helper.RGBA(255, 255, 255, 215);
 			CreateTabStrip();
 			CreatePages();
 			Show();
+			
 		}
 
 		private void CreatePages()
 		{
-			CreateTabPage<Path>();
-			CreateTabPage<Rotate>();
+			CreateTabPage<PathPage>();
+			CreateTabPage<RotatePage>();
+			CreateTabPage<UtilsPage>();
+			CreateTabPage<AboutPage>();
 		}
 
 		private void CreateTabPage<TabPage>()
@@ -62,8 +66,8 @@ namespace CameraOperatorMod.GUI
 			//editor.Init(this);
 
 			var page = tabStrip.tabContainer.AddUIComponent<TabPage>();
-			page.name = typeof(TabPage).Name;
-			var tab = tabStrip.AddTabOnly(typeof(TabPage).Name);
+			page.name = page.TabName.ToString();
+			var tab = tabStrip.AddTabOnly(page.name);
 
 			int index = tabStrip.tabCount - 1;
 			tab.tabIndex = tabStrip.tabCount;

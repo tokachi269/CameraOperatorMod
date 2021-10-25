@@ -39,15 +39,15 @@ namespace CameraOperatorMod.GUI
 
         }
 
-        public virtual void Init() => Init(null);
+        public virtual void Init() => Init(null, null);
         public virtual void DeInit()
         {
             IsAlignment = false;
             EnableControl = true;
         }
-        public void Init(float? height = null)
+        public void Init(float? width = null, float ? height = null)
         {
-            size = new Vector2(GetWidth(), height ?? DefaultHeight);
+            size = new Vector2(width ?? DefaultHeight, height ?? DefaultHeight);
         }
 
         private float GetWidth()

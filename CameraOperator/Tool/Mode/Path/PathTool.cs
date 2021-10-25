@@ -11,43 +11,36 @@ namespace CameraOperator.Tool
 {
     public interface ISerialize
     {
-         void ToXML();
-         void Serialize(string filename);
-         void Deserialize(string filename);
+        void ToXML();
+        void Serialize(string filename);
+        void Deserialize(string filename);
     }
 
     public class PathTool : BaseCameraMode, ICameraMode
     {
-        public static PathTool Instance = Instance;
-        public override string Name { get; set; }
+        public override string Name { get; set; } = "";
 
         //ユーザー制御点
         protected override List<CameraConfig> Knots { get; set; } = new List<CameraConfig>();
-        public int KnotsCount => Knots.Count;
+        public int KnotsCount => Knots is null || Knots.Count() == 0 ? 0 : Knots.Count;
 
         //ユーザー制御注視点
         protected List<CameraConfig> LookAts { get; private set; } = new List<CameraConfig>();
-        public int LookAtsCount => Knots.Count;
+        public int LookAtsCount => LookAts is null || LookAts.Count() == 0 ? 0 : LookAts.Count;
 
         //Bezier計算結果
         protected ExtendBezierControls Beziers { get; private set; }
         public int BeziersCount => Beziers.SegmentCount;
-        public float TotalLength => Beziers.TotalLength;
+        public float TotalLength => Beziers is null ? 0 : Beziers.TotalLength;
         public int BeziersPointsLength => Beziers.Points.Length;
 
         private int Iteration = 5;
-        [SerializeField]
-        public bool IsLoop= false;
-        [SerializeField]
+        public bool IsLoop = false;
         public bool IsCoordinateControl = false;
-        [SerializeField]
         public ushort Time = 10;
-        [SerializeField]
         public ushort Step = 5;
 
-        [SerializeField]
         public bool IsCameraShake { get; set; }
-        //public PerlinCameraShake CameraShake;
 
         protected CameraConfig defaultCameraConfig { get; set; }
 
@@ -55,27 +48,9 @@ namespace CameraOperator.Tool
         public Serializer serializer;
         public PerlinCameraShake CameraShake;
 
-        /* Debug用変数 **/
-        [SerializeField]
-        public float dist = 0;
-        [SerializeField]
-        public float distall = 0;
-        [SerializeField]
-        public float diffT = 0;
-        [SerializeField]
-        private Vector3 bef = Vector3.zero;
-        [SerializeField]
-        private float befT = 0;
-        /* Debug用変数ここまで **/
+        private float dist = 0;
 
-        void Update()
-        {
-          //  diffTMonitor.Sample(diffT);
-           // distMonitor.Sample(dist);
-           // befTMonitor.Sample(befT);
-        }
-
-        public void Awake()
+        public PathTool()
         {
             render = new Render(this);
             serializer = new Serializer(this);
@@ -86,11 +61,6 @@ namespace CameraOperator.Tool
         {
             //TODO
             IsCoordinateControl = !IsCoordinateControl;
-        }
-
-        void OnValidate()
-        {
-            SetBezierFromKnots();
         }
 
         /// <summary>
@@ -147,7 +117,7 @@ namespace CameraOperator.Tool
         /// </summary>
         public void MoveKnot()
         {
-            render.bezierObject.Select(g =>g.layer = 0);
+            render.bezierObject.Select(g => g.layer = 0);
 
             Vector3 nowmouseposi = Input.mousePosition;
             Vector3 diffposi;
@@ -213,11 +183,11 @@ namespace CameraOperator.Tool
         public IEnumerator Play()
         {
             List<CameraConfig> tempKnots = Knots;
-            defaultCameraConfig = CameraUtil.CameraPosition();
+            defaultCameraConfig = CameraUtils.CameraPosition();
 
             if (IsCameraShake)
             {
-               // CameraShake.enabled = true;
+                // CameraShake.enabled = true;
             }
 
             float maxSpeed = MaxSpeed(Time);
@@ -238,7 +208,7 @@ namespace CameraOperator.Tool
             EasingMode mode = (EasingMode)((byte)easingMode[1] | ((byte)easingMode[0] << 1));
 
             // 
-            for (float currentTime= 0; ;)
+            for (float currentTime = 0; ;)
             {
                 //次のセグメントに移動したか判定する
                 bool isSegChanged = false;
@@ -307,27 +277,14 @@ namespace CameraOperator.Tool
 
                 //Debug.Log("easing:"+ easing);
 
-                float t = Beziers.GetT(bezierIndex, bezierIndex != 0 && bezierIndex % 2 == 0 ? easing * KnotBetweenRange - Beziers.Length(bezierIndex-1) : easing*KnotBetweenRange);
-
-                //Debug.Log("bezierIndex:" + bezierIndex + "  ProgressLength:" + ProgressLength + "maxS:" + maxSpeed + "currentTime:" + currentTime);
-                {
-                    //debug用変数
-                    diffT = t - befT;
-                    //Debug.Log("param:" + diffT);
-                    befT = t;
-                    Vector3 now = CalcPosition(bezierIndex, t);
-                
-                    distall += dist;
-                    dist = Vector3.Distance(bef, now);
-                    bef = now;
-                    //Debug.Log("dist:" + dist);
-                }
+                float t = Beziers.GetT(bezierIndex, bezierIndex != 0 && bezierIndex % 2 == 0 ? easing * KnotBetweenRange - Beziers.Length(bezierIndex - 1) : easing * KnotBetweenRange);
 
                 // positonとrotationを適用
                 if (t <= Beziers.SegmentCount)
                 {
                     Vector3 pos = CalcPosition(bezierIndex, t);
                     Quaternion rot = CalcRotation(ref tempKnots, knotIndex, easing);
+                    CameraUtils.setCamera(pos, rot);
                     render.moveCameraCube.transform.position = pos;
                     render.moveCameraCube.transform.rotation = rot;
                     //GameObject.Find("Main Camera").transform.position = pos;
@@ -343,7 +300,7 @@ namespace CameraOperator.Tool
 
             if (IsCameraShake)
             {
-               // CameraShake.enabled = false;
+                // CameraShake.enabled = false;
             }
 
             GameObject.Find("Main Camera").transform.position = defaultCameraConfig.position;
@@ -358,16 +315,16 @@ namespace CameraOperator.Tool
             return BezierUtil.Position(Beziers[bezierIndex, 0], Beziers[bezierIndex, 1], Beziers[bezierIndex, 2], t % 1);
         }
 
-        private Quaternion CalcRotation(ref List<CameraConfig> Knots,int knotIndex, float ratio)
+        private Quaternion CalcRotation(ref List<CameraConfig> Knots, int knotIndex, float ratio)
         {
             Quaternion rotation = Squad.Spline(ref Knots, knotIndex, Knots.Count, ratio);
 
             if (LookAts.Count != 0)
             {
-                if (Knots[knotIndex].isLookAt || Knots[knotIndex+1].isLookAt)
+                if (Knots[knotIndex].isLookAt || Knots[knotIndex + 1].isLookAt)
                 {
-                   // rotation = Vector3.Lerp(Knots[knotIndex].isLookAt ? (Quaternion.LookRotation(LookAts[0].position) * new Quaternion(1, -1, 1, 1)).eulerAngles : rotation,
-                   //                        Knots[knotIndex+1].isLookAt ? (Quaternion.LookRotation(LookAts[0].position) * new Quaternion(1, -1, 1, 1)).eulerAngles : rotation, ratio);
+                    // rotation = Vector3.Lerp(Knots[knotIndex].isLookAt ? (Quaternion.LookRotation(LookAts[0].position) * new Quaternion(1, -1, 1, 1)).eulerAngles : rotation,
+                    //                        Knots[knotIndex+1].isLookAt ? (Quaternion.LookRotation(LookAts[0].position) * new Quaternion(1, -1, 1, 1)).eulerAngles : rotation, ratio);
                 }
             }
 
@@ -397,22 +354,22 @@ namespace CameraOperator.Tool
         /// </summary>
         private Vector3[] SplitSegments(out int dividedSegmentCount)
         {
-           // Debug.Log("Beziers.SegmentCount:" + Beziers.SegmentCount);
+            // Debug.Log("Beziers.SegmentCount:" + Beziers.SegmentCount);
 
             if (IsLoop)
             {
                 dividedSegmentCount = (Beziers.SegmentCount * 2 - 1);
             }
             else
-            { 
+            {
                 dividedSegmentCount = (Beziers.SegmentCount - 2) * 2;
             }
-            
-           // Debug.Log("dividedSegmentCount:" + dividedSegmentCount);
+
+            // Debug.Log("dividedSegmentCount:" + dividedSegmentCount);
             Vector3[] dividedPoints = new Vector3[IsLoop ? dividedSegmentCount * 2 + 4 : dividedSegmentCount * 2 + 1];
 
             ushort segCnt = (ushort)(IsLoop ? Beziers.SegmentCount : Beziers.SegmentCount - 1);
-           // Debug.Log("segCnt" + segCnt);
+            // Debug.Log("segCnt" + segCnt);
 
             //var tss = Beziers.Ts.Select((num, index) => (num, index));
             //foreach (var param in tss) Debug.Log(param.index+"," + param.num);
@@ -421,17 +378,17 @@ namespace CameraOperator.Tool
             int i = IsLoop ? 0 : 1;
             for (; i < segCnt; i++)
             {
-               // Debug.Log("i=" + i +","+ Beziers[i, 0] +","+ Beziers[i, 1] + "," + Beziers[i, 2] + "," + (float)Beziers.Ts[i]);
+                // Debug.Log("i=" + i +","+ Beziers[i, 0] +","+ Beziers[i, 1] + "," + Beziers[i, 2] + "," + (float)Beziers.Ts[i]);
                 Vector3[] result = BezierUtil.Divide(Beziers[i, 0], Beziers[i, 1], Beziers[i, 2], (float)Beziers.Ts[i]);
                 int condition = (i == segCnt - 1 && IsLoop) ? 4 : 3;
-                for (int j=0; j <= condition; j++,index++)
+                for (int j = 0; j <= condition; j++, index++)
                 {
-                  //  Debug.Log("dividedPoints" + dividedPoints.Length+" index:"+index + ", "+result[j]);
+                    //  Debug.Log("dividedPoints" + dividedPoints.Length+" index:"+index + ", "+result[j]);
                     dividedPoints[index] = result[j];
                 }
 
             }
-            if (!IsLoop) dividedPoints[dividedPoints.Length - 1] = Beziers[segCnt,0];
+            if (!IsLoop) dividedPoints[dividedPoints.Length - 1] = Beziers[segCnt, 0];
             //Debug.Log(dividedPoints.Length - 1 + ", " + dividedPoints[dividedPoints.Length - 1]);
             return dividedPoints;
         }
@@ -510,7 +467,7 @@ namespace CameraOperator.Tool
             render.LineMesh.gameObject.layer = 0;
 
             float t = GetCursorPositionPath();
-            AddKnot(CameraUtil.CameraPosition(), t);
+            AddKnot(CameraUtils.CameraPosition(), t);
             Debug.Log("Insert Knot Succeed");
             render.Display();
 
@@ -535,7 +492,8 @@ namespace CameraOperator.Tool
         }
         private float MaxSpeed(int time)
         {
-            if (!Beziers.IsCalcTotalLength) {
+            if (!Beziers.IsCalcTotalLength)
+            {
                 Beziers.CalcTotalLength(IsLoop);
             }
 
@@ -558,12 +516,12 @@ namespace CameraOperator.Tool
             }
             float t = (float)index / step;
             distance = float.MaxValue;
-            for ( float j = 1; j > 0.01; j /= 2 )
+            for (float j = 1; j > 0.01; j /= 2)
             {
                 if (distance < 0.01) break;
-                for (float k= t - j; k <= t + j; k += j/2)
+                for (float k = t - j; k <= t + j; k += j / 2)
                 {
-                    if (0> k || Beziers.SegmentCount < k) continue;
+                    if (0 > k || Beziers.SegmentCount < k) continue;
                     dist = Vector3.Distance(CalcPosition((int)Math.Floor(k), k % 1), cursor);
                     if (dist < distance)
                     {
@@ -593,115 +551,115 @@ namespace CameraOperator.Tool
             public Render(PathTool instance)
             {
                 this.Instance = instance;
-                LineRenderer = instance.gameObject.AddComponent<LineRenderer>();
-                // CameraShake = Instance.AddComponent<PerlinCameraShake>();
-                // CameraShake.enabled = false;
-                moveCameraCube = new GameObject("moveCameraCube");
-                moveCameraCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                moveCameraCube.transform.localScale = new Vector3(0.2f, 0.2f, 0.5f);
-                moveCameraCube.GetComponent<Renderer>().material.color = Color.blue;
-                moveCameraCube.transform.parent = instance.gameObject.transform;
-                moveCameraCube.layer = 2;
-                LineMesh = instance.gameObject.AddComponent<PipeMeshGenerator>();
-                LineMesh.gameObject.layer = 2;
+                // LineRenderer = instance.gameObject.AddComponent<LineRenderer>();
+                // // CameraShake = Instance.AddComponent<PerlinCameraShake>();
+                // // CameraShake.enabled = false;
+                // moveCameraCube = new GameObject("moveCameraCube");
+                // moveCameraCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                // moveCameraCube.transform.localScale = new Vector3(0.2f, 0.2f, 0.5f);
+                // moveCameraCube.GetComponent<Renderer>().material.color = Color.blue;
+                // moveCameraCube.transform.parent = instance.gameObject.transform;
+                // moveCameraCube.layer = 2;
+                // LineMesh = instance.gameObject.AddComponent<PipeMeshGenerator>();
+                // LineMesh.gameObject.layer = 2;
             }
 
             public void Display()
             {
 
-                var output = Instance.Output(Instance.Step, Instance.IsLoop);
+                /*               var output = Instance.Output(Instance.Step, Instance.IsLoop);
 
-                for (int i = 0; i < bezierObject.Count; i++)
-                {
-                    Destroy(bezierObject[i]);
-                }
-                bezierObject.Clear();
+                               for (int i = 0; i < bezierObject.Count; i++)
+                               {
+                                   Destroy(bezierObject[i]);
+                               }
+                               bezierObject.Clear();
 
-                for (int i = 1; i < Instance.Beziers.SegmentCount - 1; i++)
-                {
-                    bezierObject.Add(new GameObject("bezierControl" + i));
-                    bezierObject[i - 1] = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    bezierObject[i - 1].transform.position = Instance.Beziers[i, 0];
+                               for (int i = 1; i < Instance.Beziers.SegmentCount - 1; i++)
+                               {
+                                   bezierObject.Add(new GameObject("bezierControl" + i));
+                                   bezierObject[i - 1] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                                   bezierObject[i - 1].transform.position = Instance.Beziers[i, 0];
 
-                    bezierObject[i - 1].transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
-                    bezierObject[i - 1].transform.parent = Instance.gameObject.transform;
-                    bezierObject[i - 1].GetComponent<Renderer>().material.color = Color.red;
-                    bezierObject[i - 1].layer = 2;
-                }
-
-
-                if (LineRenderer != null)
-                {
-                    //cube = new GameObject[output.Length];
-
-                    LineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-                    LineRenderer.positionCount = output.Length;
-                    LineRenderer.startWidth = 0.1f;
-                    LineRenderer.endWidth = 0.1f;
-                    LineRenderer.startColor = Color.white;
-                    LineRenderer.endColor = Color.black;
-                    for (int i = 0; i < output.Length; i++)
-                    {
-                        LineRenderer.SetPosition(i, output[i]);
-                    }
-                }
-
-                for (int i = 0; i < inputCube.Count; i++)
-                {
-                    Destroy(inputCube[i]);
-                }
-
-                for (int i = 0; i < inputCubeVector.Count; i++)
-                {
-                    Destroy(inputCubeVector[i]);
-                }
-
-                inputCube.Clear();
-                inputCubeVector.Clear();
-
-                for (int i = 0; i < Instance.Knots.Count; i++)
-                {
-                    inputCube.Add(new GameObject("inputCube" + i));
-
-                    inputCube[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    inputCube[i].transform.position = Instance.Knots[i].position;
-                    inputCube[i].transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                    inputCube[i].transform.parent = Instance.gameObject.transform;
-                    inputCube[i].layer = 2;
-                    inputCube[i].GetComponent<Renderer>().material.color = Color.blue;
-
-                    inputCube.Add(new GameObject("inputCubeVector" + i));
+                                   bezierObject[i - 1].transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+                                   bezierObject[i - 1].transform.parent = Instance.gameObject.transform;
+                                   bezierObject[i - 1].GetComponent<Renderer>().material.color = Color.red;
+                                   bezierObject[i - 1].layer = 2;
+                               }
 
 
-                    inputCubeVector.Add(new GameObject("inputCube" + i));
+                               if (LineRenderer != null)
+                               {
+                                   //cube = new GameObject[output.Length];
 
-                    inputCubeVector[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    inputCubeVector[i].transform.position = Instance.Knots[i].position;
-                    inputCubeVector[i].transform.localPosition = new Vector3(0, 0, 1f);
-                    inputCubeVector[i].transform.localScale = new Vector3(0.05f,  0.05f, 1f);
-                    inputCubeVector[i].transform.parent = Instance.gameObject.transform;
-                    inputCubeVector[i].layer = 2;
-                    inputCubeVector[i].GetComponent<Renderer>().material.color = Color.white;
-                }
+                                   LineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+                                   LineRenderer.positionCount = output.Length;
+                                   LineRenderer.startWidth = 0.1f;
+                                   LineRenderer.endWidth = 0.1f;
+                                   LineRenderer.startColor = Color.white;
+                                   LineRenderer.endColor = Color.black;
+                                   for (int i = 0; i < output.Length; i++)
+                                   {
+                                       LineRenderer.SetPosition(i, output[i]);
+                                   }
+                               }
 
-                if (inputCube != null && inputCube.Count != 0)
-                {
-                    for (int i = 0; i < Instance.Knots.Count - 1; i++)
-                    {
-                        inputCube[i].transform.position = Instance.Knots[i].position;
-                        inputCube[i].transform.rotation = Instance.Knots[i].rotation;
+                               for (int i = 0; i < inputCube.Count; i++)
+                               {
+                                   Destroy(inputCube[i]);
+                               }
 
-                        inputCubeVector[i].transform.position = Instance.Knots[i].position;
-                        inputCubeVector[i].transform.rotation = Instance.Knots[i].rotation;
-                    }
-                }
-                if (Instance.Knots.Count > inputCube.Count)
-                {
-                    inputCube.RemoveAt(inputCube.Count - 1);
-                    inputCubeVector.RemoveAt(inputCube.Count - 1);
-                }
+                               for (int i = 0; i < inputCubeVector.Count; i++)
+                               {
+                                   Destroy(inputCubeVector[i]);
+                               }
 
-                Debug.Log("Rendered");
+                               inputCube.Clear();
+                               inputCubeVector.Clear();
+
+                               for (int i = 0; i < Instance.Knots.Count; i++)
+                               {
+                                   inputCube.Add(new GameObject("inputCube" + i));
+
+                                   inputCube[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                                   inputCube[i].transform.position = Instance.Knots[i].position;
+                                   inputCube[i].transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                                   inputCube[i].transform.parent = Instance.gameObject.transform;
+                                   inputCube[i].layer = 2;
+                                   inputCube[i].GetComponent<Renderer>().material.color = Color.blue;
+
+                                   inputCube.Add(new GameObject("inputCubeVector" + i));
+
+
+                                   inputCubeVector.Add(new GameObject("inputCube" + i));
+
+                                   inputCubeVector[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                                   inputCubeVector[i].transform.position = Instance.Knots[i].position;
+                                   inputCubeVector[i].transform.localPosition = new Vector3(0, 0, 1f);
+                                   inputCubeVector[i].transform.localScale = new Vector3(0.05f,  0.05f, 1f);
+                                   inputCubeVector[i].transform.parent = Instance.gameObject.transform;
+                                   inputCubeVector[i].layer = 2;
+                                   inputCubeVector[i].GetComponent<Renderer>().material.color = Color.white;
+                               }
+
+                               if (inputCube != null && inputCube.Count != 0)
+                               {
+                                   for (int i = 0; i < Instance.Knots.Count - 1; i++)
+                                   {
+                                       inputCube[i].transform.position = Instance.Knots[i].position;
+                                       inputCube[i].transform.rotation = Instance.Knots[i].rotation;
+
+                                       inputCubeVector[i].transform.position = Instance.Knots[i].position;
+                                       inputCubeVector[i].transform.rotation = Instance.Knots[i].rotation;
+                                   }
+                               }
+                               if (Instance.Knots.Count > inputCube.Count)
+                               {
+                                   inputCube.RemoveAt(inputCube.Count - 1);
+                                   inputCubeVector.RemoveAt(inputCube.Count - 1);
+                               }
+
+                               Debug.Log("Rendered");*/
             }
         }
         public class Serializer : ISerialize
