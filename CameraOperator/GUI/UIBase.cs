@@ -1,9 +1,4 @@
-﻿using System;
-using System.Linq;
-using ColossalFramework;
-using ColossalFramework.UI;
-
-using UnityEngine;
+﻿using ColossalFramework.UI;
 
 namespace CameraOperatorMod.GUI
 {

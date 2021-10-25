@@ -1,12 +1,11 @@
 ﻿using ColossalFramework.UI;
-using System;
 using UnityEngine;
 
 namespace CameraOperatorMod.GUI
 {
     public abstract class BaseTabPage : UIComponent
     {
-        public abstract string TabName { get; }
+        public abstract CameraMode TabName { get; }
 
         public abstract bool AvailableSetting { get; set; }
         public abstract bool AvailableContent { get; set; }
@@ -30,6 +29,7 @@ namespace CameraOperatorMod.GUI
         // public abstract void RefreshEditor();
 
 
+
         public virtual void Render(RenderManager.CameraInfo cameraInfo) { }
         //public virtual bool OnShortcut(Event e) => false;
         public virtual bool OnEscape() => false;
@@ -45,6 +45,9 @@ namespace CameraOperatorMod.GUI
         protected CameraSettingPanelType CameraSettingPanel { get; set; }
         protected ListPanelType ListPanel { get; set; }
         protected PlayPanelType PlayPanel { get; set; }
+
+        public abstract void AddKnot();
+        public abstract void Play();
 
         public sealed override bool AvailableSetting
         {
@@ -91,6 +94,7 @@ namespace CameraOperatorMod.GUI
             CameraSettingPanel.name = typeof(CameraSettingPanelType).Name;
             CameraSettingPanel.clipChildren = false;
 
+
             ListPanel = AddUIComponent<ListPanelType>();
             ListPanel.backgroundSprite = "UnlockingItemBackground";
             ListPanel.name = typeof(ListPanelType).Name;
@@ -109,5 +113,6 @@ namespace CameraOperatorMod.GUI
         {
             ListPanel.relativePosition = new Vector2(0,CameraSettingPanel.height);
         }
+
     }
 }

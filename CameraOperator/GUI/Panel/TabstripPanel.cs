@@ -1,9 +1,5 @@
-﻿using CameraOperatorMod.GUI;
-using ColossalFramework.UI;
-using System;
-using System.Collections.Generic;
+﻿using ColossalFramework.UI;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace CameraOperatorMod.GUI
@@ -53,7 +49,7 @@ namespace CameraOperatorMod.GUI
 			ArrangeInProgress = false;
 		}
 
-		//tabのみ追加する(ColossalFramework.UI.UITabstrip.AddTab()はpageも同時に生成するため)
+		//tabのみ追加する(ColossalFramework.UI.UITabstrip.AddTab()はpageを同時生成するため)
 		public UIButton AddTabOnly(string name)
         {
 

@@ -1,7 +1,5 @@
-﻿using System;
-using ColossalFramework;
+﻿using ColossalFramework;
 using ColossalFramework.UI;
-using CameraOperatorMod;
 using UnityEngine;
 
 namespace CameraOperatorMod.GUI

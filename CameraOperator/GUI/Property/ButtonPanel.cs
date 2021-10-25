@@ -1,10 +1,8 @@
 ﻿using ColossalFramework.UI;
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CameraOperatorMod.GUI
 {
@@ -12,32 +10,48 @@ namespace CameraOperatorMod.GUI
     {
         UIButton button;
 
+        public event Action OnButtonClick;
+
+        public void ButtonClick(UIComponent component, UIMouseEventParameter eventParam) => OnButtonClick?.Invoke();
+
         public ButtonPanel()
         {
-            size = new Vector2(60f, DefaultHeight);
+            size = new Vector2(40f, DefaultHeight);
             padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
             // autoFitChildrenVertically = true; //いらない
             clipChildren = false;
             autoLayout = false;
             builtinKeyNavigation = true;
             canFocus = true;
-            color = Helper.RGB(50, 50, 50);
-            relativePosition = new Vector2(380f, 50f);
+            color = Helper.GrayScale(50);
 
             button = AddUIComponent<UIButton>();
-            button.normalBgSprite = "ButtonMenu";
-            button.focusedBgSprite = "ButtonMenu";
-            button.size = new Vector2(70, 70);
+            button.normalBgSprite  = "ButtonWhitePressed";
+            button.focusedBgSprite = "ButtonWhitePressed";
+            button.pressedBgSprite = "ButtonWhitePressed";
+            button.size = new Vector2(60, 60);
+
+            button.color        = Helper.GrayScale(195);
+            button.focusedColor = Helper.GrayScale(195);
+            button.hoveredColor = Helper.GrayScale(180);
+            button.pressedColor = Helper.GrayScale(140);
+
+            button.textScale = 1f;
+            button.eventClick += ButtonClick;
         }
-        public override void Init()
+
+        internal void Init(float width, float height, string text, float textScale)
         {
-            base.Init();
-            SetSize();
+            button.text = text;
+            button.textScale = textScale;
+            base.Init(width + padding.horizontal, height + padding.vertical);
+            SetSize(width, height);
         }
-        protected virtual void SetSize()
+
+        protected virtual void SetSize(float width, float height)
         {
-            button.size = new Vector2(width - ItemsPadding * 2, DefaultHeight);
-            button.relativePosition = new Vector3(ItemsPadding, (height - DefaultHeight) / 2);
+            button.size = new Vector2(width, height);
+            button.relativePosition = new Vector3(ItemsPadding, ItemsPadding);
         }
     }
 }

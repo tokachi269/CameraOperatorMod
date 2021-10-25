@@ -1,18 +1,17 @@
-﻿using CameraOperatorMod.Tool;
+﻿using System;
 using ColossalFramework.UI;
-using System;
 using UnityEngine;
 
 namespace CameraOperatorMod.GUI
 {
-    public class CameraConfigPanel :UIPanel
+    public class CameraConfigPanel : UIPanel
     {
-        int DefaultHeight = 160;
+        private int DefaultHeight = 160;
         public SliderPanel FovSlider;
         public SliderPanel ZoomSlider;
 
-        public ButtonPanel ButtonPanel;
-
+        public ButtonPanel AddButton;
+        public float aspect = 2.34f;
 
         public CameraConfigPanel()
         {
@@ -21,18 +20,34 @@ namespace CameraOperatorMod.GUI
             clipChildren = false;
 
             FovSlider = AddUIComponent<SliderPanel>();
-            FovSlider.Init(minValue: 1f, maxValue: 150f, stepSize: 0.1f, defaultValue: 60f);
+            FovSlider.name = nameof(FovSlider);
+            FovSlider.Init(minValue: 1f, maxValue: 179f, stepSize: 0.1f, defaultValue: 60f);
+            FovSlider.FieldSlider.Slider.eventValueChanged += delegate(UIComponent c, float p)
+            {
+                CameraOperatorMod.CameraOperator.mainCamera.fieldOfView = p / 2f;
+            };
 
             ZoomSlider = AddUIComponent<SliderPanel>();
-            ZoomSlider.Init(minValue: 1f, maxValue: 150f, stepSize: 0.1f, defaultValue: 60f);
-
+            ZoomSlider.name = nameof(ZoomSlider);
+            ZoomSlider.Init(minValue: 1f, maxValue: 179f, stepSize: 0.0001f, defaultValue: 1f);
+            ZoomSlider.FieldSlider.Slider.eventValueChanged += delegate (UIComponent c, float p)
+            {
+                CameraOperatorMod.CameraOperator.mainCamera.fieldOfView = p / 2f;
+                CameraOperatorMod.CameraOperator.cameraController.m_currentSize =
+                    (float)(CameraOperatorMod.CameraOperator.mainCamera.fieldOfView * aspect);
+                //CameraManeger.cameraController.m_targetSize =
+                //    (float)(36 / Math.Tan(CameraManeger.mainCamera.fieldOfView / 2) * 2);
+            };
             autoLayoutDirection = LayoutDirection.Vertical;
 
             autoLayout = true;
             autoLayout = false;
 
-            ButtonPanel = AddUIComponent<ButtonPanel>();
-           // ButtonPanel.Init();
+            AddButton = AddUIComponent<ButtonPanel>();
+            AddButton.name = nameof(AddButton);
+            AddButton.Init(40f, 40f, "+", 2f);
+            AddButton.relativePosition = new Vector2(425f, 0f);
+
         }
     }
 }

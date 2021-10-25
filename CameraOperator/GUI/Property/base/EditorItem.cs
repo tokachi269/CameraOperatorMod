@@ -1,8 +1,5 @@
 ﻿using ColossalFramework.UI;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace CameraOperatorMod.GUI
@@ -15,7 +12,6 @@ namespace CameraOperatorMod.GUI
 
         // autoLayoutで並べるとbaseのUIPanelも含めてUIComponentが端によってしまう
         // 整列用のPanelを作成して中央揃えができるようにする
-        //autoLayout
         public UIPanel Alignment { get; }
         public virtual bool SupportAlignment => true;
 
@@ -43,15 +39,15 @@ namespace CameraOperatorMod.GUI
 
         }
 
-        public virtual void Init() => Init(null);
+        public virtual void Init() => Init(null, null);
         public virtual void DeInit()
         {
             IsAlignment = false;
             EnableControl = true;
         }
-        public void Init(float? height = null)
+        public void Init(float? width = null, float ? height = null)
         {
-            size = new Vector2(GetWidth(), height ?? DefaultHeight);
+            size = new Vector2(width ?? DefaultHeight, height ?? DefaultHeight);
         }
 
         private float GetWidth()

@@ -1,8 +1,4 @@
 ﻿using ColossalFramework.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CameraOperatorMod.Resources
 {
@@ -30,6 +26,5 @@ namespace CameraOperatorMod.Resources
             //TODO true(UserMod.IsGame)
             return true ? UIView.GetAView().defaultAtlas : UIView.library?.Get<OptionsMainPanel>("OptionsPanel")?.GetComponent<UIPanel>()?.atlas;
         }
-
     }
 }
