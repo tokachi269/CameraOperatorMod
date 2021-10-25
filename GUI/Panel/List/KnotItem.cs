@@ -6,11 +6,10 @@ namespace CameraOperatorMod.GUI
 {
     public class KnotItem : UIPanel, IUIFastListRow
     {
-        static float ItemHeight = 20f;
+        private static float ItemHeight = 20f;
         
-        UILabel IndexLabel;
-
-        bool initialized;
+        private UILabel IndexLabel;
+        private bool initialized;
 
         public KnotItem()
         {
@@ -18,8 +17,8 @@ namespace CameraOperatorMod.GUI
             height = ItemHeight;
             isVisible = true;
             isInteractive = true;
-            backgroundSprite = "TextFieldPanel";
-
+            backgroundSprite = "ButtonWhiteHovered";
+            color = Helper.GrayScale(230);
             tooltipBox.GetComponent<UILabel>().textAlignment = UIHorizontalAlignment.Left;
             //GenerateTooltip(Prefab);
             //eventTooltipEnter += TreeItem_eventTooltipEnter;
@@ -49,6 +48,8 @@ namespace CameraOperatorMod.GUI
 
         public void Deselect(bool isRowOdd)
         {
+            color = Helper.GrayScale(210);
+
             throw new NotImplementedException();
         }
 
@@ -59,6 +60,8 @@ namespace CameraOperatorMod.GUI
 
         public void Select(bool isRowOdd)
         {
+            color = Helper.GrayScale(230);
+
             throw new NotImplementedException();
         }
 

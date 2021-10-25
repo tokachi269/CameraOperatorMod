@@ -26,6 +26,5 @@ namespace CameraOperatorMod.Resources
             //TODO true(UserMod.IsGame)
             return true ? UIView.GetAView().defaultAtlas : UIView.library?.Get<OptionsMainPanel>("OptionsPanel")?.GetComponent<UIPanel>()?.atlas;
         }
-
     }
 }

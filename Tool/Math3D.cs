@@ -154,9 +154,8 @@ public class Math3D : MonoBehaviour {
 			intersection = linePoint1 + (lineVec1 * s);
 			return true;
 		}
- 
-		else{
-			return false;       
+        else {
+			return false;
 		}
 	}
  

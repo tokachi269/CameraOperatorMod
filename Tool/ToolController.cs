@@ -12,14 +12,14 @@ namespace CameraOperator.Tool
         public PathTool PathTool;
 
         [SerializeField]
-        public Rotate rotate;
+        public RotateTool RotateTool;
         public static string RecoveryDirectory => System.IO.Path.Combine(Directory.GetCurrentDirectory(), "CameraOperator");
         
         public Dictionary<string, BaseCameraMode> saves;
         void Start()
         {
             PathTool = gameObject.AddComponent<PathTool>();
-            rotate = gameObject.AddComponent<Rotate>();
+            RotateTool = gameObject.AddComponent<RotateTool>();
 
             PathTool.AddKnot(new Vector3(0, 0, 1), new Quaternion(0, 0, 0, 1), 60);
             PathTool.AddKnot(new Vector3(1, 1, 1), new Quaternion(0, 0, 0, 1), 60);
@@ -34,7 +34,7 @@ namespace CameraOperator.Tool
             //PathTool.AddKnot(new Vector3(0, 4, 0), new Quaternion(0, 0, 0, 1), 60);
             PathTool.AddLookAt(new Vector3(0, 4, 0), new Quaternion(0, 0, 0, 1), 60);
 
-            rotate.AddKnot(new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 1), 60);
+            RotateTool.AddKnot(new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 1), 60);
 
             saves = new Dictionary<string, BaseCameraMode>();
         }
@@ -66,7 +66,7 @@ namespace CameraOperator.Tool
 
             if (Input.GetKeyDown("k"))
             {
-                PathTool.AddKnot(CameraUtil.CameraPosition());
+                PathTool.AddKnot(CameraUtils.CameraPosition());
                 Debug.Log("Add Knot Succeed");
                 PathTool.render.Display();
             }
@@ -87,9 +87,9 @@ namespace CameraOperator.Tool
 
             if (Input.GetKeyDown("y"))
             {
-                if (rotate!= null)
+                if (RotateTool!= null)
                 {
-                    StartCoroutine(rotate.Play());
+                    StartCoroutine(RotateTool.Play());
                 }
                 Debug.Log("Rotate Start!!");
             }

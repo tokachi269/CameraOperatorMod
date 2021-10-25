@@ -5,7 +5,7 @@ namespace CameraOperatorMod.GUI
 {
     public abstract class BaseTabPage : UIComponent
     {
-        public abstract string TabName { get; }
+        public abstract CameraMode TabName { get; }
 
         public abstract bool AvailableSetting { get; set; }
         public abstract bool AvailableContent { get; set; }
@@ -28,7 +28,6 @@ namespace CameraOperatorMod.GUI
         // public abstract void UpdateEditor();
         // public abstract void RefreshEditor();
 
-        public abstract void AddKnot();
 
 
         public virtual void Render(RenderManager.CameraInfo cameraInfo) { }
@@ -46,6 +45,9 @@ namespace CameraOperatorMod.GUI
         protected CameraSettingPanelType CameraSettingPanel { get; set; }
         protected ListPanelType ListPanel { get; set; }
         protected PlayPanelType PlayPanel { get; set; }
+
+        public abstract void AddKnot();
+        public abstract void Play();
 
         public sealed override bool AvailableSetting
         {

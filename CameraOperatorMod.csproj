@@ -5,10 +5,10 @@
     <ProjectGuid>{D781FCE0-1ED6-4284-AE6D-40154170ECA5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
-    <AssemblyName>TokachiCinematicCameraMod</AssemblyName>
+    <AssemblyName>CameraOperatorMod</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>TokachiCinematicCameraMod</RootNamespace>
+    <RootNamespace>CameraOperatorMod</RootNamespace>
   </PropertyGroup>
   <PropertyGroup>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
@@ -70,7 +70,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CameraManeger.cs" />
+    <Compile Include="CameraOperator.cs" />
+    <Compile Include="GUI\Page\AboutPage.cs" />
+    <Compile Include="GUI\Page\UtilsPage.cs" />
     <Compile Include="Tool\Bezier\Bezier3D.cs" />
     <Compile Include="Tool\Bezier\BezierControls.cs" />
     <Compile Include="Tool\Bezier\BezierUtil.cs" />
@@ -81,11 +83,11 @@
     <Compile Include="Tool\Math3D.cs" />
     <Compile Include="Tool\Mode\BaseCameraMode.cs" />
     <Compile Include="Tool\Mode\CameraConfig.cs" />
-    <Compile Include="Tool\Mode\CameraUtil.cs" />
+    <Compile Include="Tool\Mode\CameraUtils.cs" />
     <Compile Include="Tool\Mode\Easing.cs" />
     <Compile Include="Tool\Mode\Path\PathTool.cs" />
     <Compile Include="Tool\Mode\PerlinCameraShake.cs" />
-    <Compile Include="Tool\Mode\Rotate\Rotate.cs" />
+    <Compile Include="Tool\Mode\Rotate\RotateTool.cs" />
     <Compile Include="Tool\PipeMeshGenerator.cs" />
     <Compile Include="Tool\Squad.cs" />
     <Compile Include="Tool\ToolController.cs" />
@@ -99,8 +101,8 @@
     <Compile Include="GUI\Page\BaseTabPage.cs" />
     <Compile Include="GUI\Panel\List\KnotItem.cs" />
     <Compile Include="GUI\Panel\PlaybackPanel.cs" />
-    <Compile Include="GUI\Page\Rotate.cs" />
-    <Compile Include="GUI\Page\Path.cs" />
+    <Compile Include="GUI\Page\RotatePage.cs" />
+    <Compile Include="GUI\Page\PathPage.cs" />
     <Compile Include="GUI\Panel\TabstripPanel.cs" />
     <Compile Include="GUI\Property\BoolProperty.cs" />
     <Compile Include="GUI\Property\ButtonPanel.cs" />
@@ -118,7 +120,6 @@
     <Compile Include="GUI\UIExtension.cs" />
     <Compile Include="Patcher\CalculateCornerPatch.cs" />
     <Compile Include="Resources\ResourceLoader.cs" />
-    <Compile Include="ToolHelper.cs" />
     <Compile Include="Debug\DebugUtils.cs" />
     <Compile Include="GUI\CameraOperatorButton.cs" />
     <Compile Include="GUI\UIBase.cs" />
@@ -128,48 +129,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Tool\Bezier.meta" />
-    <None Include="Tool\Bezier\Bezier3D.cs.meta" />
-    <None Include="Tool\Bezier\BezierControls.cs.meta" />
-    <None Include="Tool\Bezier\BezierUtil.cs.meta" />
-    <None Include="Tool\Bezier\ExtendBezierControls.cs.meta" />
-    <None Include="Tool\Bezier\KCurves.cs.meta" />
-    <None Include="Tool\CameraMover.cs.meta" />
-    <None Include="Tool\Constant.cs.meta" />
     <None Include="Tool\LICENSE" />
-    <None Include="Tool\LICENSE.meta" />
-    <None Include="Tool\Math3D.cs.meta" />
-    <None Include="Tool\Mode.meta" />
-    <None Include="Tool\Mode\BaseCameraMode.cs.meta" />
-    <None Include="Tool\Mode\CameraConfig.cs.meta" />
-    <None Include="Tool\Mode\CameraUtil.cs.meta" />
-    <None Include="Tool\Mode\Easing.cs.meta" />
-    <None Include="Tool\Mode\Path.meta" />
-    <None Include="Tool\Mode\Path\Path.cs.meta" />
-    <None Include="Tool\Mode\PerlinCameraShake.cs.meta" />
-    <None Include="Tool\Mode\Rotate.meta" />
-    <None Include="Tool\Mode\Rotate\Rotate.cs.meta" />
-    <None Include="Tool\Monitor Components.meta" />
     <None Include="Tool\MyAssembly.asmdef" />
-    <None Include="Tool\MyAssembly.asmdef.meta" />
-    <None Include="Tool\PipeMeshGenerator.cs.meta" />
-    <None Include="Tool\Plugins.meta" />
-    <None Include="Tool\Resources.meta" />
-    <None Include="Tool\Scenes.meta" />
     <None Include="Tool\SimpleVertexColorShader.shader" />
-    <None Include="Tool\SimpleVertexColorShader.shader.meta" />
-    <None Include="Tool\Squad.cs.meta" />
     <None Include="Tool\StyleCop.Analyzers.ruleset" />
-    <None Include="Tool\StyleCop.Analyzers.ruleset.meta" />
-    <None Include="Tool\Tests.meta" />
-    <None Include="Tool\ToolController.cs.meta" />
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="StyleCop.Analyzers.ruleset" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Tool\Mode\Utils\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

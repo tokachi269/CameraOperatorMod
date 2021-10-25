@@ -5,32 +5,37 @@ namespace CameraOperatorMod.GUI
 {
     public class PlaybackPanel: UIPanel
     {
-        int DefaultHeight = 120;
+        private int DefaultHeight = 95;
         public SliderPanel TimeLineSlider;
 
-        private FieldProperty Fps;
+        private FieldProperty FPS;
         private UILabel Label;
-        private ButtonPanel Button;
+        private ButtonPanel PlaybackButton;
 
         public PlaybackPanel()
         {
             size = new Vector2(CameraOperator.DefaultRect.width, DefaultHeight);
             padding = Helper.Padding(4, 12, 4, 0);
-            autoFitChildrenVertically = true;
             clipChildren = false;
-            autoLayout = false;
 
             relativePosition = new Vector2(0, CameraOperator.DefaultRect.height - DefaultHeight);
 
             TimeLineSlider = AddUIComponent<SliderPanel>();
+            TimeLineSlider.name = nameof(TimeLineSlider);
             // TimeLineSlider.Init(minValue: 0f, maxValue: 100, stepSize: 0.01f, defaultValue: 0f);
 
-            Button = AddUIComponent<ButtonPanel>();
-
-            Fps = AddUIComponent<FieldProperty>();
+            FPS = AddUIComponent<FieldProperty>();
+            FPS.name = nameof(FPS);
 
             autoLayoutDirection = LayoutDirection.Vertical;
             autoLayout = true;
+            autoLayout = false;
+
+            PlaybackButton = AddUIComponent<ButtonPanel>();
+            PlaybackButton.name = nameof(PlaybackButton);
+            PlaybackButton.Init(55f, 55f, "▶", 3f);
+            PlaybackButton.relativePosition = new Vector2(415f, 0f);
+
         }
     }
 }

@@ -25,6 +25,5 @@ namespace CameraOperator.Tool
         public bool IsCameraShake { get; set; }
 
         protected CameraConfig DefaultCameraPosition { get; }
-
     }
 }

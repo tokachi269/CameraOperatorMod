@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace CameraOperator.Tool
 {
-    public class Rotate : BaseCameraMode, ICameraMode
+    public class RotateTool : BaseCameraMode, ICameraMode
     {
         public override string Name { get; set; }
 
@@ -39,7 +39,7 @@ namespace CameraOperator.Tool
 
         public IEnumerator Play()
         {
-            DefaultPosition = CameraUtil.CameraPosition();
+            DefaultPosition = CameraUtils.CameraPosition();
 
             if (IsCameraShake)
             {
@@ -106,8 +106,8 @@ namespace CameraOperator.Tool
 
         public class Serializer : ISerialize
         {
-            Rotate Instance;
-            public Serializer(Rotate instance)
+            RotateTool Instance;
+            public Serializer(RotateTool instance)
             {
                 this.Instance = instance;
             }
