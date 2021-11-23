@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace CameraOperator.Tool
+namespace CamOpr.Tool
 {
 
     public class ExtendBezierControls : BezierControls
@@ -36,21 +36,21 @@ namespace CameraOperator.Tool
             {
                 if ((index <= 0) || (index >= ArcLengthWithTStep - 1)) { break; }
 
-                if (inputL <= Lengths[bezierIndex, index]){
-                    if (Lengths[bezierIndex, index - 1] < inputL){ break; }
-                    else{index--; }
+                if (inputL <= Lengths[bezierIndex, index]) {
+                    if (Lengths[bezierIndex, index - 1] < inputL) { break; }
+                    else { index--; }
                 }
-                else{ index++; }
+                else { index++; }
             }
 
-            //Debug.Log("  inputL:" + inputL+ "  indexL:" + Lengths[bezierIndex, index]+ "  index:" + index);
-            float resultL = 1+index - ((Lengths[bezierIndex, index] - inputL) / (Lengths[bezierIndex, index] - (index <= 0 ? 0 : Lengths[bezierIndex, index - 1])));
+            // Debug.Log("  inputL:" + inputL+ "  indexL:" + Lengths[bezierIndex, index] + "  index:" + index);
+            float resultL = 1 + index - ((Lengths[bezierIndex, index] - inputL) / (Lengths[bezierIndex, index] - (index <= 0 ? 0 : Lengths[bezierIndex, index - 1])));
             float resultT = (float)(resultL / ArcLengthWithTStep);
 
             return resultT;
         }
 
-        public float Length(int bezierIndex) 
+        public float Length(int bezierIndex)
         {
             return Lengths[bezierIndex, ArcLengthWithTStep-1];
         }
@@ -67,10 +67,11 @@ namespace CameraOperator.Tool
         public void CalcArcLengthWithT(bool isLoop)
         {
             Vector3[] plots = CalcPlots(ArcLengthWithTStep, isLoop);
+
             // TODO SegmentCountが1、２のとき
             for (ushort i = 0; i < SegmentCount; i++)
             {
-                if((this[i, 0] == this[i, 1]) || (this[i, 0] == this[i, 2]))
+                if ((this[i, 0] == this[i, 1]) || (this[i, 0] == this[i, 2]))
                 {
                     continue;
                 }
@@ -79,7 +80,7 @@ namespace CameraOperator.Tool
                     float l = 0f;
                     for (ushort j = 0; j < ArcLengthWithTStep; j++)
                     {
-                        l += Vector3.Distance(plots[i * ArcLengthWithTStep + j], plots[i * ArcLengthWithTStep + j + 1]);
+                        l += Vector3.Distance(plots[(i * ArcLengthWithTStep) + j], plots[(i * ArcLengthWithTStep) + j + 1]);
                         Lengths[i, j] = l;
                     }
                 }
@@ -111,7 +112,7 @@ namespace CameraOperator.Tool
             }
 
             int segCnt = isLoop ? SegmentCount + 1 : SegmentCount;
-            plots = new Vector3[Math.Max(0, segCnt) * stepPerSegment + (isLoop ? 0:1)];
+            plots = new Vector3[(Math.Max(0, segCnt) * stepPerSegment) + (isLoop ? 0:1)];
 
 
             for (i = 0; i < segCnt; i++)
@@ -124,14 +125,16 @@ namespace CameraOperator.Tool
                     plots[offset + j] = BezierUtil.Position(this[i, 0], this[i, 1], this[i, 2], t);
                 }
             }
+
             if (isLoop) {
-                plots[plots.Length - 1] = this[0, 0]; 
+                plots[plots.Length - 1] = this[0, 0];
             }
             else
             {
                 var last = isLoop ? 0 : i - 1;
                 plots[plots.Length - 1] = BezierUtil.Position(this[last, 0], this[last, 1], this[last, 2], 1);
             }
+
             return plots;
         }
 

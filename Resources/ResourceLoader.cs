@@ -1,6 +1,6 @@
 ﻿using ColossalFramework.UI;
 
-namespace CameraOperatorMod.Resources
+namespace CamOpr.Resources
 {
     public class ResourceLoader
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     public class CameraOperator : UIPanel
 	{
@@ -124,8 +124,5 @@ namespace CameraOperatorMod.GUI
 			0f, 0f, 500f, 600f
 		);
 
-		private Dictionary<string, UIPanel> tabPages_ = new Dictionary<string, UIPanel>();
-
-		public UIPanel TabPage(string name) => tabPages_[name];
     }
 }

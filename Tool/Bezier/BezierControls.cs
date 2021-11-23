@@ -1,8 +1,7 @@
-﻿
-using System;
+﻿using System;
 using UnityEngine;
 
-namespace CameraOperator.Tool
+namespace CamOpr.Tool
 {
     public class BezierControls
     {

@@ -1,6 +1,4 @@
-﻿
-
-namespace CameraOperator.Tool
+﻿namespace CamOpr.Tool
 {
 	/*
 	public class Bezier3D : MonoBehaviour

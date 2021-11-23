@@ -1,7 +1,4 @@
-﻿using CameraOperator.Tool;
-using UnityEngine;
-
-namespace CameraOperatorMod.GUI
+﻿namespace CamOpr.GUI
 {
     public class AboutPage : BaseTabPage
     {

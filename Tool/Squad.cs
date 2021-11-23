@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace CameraOperator.Tool
+namespace CamOpr.Tool
 {
     static class Squad
     {
@@ -15,13 +15,13 @@ namespace CameraOperator.Tool
 
 			if (i == 0)
 			{
-				return SplineSegment(knots[i].rotation, knots[i].rotation, knots[i + 1].rotation, knots[i + 2].rotation, t);
+				return SplineSegment(knots[i].Rotation, knots[i].Rotation, knots[i + 1].Rotation, knots[i + 2].Rotation, t);
 			}
 			else if (i == count - 2 && i > 0){
-				return SplineSegment(knots[i - 1].rotation, knots[i].rotation, knots[i + 1].rotation, knots[i + 1].rotation, t);
+				return SplineSegment(knots[i - 1].Rotation, knots[i].Rotation, knots[i + 1].Rotation, knots[i + 1].Rotation, t);
 			}
 			else if (i >= 1 && i < count - 2){
-				return SplineSegment(knots[i - 1].rotation, knots[i].rotation, knots[i + 1].rotation, knots[i + 2].rotation, t);
+				return SplineSegment(knots[i - 1].Rotation, knots[i].Rotation, knots[i + 1].Rotation, knots[i + 2].Rotation, t);
 			}
 			return Quaternion.identity;
 		}

@@ -1,7 +1,7 @@
 ﻿using ICities;
 using UnityEngine;
 
-namespace CameraOperatorMod
+namespace CamOpr
 {
 
     public class UserMod : LoadingExtensionBase, IUserMod
@@ -58,7 +58,7 @@ namespace CameraOperatorMod
         {
             if (this.CameraManegerGameObject != null)
             {
-                UnityEngine.Object.Destroy(this.CameraManegerGameObject);
+                Object.Destroy(this.CameraManegerGameObject);
                 this.CameraManegerGameObject = null;
             }
         }

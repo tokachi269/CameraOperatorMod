@@ -2,12 +2,12 @@
 using System.Linq;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     public abstract class EditorItem : UIPanel
     {
-        protected virtual float DefaultHeight => 40;
-        protected virtual int ItemsPadding => 14;
+        public virtual float DefaultHeight => 40;
+        public virtual int ItemsPadding => 14;
         public virtual bool EnableControl { get; set; } = true;
 
         // autoLayoutで並べるとbaseのUIPanelも含めてUIComponentが端によってしまう

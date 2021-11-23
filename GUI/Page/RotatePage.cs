@@ -1,7 +1,8 @@
-﻿using CameraOperator.Tool;
+﻿using CamOpr.Tool;
+using System.Collections;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     public class RotatePage : BaseTabPage<CameraConfigPanel, ScrollablePanel, PlaybackPanel>
     {
@@ -14,7 +15,7 @@ namespace CameraOperatorMod.GUI
             base.Awake();
             CameraSettingPanel.AddButton.OnButtonClick += OnAddKnotButtonClick;
             void OnAddKnotButtonClick() => AddKnot();
-            Tool = (RotateTool)CameraOperatorMod.CameraOperator.Modes[new Tuple(TabName, "default")];
+            Tool = (RotateTool)CamOpr.CameraOperator.Modes[new Tuple(TabName, "default")];
 
             CameraSettingPanel.AddButton.OnButtonClick += OnPlayButtonClick;
             void OnPlayButtonClick() => Play();

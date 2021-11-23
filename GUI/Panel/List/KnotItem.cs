@@ -1,8 +1,9 @@
 ﻿using ColossalFramework.UI;
 using System;
-using CameraOperator.Tool;
+using CamOpr.Tool;
+using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     public class KnotItem : UIPanel, IUIFastListRow
     {
@@ -10,6 +11,7 @@ namespace CameraOperatorMod.GUI
         
         private UILabel IndexLabel;
         private bool initialized;
+        CameraConfig cp;
 
         public KnotItem()
         {
@@ -18,52 +20,67 @@ namespace CameraOperatorMod.GUI
             isVisible = true;
             isInteractive = true;
             backgroundSprite = "ButtonWhiteHovered";
-            color = Helper.GrayScale(230);
+            color = Helper.GrayScale(220);
             tooltipBox.GetComponent<UILabel>().textAlignment = UIHorizontalAlignment.Left;
             //GenerateTooltip(Prefab);
             //eventTooltipEnter += TreeItem_eventTooltipEnter;
             //eventMouseLeave += TreeItem_eventMouseLeave;
             IndexLabel = AddUIComponent<UILabel>();
             IndexLabel.autoSize = false;
-            IndexLabel.width = 255.0f;
+            IndexLabel.size = new Vector2(30f, 20f);
+            IndexLabel.textAlignment = UIHorizontalAlignment.Right;
+            IndexLabel.padding = Helper.Padding(top: 3);
+            autoLayout = true;
         }
 
-        public void Initialize() => Initialize(null, 0);
-        public void Initialize(CameraConfig cp, int index)
+        public void Initialize() => Initialize(null);
+        public void Initialize(CameraConfig cp)
         {
-            IndexLabel.text = index.ToString();
-
-        }
-
-        internal void InitDisplay(int index, bool pos, bool rot, bool fov, bool zoom)
-        {
-            IndexLabel.text = index.ToString();
-            if (pos)
+            if (!(cp is null))
             {
-               // AddUIComponent<UISprite>();
+                if (cp.ListIndex >= 0)
+                {
+                    IndexLabel.text = cp.ListIndex.ToString().PadLeft(3);
+                }
             }
 
-            initialized = true;
         }
 
         public void Deselect(bool isRowOdd)
         {
             color = Helper.GrayScale(210);
-
-            throw new NotImplementedException();
+            if (isRowOdd)
+            {
+                color = Helper.GrayScale(200);
+            }
+            else
+            {
+                color = Helper.GrayScale(236);
+            }
         }
 
         public void Display(object data, bool isRowOdd)
         {
+            cp = data as CameraConfig;
+
             if (!initialized) Initialize();
+            if (!(cp is null))
+            {
+                if (cp.ListIndex >= 0)
+                {
+                    IndexLabel.text = cp.ListIndex.ToString().PadLeft(3);
+                }
+            }
+
+            if (isRowOdd)
+            {
+                color = Helper.GrayScale(236);
+            }
         }
 
         public void Select(bool isRowOdd)
         {
             color = Helper.GrayScale(230);
-
-            throw new NotImplementedException();
         }
-
     }
 }
