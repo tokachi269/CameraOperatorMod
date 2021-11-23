@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     public class FieldProperty : EditorPropertyItem
     {
@@ -18,8 +18,13 @@ namespace CameraOperatorMod.GUI
             autoLayout = false;
 
             Content = AddUIComponent<FieldType>();
+        }
+
+        protected override void InitPanel()
+        {
             //Field.SetDefaultStyle();
             Content.name = nameof(Content);
+            Content.scaleFactor = 0.7f;
             Content.cursorBlinkTime = 1f;
             Content.cursorWidth = 2;
             //Field.OnValueChanged += ValueChanged;
@@ -35,13 +40,12 @@ namespace CameraOperatorMod.GUI
             Content.focusedBgSprite = "TextFieldPanel";
             Content.clipChildren = true;
             Content.colorizeSprites = true;
-            Content.color = Helper.RGB(50, 50, 50);
-            Content.textColor = Helper.RGB(250, 250, 250);
+            Content.color = Helper.GrayScale(70);
+            Content.textColor = Helper.GrayScale(250);
             Content.horizontalAlignment = UIHorizontalAlignment.Left;
             Content.padding = Helper.Padding(0, 6);
             Content.relativePosition = new Vector2(0f, DefaultHeight / 2);
             Content.size = new Vector2(50, 22);
-
         }
 
         protected override void OnSizeChanged()
@@ -83,5 +87,7 @@ namespace CameraOperatorMod.GUI
             Label.MakePixelPerfect(false);
             Label.relativePosition = new Vector2(5, (height - Label.height) / 2);
         }
+
+
     }
 }

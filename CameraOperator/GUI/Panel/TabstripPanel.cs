@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     class TabstripPanel: UITabstrip
     {

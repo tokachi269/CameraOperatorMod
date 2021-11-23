@@ -4,9 +4,9 @@ using ColossalFramework;
 using ColossalFramework.Globalization;
 using ColossalFramework.UI;
 using UnityEngine;
-using CameraOperatorMod;
+using CamOpr;
 
-namespace CameraOperatorMod
+namespace CamOpr
 {
 	// Token: 0x0200000A RID: 10
 	public class OptionsKeymapping : UICustomControl

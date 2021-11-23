@@ -1,10 +1,10 @@
 ﻿using ColossalFramework.UI;
 
 using System;
-using CameraOperatorMod.Resources;
+using CamOpr.Resources;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     public interface IUIFastListRow
     {

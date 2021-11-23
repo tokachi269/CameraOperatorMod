@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
-
-namespace CameraOperator.Tool
+namespace CamOpr.Tool
 {
 	public class ApplyItems
 	{

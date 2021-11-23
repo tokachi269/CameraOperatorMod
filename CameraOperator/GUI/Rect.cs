@@ -2,7 +2,7 @@
 using System.Xml.Serialization;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     [Serializable]
     public struct UIRect

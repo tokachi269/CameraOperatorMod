@@ -1,7 +1,7 @@
 ﻿using ColossalFramework.UI;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     public class SliderPanel : EditorPropertyItem
     {
@@ -17,6 +17,13 @@ namespace CameraOperatorMod.GUI
 
         public  SliderPanel()
         {
+            TextField = AddUIComponent<FieldProperty>();
+            FieldSlider = AddUIComponent<SliderProperty>();
+            InitPanel();
+        }
+
+        protected override void InitPanel()
+        {
             autoLayoutDirection = LayoutDirection.Horizontal;
 
             size = new Vector2(CameraOperator.DefaultRect.width, DefaultHeight);
@@ -27,12 +34,9 @@ namespace CameraOperatorMod.GUI
             clipChildren = false;
             autoLayout = true;
 
-            TextField = AddUIComponent<FieldProperty>();
             TextField.Init();
             InitTextField();
 
-            FieldSlider = AddUIComponent<SliderProperty>();
-            FieldSlider.InitSlider();
             FieldSlider.Slider.eventValueChanged += (c, value) => {
                 if (TextField != null)
                 {
@@ -69,20 +73,24 @@ namespace CameraOperatorMod.GUI
             FieldSlider.Slider.value = defaultValue;
         }
 
+
+
         public class SliderProperty : EditorPropertyItem
         {
             public UISlider Slider { get; set; }
             public UISlicedSprite Thumb { get; set; }
             private float SliderWidth { get; set; }
+
             SliderProperty()
             {
                 size = new Vector2(CameraOperator.DefaultRect.width, DefaultHeight);
 
                 Slider = AddUIComponent<UISlider>();
                 Thumb = Slider.AddUIComponent<UISlicedSprite>();
-                InitSlider();
+                InitPanel();
             }
-            public void InitSlider()
+
+            protected override void InitPanel()
             {
                 Slider.scrollWheelAmount = (Slider.stepSize * 2) + 1.192093E-07f;
                 Slider.backgroundSprite = "WhiteRect";
@@ -125,12 +133,5 @@ namespace CameraOperatorMod.GUI
 
             }
         }
-    }
-    public class SliderPane
-    {
-        public UIPanel wrapper;
-        public UISlider slider;
-        public UITextField field;
-
     }
 }

@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace CameraOperator.Tool
+namespace CamOpr.Tool
 {
     [Flags]
     public enum EasingMode : byte
@@ -153,9 +153,9 @@ namespace CameraOperator.Tool
             {
                 for (byte m = 0; m <= 3; m++)
                 {
-                    Debug.Log(Convert.ToString((byte)Math.Pow(4, n) | ((byte)Math.Pow(4, m) << 1), 2).PadLeft(8, '0') + " : " + (EasingMode)(Math.Pow(4, n)) + "," + (EasingMode)(Math.Pow(4, m)));
+                    Debug.Log(Convert.ToString((byte)Math.Pow(4, n) | ((byte)Math.Pow(4, m) << 1), 2).PadLeft(8, '0') + " : " + (EasingMode)(Math.Pow(4, n)) + "," + (EasingMode)Math.Pow(4, m));
                 }
             }
-        }      
+        }
     }
 }

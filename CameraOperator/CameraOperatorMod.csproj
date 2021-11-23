@@ -73,6 +73,7 @@
     <Compile Include="CameraOperator.cs" />
     <Compile Include="GUI\Page\AboutPage.cs" />
     <Compile Include="GUI\Page\UtilsPage.cs" />
+    <Compile Include="GUI\Panel\PathDetailsPanel.cs" />
     <Compile Include="Tool\Bezier\Bezier3D.cs" />
     <Compile Include="Tool\Bezier\BezierControls.cs" />
     <Compile Include="Tool\Bezier\BezierUtil.cs" />

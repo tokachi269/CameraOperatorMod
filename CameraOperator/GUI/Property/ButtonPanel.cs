@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     public class ButtonPanel : EditorItem
     {

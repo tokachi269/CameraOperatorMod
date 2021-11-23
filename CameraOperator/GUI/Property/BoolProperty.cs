@@ -1,7 +1,7 @@
 ﻿using ColossalFramework.UI;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     class BoolProperty : EditorPropertyItem
     {
@@ -14,6 +14,11 @@ namespace CameraOperatorMod.GUI
             checkBox = AddUIComponent<UICheckBox>();
 
             Label = AddUIComponent<UILabel>();
+            InitPanel();
+        }
+
+        protected override void InitPanel()
+        {
             Label.text = "";
             Label.padding = Helper.Padding(ItemsPadding, ItemsPadding, ItemsPadding, ItemsPadding);
         }
@@ -28,5 +33,7 @@ namespace CameraOperatorMod.GUI
             checkBox.size = new Vector2(width - ItemsPadding * 2, Height);
             checkBox.relativePosition = new Vector3(ItemsPadding, (height - Height) / 2);
         }
+
+
     }
 }

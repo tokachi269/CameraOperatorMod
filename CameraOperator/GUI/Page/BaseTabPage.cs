@@ -1,7 +1,8 @@
 ﻿using ColossalFramework.UI;
+using System.Collections;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     public abstract class BaseTabPage : UIComponent
     {
@@ -28,23 +29,21 @@ namespace CameraOperatorMod.GUI
         // public abstract void UpdateEditor();
         // public abstract void RefreshEditor();
 
-
-
         public virtual void Render(RenderManager.CameraInfo cameraInfo) { }
         //public virtual bool OnShortcut(Event e) => false;
         public virtual bool OnEscape() => false;
     }
 
-    public abstract class BaseTabPage<CameraSettingPanelType, ListPanelType, PlayPanelType> : BaseTabPage
-        where CameraSettingPanelType : CameraConfigPanel
-        where ListPanelType : ScrollablePanel
-        where PlayPanelType : PlaybackPanel
+    public abstract class BaseTabPage<TCameraSettingPanelType, TListPanelType, TPlayPanelType> : BaseTabPage
+        where TCameraSettingPanelType : CameraConfigPanel
+        where TListPanelType : ScrollablePanel
+        where TPlayPanelType : PlaybackPanel
     {
         protected bool NeedUpdate { get; set; }
 
-        protected CameraSettingPanelType CameraSettingPanel { get; set; }
-        protected ListPanelType ListPanel { get; set; }
-        protected PlayPanelType PlayPanel { get; set; }
+        protected TCameraSettingPanelType CameraSettingPanel { get; set; }
+        protected TListPanelType ListPanel { get; set; }
+        protected TPlayPanelType PlayPanel { get; set; }
 
         public abstract void AddKnot();
         public abstract void Play();
@@ -89,27 +88,27 @@ namespace CameraOperatorMod.GUI
             relativePosition = Vector2.zero;
             // backgroundSprite = "UnlockingItemBackground";
 
-            CameraSettingPanel = AddUIComponent<CameraSettingPanelType>();
+            CameraSettingPanel = AddUIComponent<TCameraSettingPanelType>();
             CameraSettingPanel.backgroundSprite = "ScrollbarTrack";
-            CameraSettingPanel.name = typeof(CameraSettingPanelType).Name;
+            CameraSettingPanel.name = typeof(TCameraSettingPanelType).Name;
             CameraSettingPanel.clipChildren = false;
 
 
-            ListPanel = AddUIComponent<ListPanelType>();
+            ListPanel = AddUIComponent<TListPanelType>();
             ListPanel.backgroundSprite = "UnlockingItemBackground";
-            ListPanel.name = typeof(ListPanelType).Name;
+            ListPanel.name = typeof(TListPanelType).Name;
             ListPanel.clipChildren = false;
 
-            PlayPanel = AddUIComponent<PlayPanelType>();
+            PlayPanel = AddUIComponent<TPlayPanelType>();
             PlayPanel.backgroundSprite = "ScrollbarTrack";
             PlayPanel.relativePosition = new Vector2(0, CameraSettingPanel.height + ListPanel.height);
-            PlayPanel.name = typeof(PlayPanelType).Name;
+            PlayPanel.name = typeof(TPlayPanelType).Name;
             PlayPanel.clipChildren = false;
 
-            setPosition();
+            SetPosition();
         }
 
-        private void setPosition()
+        private void SetPosition()
         {
             ListPanel.relativePosition = new Vector2(0,CameraSettingPanel.height);
         }

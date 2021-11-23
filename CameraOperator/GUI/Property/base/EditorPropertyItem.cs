@@ -1,23 +1,30 @@
 ﻿using ColossalFramework.UI;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
-    public abstract class EditorPropertyItem :EditorItem
+    public abstract class EditorPropertyItem : EditorItem
     {
         public UILabel Label { get; set; }
-        public bool hasLabel = false;
+        protected ContentPanel Content { get; set; }
+
+        public virtual bool hasLabel => false;
+
         public string Text
         {
             get => Label.text;
             set => Label.text = value;
         }
+
         public override bool EnableControl
         {
             get => isEnabled;
             set => isEnabled = value;
         }
+
         public override bool SupportAlignment => true;
+
+        protected abstract void InitPanel();
 
         public EditorPropertyItem()
         {
@@ -35,23 +42,56 @@ namespace CameraOperatorMod.GUI
                 Label.name = nameof(Label);
                 //Label.eventTextChanged += (_, _) => SetLabel();
             }
+
+            Content = AddUIComponent<ContentPanel>();
         }
 
         protected override void OnSizeChanged()
         {
             base.OnSizeChanged();
-            //Refresh(false);
+            Refresh(false);
         }
 
-        //protected void Refresh(bool refreshContent = true)
-        //{
-        //    if (refreshContent)
-        //        //Alignment.Refresh();
-        //
-        //    Alignment.height = height;
-        //    Alignment.relativePosition = new Vector2(width - Alignment.width - ItemsPadding, 0f);
-        //
-        //   // SetLabel();
-        //}
+        protected void Refresh(bool refreshContent = true)
+        {
+            if (refreshContent)
+                //Alignment.Refresh();
+        
+            Alignment.height = height;
+            Alignment.relativePosition = new Vector2(width - Alignment.width - ItemsPadding, 0f);
+        
+          // SetLabel();
+        }
+        private void SetLabel()
+        {
+            Label.width = width - Content.width - ItemsPadding * 2;
+            Label.MakePixelPerfect(false);
+            Label.relativePosition = new Vector2(5, (height - Label.height) / 2);
+        }
+
+        protected class ContentPanel : UIPanel
+        {
+            public ContentPanel()
+            {
+                autoLayoutDirection = LayoutDirection.Horizontal;
+                autoFitChildrenHorizontally = true;
+                autoLayoutPadding = new RectOffset(5, 0, 0, 0);
+                name = nameof(Content);
+            }
+
+            protected override void OnSizeChanged()
+            {
+                base.OnSizeChanged();
+                Refresh();
+            }
+            public void Refresh()
+            {
+                autoLayout = true;
+                autoLayout = false;
+
+                foreach (var item in components)
+                    item.relativePosition = new Vector2(item.relativePosition.x, (height - item.height) / 2);
+            }
+        }
     }
 }

@@ -1,51 +1,50 @@
-﻿using System;
-using CameraOperator.Tool;
+﻿using CamOpr.Tool;
+using System;
+using System.Collections;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
-    public class PathPage :BaseTabPage<CameraConfigPanel, ScrollablePanel, PlaybackPanel>
+    public class PathPage : BaseTabPage<CameraConfigPanel, ScrollablePanel, PlaybackPanel>
     {
         public override CameraMode TabName => CameraMode.Path;
 
-        public PathTool Tool;
+        private PathTool tool;
 
         public void Awake()
         {
             base.Awake();
             CameraSettingPanel.AddButton.OnButtonClick += OnAddKnotButtonClick;
             void OnAddKnotButtonClick() => AddKnot();
-            Tool = (PathTool)CameraOperatorMod.CameraOperator.Modes[new Tuple(TabName, "default")];
+            tool = (PathTool)CamOpr.CameraOperator.Modes[new Tuple(TabName, "default")];
 
-            CameraSettingPanel.AddButton.OnButtonClick += OnPlayButtonClick;
+            PlayPanel.PlaybackButton.OnButtonClick += OnPlayButtonClick;
             void OnPlayButtonClick() => Play();
-
         }
+
         public void Start()
         {
-            if (Tool != null)
+            if (tool != null)
             {
                 Debug.Log("Adding knots failed!");
-                Tool = new PathTool();
+                tool = new PathTool();
             }
         }
 
         public override void AddKnot()
         {
-
                 var cameraConfig = CameraUtils.CaptureCamera();
-                Tool.AddKnot(cameraConfig);
-                ListPanel.addRow(cameraConfig, 0, true, true, true, true);
+                tool.AddKnot(cameraConfig);
+                ListPanel.AddRow(tool.Knots);
                 Debug.Log("knot has been added");
-
         }
 
         public override void Play()
         {
-            Debug.Log("Play");
-            Tool.Play();
+            CameraUtils.SetFreeCamera(true);
+            tool.StartPlay();
 
+            // Tool.Play();
         }
-
     }
 }

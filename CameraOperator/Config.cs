@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace CameraOperatorMod
+namespace CamOpr
 {
     public class Config
     {
