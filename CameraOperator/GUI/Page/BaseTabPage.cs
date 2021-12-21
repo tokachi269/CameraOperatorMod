@@ -11,6 +11,11 @@ namespace CamOpr.GUI
         public abstract bool AvailableSetting { get; set; }
         public abstract bool AvailableContent { get; set; }
         public abstract bool AvailablePlay { get; set; }
+        
+        public override void Awake()
+        {
+            base.Awake();
+        }
 
         public bool Active
         {

@@ -48,16 +48,37 @@ namespace CamOpr.Tool
 
         public static CameraConfig CaptureCamera()
         {
-            Vector3 position = CamOpr.CameraOperator.CameraController.m_currentPosition;
-            float size = CamOpr.CameraOperator.CameraController.m_currentSize;
-            float height = CamOpr.CameraOperator.CameraController.m_currentHeight;
-            float fov = CamOpr.CameraOperator.MainCamera.fieldOfView;
-            float num = size * (1f - (height / CamOpr.CameraOperator.CameraController.m_maxDistance)) / Mathf.Tan(0.017453292f * fov);
-            Vector2 currentAngle = CamOpr.CameraOperator.CameraController.m_currentAngle;
+            Vector3 position = CameraOperator.CameraController.m_currentPosition;
+            float size = CameraOperator.CameraController.m_currentSize;
+            float height = CameraOperator.CameraController.m_currentHeight;
+            float fov = CameraOperator.MainCamera.fieldOfView;
+            float num = size * (1f - (height / CameraOperator.CameraController.m_maxDistance)) / Mathf.Tan(0.017453292f * fov);
+            Vector2 currentAngle = CameraOperator.CameraController.m_currentAngle;
             Quaternion rotation = Quaternion.AngleAxis(currentAngle.x, Vector3.up) * Quaternion.AngleAxis(currentAngle.y, Vector3.right);
             Vector3 worldPos = position + (rotation * new Vector3(0f, 0f, -num));
+            position.y = position.y + CalculateCameraHeightOffset(position, num);
 
             return new CameraConfig(position, rotation, fov);
+        }
+        private static float CalculateCameraHeightOffset(Vector3 worldPos, float distance)
+        {
+            float num = Singleton<TerrainManager>.instance.SampleRawHeightSmoothWithWater(worldPos, true, 2f);
+            float num2 = num - worldPos.y;
+            distance *= 0.45f;
+            num2 = Mathf.Max(num2, -distance);
+            num2 += distance * 0.375f * Mathf.Pow(1f + 1f / distance, -num2);
+            num = worldPos.y + num2;
+            ItemClass.Availability availability = Singleton<ToolManager>.instance.m_properties.m_mode;
+            ItemClass.Layer layer = ItemClass.Layer.Default;
+
+            worldPos.y -= 5f;
+                num = Mathf.Max(num, Singleton<BuildingManager>.instance.SampleSmoothHeight(worldPos, layer) + 5f);
+                num = Mathf.Max(num, Singleton<NetManager>.instance.SampleSmoothHeight(worldPos) + 5f);
+                num = Mathf.Max(num, Singleton<PropManager>.instance.SampleSmoothHeight(worldPos) + 5f);
+                num = Mathf.Max(num, Singleton<TreeManager>.instance.SampleSmoothHeight(worldPos) + 5f);
+                worldPos.y += 5f;
+            
+            return num - worldPos.y;
         }
 
         internal static void SetCamera(Vector3 pos, Quaternion rot)
@@ -73,7 +94,7 @@ namespace CamOpr.Tool
             {
                 try
                 {
-                    CamOpr.CameraOperator.EnsureUIComponentsLayout();
+                    CameraOperator.EnsureUIComponentsLayout();
                     // UIView.Show(!value);
                 }
                 finally
@@ -85,12 +106,12 @@ namespace CamOpr.Tool
                     Singleton<GuideManager>.instance.TutorialDisabled = value;
                     if (value)
                     {
-                        CamOpr.CameraOperator.MainCamera.rect = new Rect(0f, 0f, 1f, 1f);
-                        CamOpr.CameraOperator.M_notificationAlpha.SetValue(Singleton<NotificationManager>.instance, 0f);
+                        CameraOperator.MainCamera.rect = new Rect(0f, 0f, 1f, 1f);
+                        CameraOperator.M_notificationAlpha.SetValue(Singleton<NotificationManager>.instance, 0f);
                     }
                     else
                     {
-                        CamOpr.CameraOperator.MainCamera.rect = new Rect(0f, 0.105f, 1f, 0.895f);
+                        CameraOperator.MainCamera.rect = new Rect(0f, 0.105f, 1f, 0.895f);
                     }
                 }
             }
