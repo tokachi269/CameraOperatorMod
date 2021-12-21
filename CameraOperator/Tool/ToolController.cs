@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.IO;
 
-namespace CameraOperator.Tool
+namespace CamOpr.Tool
 {
     public class ToolController : MonoBehaviour
     {

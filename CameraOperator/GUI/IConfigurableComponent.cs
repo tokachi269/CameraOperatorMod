@@ -1,4 +1,4 @@
-﻿namespace CameraOperatorMod.GUI
+﻿namespace CamOpr.GUI
 {
     interface IConfigurableComponent<ConfigT>
         where ConfigT : IConfig

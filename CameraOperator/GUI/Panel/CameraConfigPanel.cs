@@ -2,7 +2,7 @@
 using ColossalFramework.UI;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     public class CameraConfigPanel : UIPanel
     {
@@ -13,7 +13,7 @@ namespace CameraOperatorMod.GUI
         public ButtonPanel AddButton;
         public float aspect = 2.34f;
 
-        public CameraConfigPanel()
+        public void Awake()
         {
             size = new Vector2(CameraOperator.DefaultRect.width, DefaultHeight);
             padding = Helper.Padding(4, 12, 4, 0);
@@ -24,7 +24,7 @@ namespace CameraOperatorMod.GUI
             FovSlider.Init(minValue: 1f, maxValue: 179f, stepSize: 0.1f, defaultValue: 60f);
             FovSlider.FieldSlider.Slider.eventValueChanged += delegate(UIComponent c, float p)
             {
-                CameraOperatorMod.CameraOperator.mainCamera.fieldOfView = p / 2f;
+                CamOpr.CameraOperator.MainCamera.fieldOfView = p / 2f;
             };
 
             ZoomSlider = AddUIComponent<SliderPanel>();
@@ -32,9 +32,9 @@ namespace CameraOperatorMod.GUI
             ZoomSlider.Init(minValue: 1f, maxValue: 179f, stepSize: 0.0001f, defaultValue: 1f);
             ZoomSlider.FieldSlider.Slider.eventValueChanged += delegate (UIComponent c, float p)
             {
-                CameraOperatorMod.CameraOperator.mainCamera.fieldOfView = p / 2f;
-                CameraOperatorMod.CameraOperator.cameraController.m_currentSize =
-                    (float)(CameraOperatorMod.CameraOperator.mainCamera.fieldOfView * aspect);
+                CamOpr.CameraOperator.MainCamera.fieldOfView = p / 2f;
+                CamOpr.CameraOperator.CameraController.m_currentSize =
+                    (float)(CamOpr.CameraOperator.MainCamera.fieldOfView * aspect);
                 //CameraManeger.cameraController.m_targetSize =
                 //    (float)(36 / Math.Tan(CameraManeger.mainCamera.fieldOfView / 2) * 2);
             };

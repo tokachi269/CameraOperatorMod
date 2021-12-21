@@ -1,6 +1,6 @@
 ﻿using ColossalFramework.UI;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
 
 

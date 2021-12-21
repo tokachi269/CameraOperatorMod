@@ -2,7 +2,7 @@
 using ColossalFramework.UI;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
 	// Token: 0x0200000D RID: 13
 	public class CameraOperatorButton : UIButton

@@ -1,16 +1,16 @@
 ﻿using ColossalFramework.UI;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     public class PlaybackPanel: UIPanel
     {
         private int DefaultHeight = 95;
         public SliderPanel TimeLineSlider;
 
-        private FieldProperty FPS;
+        public FieldProperty FPS;
         private UILabel Label;
-        private ButtonPanel PlaybackButton;
+        public ButtonPanel PlaybackButton;
 
         public PlaybackPanel()
         {

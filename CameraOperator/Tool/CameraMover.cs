@@ -121,11 +121,11 @@ public class CameraMover : MonoBehaviour
             float x = (_startMousePos.x - Input.mousePosition.x) / Screen.width;
             float y = (_startMousePos.y - Input.mousePosition.y) / Screen.height;
 
-            x = x * _positionStep;
-            y = y * _positionStep;
+            x *= _positionStep;
+            y *= _positionStep;
 
             Vector3 velocity = _camTransform.rotation * new Vector3(x, y, 0);
-            velocity = velocity + _presentCamPos;
+            velocity += _presentCamPos;
             _camTransform.position = velocity;
         }
     }
@@ -152,7 +152,7 @@ public class CameraMover : MonoBehaviour
         float time = 0;
         while (time < 2)
         {
-            time = time + Time.deltaTime;
+            time += Time.deltaTime;
             yield return null;
         }
         _uiMessageActiv = false;

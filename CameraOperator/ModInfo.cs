@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
 
-namespace CameraOperatorMod
+namespace CamOpr
 {
     public static class ModInfo
     {

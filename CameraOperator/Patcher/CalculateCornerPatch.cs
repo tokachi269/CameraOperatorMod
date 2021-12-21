@@ -1,4 +1,4 @@
-namespace CameraOperatorMod.Patcher {
+namespace CamOpr.Patcher {
     using HarmonyLib;
     using JetBrains.Annotations;
     using System.Reflection;

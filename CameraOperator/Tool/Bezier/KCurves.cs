@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace CameraOperator.Tool
+namespace CamOpr.Tool
 {
     public static class KCurves
     {
@@ -297,9 +297,9 @@ namespace CameraOperator.Tool
         }
         struct ExtendKnots
         {
-            Vector3 top;
-            Vector3[] ps;
-            Vector3 bottom;
+            private Vector3 top;
+            private Vector3[] ps;
+            private Vector3 bottom;
 
             public Vector3 this[int i]
             {
@@ -324,9 +324,9 @@ namespace CameraOperator.Tool
 
         struct ExtendedBezierControls
         {
-            Vector3 top;
-            Vector3[] cs;
-            Vector3 bottom;
+            private Vector3 top;
+            private Vector3[] cs;
+            private Vector3 bottom;
 
             public Vector3 this[int i]
             {

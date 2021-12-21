@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace CameraOperatorMod.GUI
+namespace CamOpr.GUI
 {
     interface IConfig : ICloneable
     {

@@ -6,14 +6,14 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using UnityEngine;
 
-namespace CameraOperator.Tool
+namespace CamOpr.Tool
 {
     public class RotateTool : BaseCameraMode, ICameraMode
     {
         public override string Name { get; set; }
 
         //ユーザー制御点
-        protected override List<CameraConfig> Knots { get; set; } = new List<CameraConfig>();
+        public override List<CameraConfig> Knots { get; set; } = new List<CameraConfig>();
         [SerializeField]
         public float Time { get; set; }
         [SerializeField]
@@ -57,7 +57,7 @@ namespace CameraOperator.Tool
                 float dt = UnityEngine.Time.deltaTime;
 
                 GameObject.Find("Main Camera").transform.RotateAround(
-                    Knots[0].position,
+                    Knots[0].Position,
                     Vector3.up,
                     360 / TimePerRound * dt
                 );
@@ -71,8 +71,8 @@ namespace CameraOperator.Tool
         //        CameraShake.enabled = false;
             }
 
-            moveCameraCube.transform.position = DefaultPosition.position;
-            moveCameraCube.transform.rotation = DefaultPosition.rotation;
+            moveCameraCube.transform.position = DefaultPosition.Position;
+            moveCameraCube.transform.rotation = DefaultPosition.Rotation;
         }
 
         public void AddKnot(Vector3 position, Quaternion rotation, float fov)
@@ -80,7 +80,7 @@ namespace CameraOperator.Tool
             this.Knots.Add(new CameraConfig(position, rotation, fov));
             if (Knots.Count == 0)
             {
-                moveCameraCube.transform.position = Knots[0].position;
+                moveCameraCube.transform.position = Knots[0].Position;
             }
         }
 
@@ -94,7 +94,7 @@ namespace CameraOperator.Tool
             this.Knots.Add(cp);
             if (Knots.Count == 0)
             {
-                moveCameraCube.transform.position = Knots[0].position;
+                moveCameraCube.transform.position = Knots[0].Position;
             }
         }
 
@@ -106,7 +106,7 @@ namespace CameraOperator.Tool
 
         public class Serializer : ISerialize
         {
-            RotateTool Instance;
+            private RotateTool Instance;
             public Serializer(RotateTool instance)
             {
                 this.Instance = instance;

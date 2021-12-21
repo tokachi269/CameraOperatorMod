@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace CameraOperator.Tool
+namespace CamOpr.Tool
 {
     public interface ICameraMode
     {
@@ -18,7 +18,7 @@ namespace CameraOperator.Tool
     {
         public abstract string Name { get; set; }
         //ユーザー制御点
-        protected abstract List<CameraConfig> Knots { get; set; }
+        public abstract List<CameraConfig> Knots { get; set; }
 
         public  int Time { get; set; }
 
