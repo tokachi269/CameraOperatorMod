@@ -13,10 +13,18 @@ namespace CamOpr
         public void OnEnabled() {
             if (this.CameraManegerGameObject == null)
             {
+                if (GameObject.Find("CameraManeger") != null)
+                {
+                    Object.Destroy(GameObject.Find("CameraManeger"));
+                }
                 this.CameraManegerGameObject = new GameObject("CameraManeger");
                 CameraOperator.Instance = CameraManegerGameObject.AddComponent<CameraOperator>();
                 CameraOperator.Instance.Initialize();
                 Debug.Log("OnEnabled");
+
+            }
+            else
+            {
 
             }
         }

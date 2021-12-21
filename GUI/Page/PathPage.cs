@@ -1,6 +1,4 @@
 ﻿using CamOpr.Tool;
-using System;
-using System.Collections;
 using UnityEngine;
 
 namespace CamOpr.GUI
@@ -27,7 +25,8 @@ namespace CamOpr.GUI
             if (tool != null)
             {
                 Debug.Log("Adding knots failed!");
-                tool = new PathTool();
+
+                tool = new GameObject("tool").AddComponent<PathTool>();
             }
         }
 

@@ -50,6 +50,10 @@ namespace CamOpr.Tool
 
         private float dist = 0;
 
+        IEnumerator enumPlay = null;
+
+
+
         public PathTool()
         {
             render = new Render(this);
@@ -174,7 +178,8 @@ namespace CamOpr.Tool
 
         public void StartPlay()
         {
-            StartCoroutine(Play());
+            enumPlay = Play();
+            StartCoroutine(enumPlay);
         }
 
         /// <summary>
@@ -183,9 +188,12 @@ namespace CamOpr.Tool
         /// </summary>
         public IEnumerator Play()
         {
+
             List<CameraConfig> tempKnots = Knots;
             DefaultCameraConfig = CameraUtils.CameraPosition();
             CameraUtils.SetFreeCamera(true);
+            CameraOperator.CameraController.enabled = false;
+
             Debug.Log("Start playing");
 
             if (IsCameraShake)
@@ -275,11 +283,11 @@ namespace CamOpr.Tool
                     }
                 }
 
-                Debug.Log("mode:" + mode + " bezierIndex:" + bezierIndex + " knotIndex:" + knotIndex + " KnotBetweenRange:" + KnotBetweenRange+ " ProgressLength" + progressLength);
+                //Debug.Log("mode:" + mode + " bezierIndex:" + bezierIndex + " knotIndex:" + knotIndex + " KnotBetweenRange:" + KnotBetweenRange+ " ProgressLength" + progressLength);
 
                 float easing = Easing.GetEasing(mode, progressLength / KnotBetweenRange);
 
-                Debug.Log("easing:"+ easing);
+                //Debug.Log("easing:"+ easing);
 
                 float t = Beziers.GetT(bezierIndex, bezierIndex != 0 && bezierIndex % 2 == 0 ? easing * KnotBetweenRange - Beziers.Length(bezierIndex - 1) : easing * KnotBetweenRange);
 
@@ -289,10 +297,11 @@ namespace CamOpr.Tool
                     Vector3 pos = CalcPosition(bezierIndex, t);
                     Quaternion rot = CalcRotation(ref tempKnots, knotIndex, easing);
                     CameraUtils.SetCamera(pos, rot);
-                    render.moveCameraCube.transform.position = pos;
-                    render.moveCameraCube.transform.rotation = rot;
-                    //GameObject.Find("Main Camera").transform.position = pos;
-                    //GameObject.Find("Main Camera").transform.rotation = rot;
+                    // render.moveCameraCube.transform.position = pos;
+                    // render.moveCameraCube.transform.rotation = rot;
+                    // CameraOperator.CameraController.SetOverrideModeOn(pos, new Vector2(rot.x, rot.y),60);
+                    CameraOperator.MainCamera.transform.position = pos;
+                    CameraOperator.MainCamera.transform.rotation = rot;
                 }
 
                 float dt = UnityEngine.Time.deltaTime;
@@ -307,11 +316,14 @@ namespace CamOpr.Tool
                 // CameraShake.enabled = false;
             }
 
-            GameObject.Find("Main Camera").transform.position = DefaultCameraConfig.Position;
-            GameObject.Find("Main Camera").transform.rotation = DefaultCameraConfig.Rotation;
-            render.moveCameraCube.transform.position = DefaultCameraConfig.Position;
-            render.moveCameraCube.transform.rotation = DefaultCameraConfig.Rotation;
+            CameraOperator.MainCamera.transform.position = DefaultCameraConfig.Position;
+            CameraOperator.MainCamera.transform.rotation = DefaultCameraConfig.Rotation;
+            // render.moveCameraCube.transform.position = DefaultCameraConfig.Position;
+            // render.moveCameraCube.transform.rotation = DefaultCameraConfig.Rotation;
             CameraUtils.SetFreeCamera(false);
+            CameraOperator.CameraController.enabled = true;
+
+            //  CameraOperator.mainWindow.isVisible = true;
             Debug.Log("End playing");
             yield break;
         }
@@ -418,7 +430,7 @@ namespace CamOpr.Tool
             this.Knots.Add(new CameraConfig(position, rotation, fov));
             if (Knots.Count == 0)
             {
-                render.moveCameraCube.transform.position = Knots[0].Position;
+               // render.moveCameraCube.transform.position = Knots[0].Position;
             }
             SetBezierFromKnots();
         }
@@ -433,6 +445,8 @@ namespace CamOpr.Tool
         {
             if (param != null)
             {
+               // var position = CameraOperator.CameraController.m_currentPosition;
+
                 var ft = (float)param;
                 int bezierIndex = (int)Math.Floor(ft);
                 int knotIndex = bezierIndex % 2 == 0 ? (bezierIndex / 2) : (bezierIndex + 1) / 2;
@@ -448,7 +462,7 @@ namespace CamOpr.Tool
                 this.Knots.Add(cp);
                 if (Knots.Count == 0)
                 {
-                    render.moveCameraCube.transform.position = Knots[0].Position;
+                   // render.moveCameraCube.transform.position = Knots[0].Position;
                 }
             }
 
