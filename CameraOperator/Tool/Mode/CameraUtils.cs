@@ -1,9 +1,4 @@
-﻿using CamOpr;
-using ColossalFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using ColossalFramework;
 using UnityEngine;
 
 namespace CamOpr.Tool

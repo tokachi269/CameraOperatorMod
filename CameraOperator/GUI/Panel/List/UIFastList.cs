@@ -1,7 +1,6 @@
-﻿using ColossalFramework.UI;
-
-using System;
+﻿using System;
 using CamOpr.Resources;
+using ColossalFramework.UI;
 using UnityEngine;
 
 namespace CamOpr.GUI
@@ -111,7 +110,7 @@ namespace CamOpr.GUI
         #region Public accessors
         public FastList<IUIFastListRow> rows => m_rows;
 
-        public bool autoHideScrollbar
+        public bool AutoHideScrollbar
         {
             get { return m_autoHideScrollbar; }
             set
@@ -126,7 +125,7 @@ namespace CamOpr.GUI
         /// <summary>
         /// Change the color of the background
         /// </summary>
-        public Color32 backgroundColor
+        public Color32 BackgroundColor
         {
             get { return m_color; }
             set
@@ -140,7 +139,7 @@ namespace CamOpr.GUI
         /// <summary>
         /// Change the sprite of the background
         /// </summary>
-        public string backgroundSprite
+        public string BackgroundSprite
         {
             get { return m_backgroundSprite; }
             set
@@ -161,7 +160,7 @@ namespace CamOpr.GUI
         /// Default value is false
         /// Rows can still be selected via selectedIndex
         /// </summary>
-        public bool canSelect
+        public bool CanSelect
         {
             get { return m_canSelect; }
             set
@@ -547,14 +546,14 @@ namespace CamOpr.GUI
             m_panel.atlas = ResourceLoader.Atlas;
             m_panel.width = width - 10f;
             m_panel.height = height;
-            m_panel.padding = new RectOffset(2, 2, 2, 2);
+            m_panel.padding = Helper.Padding(2, 2, 2, 2);
             m_panel.backgroundSprite = "LevelBarBackground";
             m_panel.color = m_color;
             m_panel.clipChildren = true;
             m_panel.relativePosition = Vector2.zero;
             m_panel.autoLayout = true;
             m_panel.autoLayoutDirection = LayoutDirection.Vertical;
-            m_panel.autoLayoutPadding = new RectOffset(2,0,1,1);
+            m_panel.autoLayoutPadding = Helper.Padding(2, 0, 1, 1);
 
             // Scrollbar
             m_scrollbar = AddUIComponent<UIScrollbar>();

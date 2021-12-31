@@ -1,5 +1,5 @@
-﻿using ColossalFramework.UI;
-using System.Linq;
+﻿using System.Linq;
+using ColossalFramework.UI;
 using UnityEngine;
 
 namespace CamOpr.GUI

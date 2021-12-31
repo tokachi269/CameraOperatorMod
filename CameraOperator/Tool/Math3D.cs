@@ -1,7 +1,6 @@
-using UnityEngine;
-using System.Collections;
 using System;
- 
+using UnityEngine;
+
 public class Math3D : MonoBehaviour {
  
 	private static Transform tempChild = null;

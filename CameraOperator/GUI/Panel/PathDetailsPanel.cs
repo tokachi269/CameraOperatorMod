@@ -1,22 +1,22 @@
-﻿using ColossalFramework.UI;
+﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
+using CamOpr.Tool;
+using ColossalFramework.UI;
 using UnityEngine;
 
 namespace CamOpr.GUI
 {
     public class PathDetailsPanel : UIPanel
     {
-
         Dictionary<EPropaties, EditorPropertyItem> Propertys = new Dictionary<EPropaties, EditorPropertyItem>();
 
         private enum EPropaties
         {
-            PositionProperty,
-            RotationProperty,
-            FovProperty,
-            FpsProperty,
-            DurationProperty,
+            Index,
+            Position,
+            Rotation,
+            FOV,
+            Duration,
         }
 
         private int defaultHeight = 26;
@@ -29,7 +29,7 @@ namespace CamOpr.GUI
                 defaultHeight = value;
             }
         }
-        
+
         public PathDetailsPanel()
         {
             autoLayout = true;
@@ -38,37 +38,40 @@ namespace CamOpr.GUI
             color = Helper.RGBA(149, 157, 163, 215);
             backgroundSprite = "WhiteRect";
 
-            Propertys.Add(EPropaties.PositionProperty, AddUIComponent<Vector3Property>());
+            AddProperty(EPropaties.Position, AddUIComponent<Vector3Property>());
+            AddProperty(EPropaties.Rotation, AddUIComponent<Vector3Property>());
+            AddProperty(EPropaties.FOV, AddUIComponent<FieldProperty>());
+            AddProperty(EPropaties.Duration, AddUIComponent<FieldProperty>());
 
-            Propertys.Add(EPropaties.RotationProperty, AddUIComponent<Vector3Property>());
+            SetRowHeights();
+        }
 
-            Propertys.Add(EPropaties.FovProperty, AddUIComponent<FieldProperty>());
-
-            Propertys.Add(EPropaties.FpsProperty, AddUIComponent<FieldProperty>());
-
-            Propertys.Add(EPropaties.DurationProperty, AddUIComponent<FieldProperty>());
-            
-            InitPanel();
+        internal void Refresh(CameraConfig cp)
+        {
+            Propertys[EPropaties.Position].UpdateValues(cp.Position);
+            Propertys[EPropaties.Rotation].UpdateValues(cp.Rotation);
+            Propertys[EPropaties.FOV].UpdateValues(cp.Fov);
+            Propertys[EPropaties.Duration].UpdateValues(cp.Duration);
         }
 
         protected void InitPanel()
         {
-            Propertys[EPropaties.PositionProperty].name = EPropaties.PositionProperty.ToString();
-            Propertys[EPropaties.PositionProperty].Label.text = "Position";
-
-            Propertys[EPropaties.RotationProperty].name = EPropaties.RotationProperty.ToString();
-            Propertys[EPropaties.RotationProperty].Label.text = "Rotation";
-
-            Propertys[EPropaties.FovProperty].name = EPropaties.FovProperty.ToString();
-            //Propertys[EPropaties.FovProperty].Label.text = "FOV";
-
-            Propertys[EPropaties.FpsProperty].name = EPropaties.FpsProperty.ToString();
-            //Propertys[EPropaties.FpsProperty].Label.text = "Fps";
-
-            Propertys[EPropaties.DurationProperty].name = EPropaties.DurationProperty.ToString();
-            //Propertys[EPropaties.DurationProperty].Label.text = "Duration";
-
             SetRowHeights();
+        }
+
+        private void AddProperty(EPropaties key, EditorPropertyItem property)
+        {
+            Propertys.Add(key, property);
+            property.name = key.ToString();
+            property.Label.text = key.ToString();
+        }
+
+        protected override void OnSizeChanged()
+        {
+            foreach (var p in Propertys)
+            {
+                p.Value.Refresh(false);
+            }
         }
 
         private void SetRowHeights()
@@ -77,38 +80,8 @@ namespace CamOpr.GUI
             {
                 p.Value.size = new Vector2((CameraOperator.DefaultRect.width / 1.5f) - padding.horizontal, DefaultHeight);
                 p.Value.color = Helper.GrayScale(30);
-                p.Value.autoLayoutStart = LayoutStart.TopRight;
-
+                p.Value.autoLayoutStart = LayoutStart.BottomLeft;
             }
-
-            /*
-                        FieldInfo[] fields = GetType().GetFields();
-
-                        foreach (FieldInfo field in fields)
-                        {
-                            Debug.Log(field);
-
-                            var f = typeof(UIPanel).GetProperty("size",
-                                BindingFlags.Public | BindingFlags.NonPublic |
-                                BindingFlags.Instance | BindingFlags.Static |
-                                BindingFlags.DeclaredOnly);
-
-                            Debug.Log(f);
-                           // foreach(var x in f)
-                            {
-                                var a = f.GetValue(field, null);
-
-                                Debug.Log(a);
-
-                                if (!(f is null))
-                                {
-                                    ((PropertyInfo)f).SetValue(a, new Vector2(CameraOperator.DefaultRect.width / 1.5f, DefaultHeight), null);
-                                }
-                            }
-                            //f.SetValue(type, new Vector2(CameraOperator.DefaultRect.width / 1.5f, DefaultHeight)) ;
-
-                        }
-            */
         }
     }
 }

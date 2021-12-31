@@ -1,4 +1,5 @@
 ﻿using ColossalFramework.UI;
+using System;
 using UnityEngine;
 
 namespace CamOpr.GUI
@@ -8,7 +9,9 @@ namespace CamOpr.GUI
         public UILabel Label { get; set; }
         protected ContentPanel Content { get; set; }
 
-        public virtual bool hasLabel => false;
+        public virtual bool HasLabel => false;
+
+        public virtual bool hasUnit => false;
 
         public string Text
         {
@@ -25,12 +28,13 @@ namespace CamOpr.GUI
         public override bool SupportAlignment => true;
 
         protected abstract void InitPanel();
+        public abstract void UpdateValues<T>(T value);
 
         public EditorPropertyItem()
         {
             autoLayout = false;
 
-            if (hasLabel)
+            if (HasLabel)
             {
                 Label = AddUIComponent<UILabel>();
                 Label.textScale = 0.75f;
@@ -40,33 +44,51 @@ namespace CamOpr.GUI
                 Label.padding = new RectOffset(0, 0, 2, 0);
                 Label.disabledTextColor = Helper.RGB(160, 160, 160);
                 Label.name = nameof(Label);
+                Label.autoHeight = true;
+                Label.padding = Helper.Padding((int)(DefaultHeight - GetLabelHeight()) / 2);
+
                 //Label.eventTextChanged += (_, _) => SetLabel();
             }
 
             Content = AddUIComponent<ContentPanel>();
+            Content.height = DefaultHeight;
         }
 
         protected override void OnSizeChanged()
         {
             base.OnSizeChanged();
+
+            if (HasLabel) {
+                Label.autoHeight = false;
+                Label.autoHeight = true;
+                Label.padding = Helper.Padding((int)(DefaultHeight - GetLabelHeight()) / 2);
+
+                // Label.padding = Helper.Padding((int)(DefaultHeight - Label.height) / 2);
+            }
+
             Refresh(false);
         }
 
-        protected void Refresh(bool refreshContent = true)
+        public void Refresh(bool refreshContent = true)
         {
-            if (refreshContent)
-                //Alignment.Refresh();
-        
-            Alignment.height = height;
-            Alignment.relativePosition = new Vector2(width - Alignment.width - ItemsPadding, 0f);
-        
-          // SetLabel();
+            if (!(Content is null))
+                Content.Refresh();
+
+                Content.height = height;
+                Content.relativePosition = new Vector2(width - Alignment.width - ItemsPadding, 0f);
+                SetLabel();
         }
+
         private void SetLabel()
         {
-            Label.width = width - Content.width - ItemsPadding * 2;
-            Label.MakePixelPerfect(false);
-            Label.relativePosition = new Vector2(5, (height - Label.height) / 2);
+            if (HasLabel)
+            {
+                Label.width = width - Content.width - ItemsPadding * 2;
+                Label.MakePixelPerfect(false);
+                Label.padding = Helper.Padding((int)(DefaultHeight - GetLabelHeight()) / 2);
+                // Label.relativePosition = new Vector2(5, (height - Label.height) / 2);
+            }
+
         }
 
         protected class ContentPanel : UIPanel
@@ -92,6 +114,12 @@ namespace CamOpr.GUI
                 foreach (var item in components)
                     item.relativePosition = new Vector2(item.relativePosition.x, (height - item.height) / 2);
             }
+
+        }
+
+        public float GetLabelHeight()
+        {
+            return Mathf.CeilToInt(Label.font.lineHeight * Label.textScale);
         }
     }
 }

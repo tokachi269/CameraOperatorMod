@@ -1,5 +1,5 @@
-﻿using ColossalFramework.UI;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using ColossalFramework.UI;
 using UnityEngine;
 
 namespace CamOpr.GUI
@@ -66,7 +66,7 @@ namespace CamOpr.GUI
 			//editor.Init(this);
 
 			var page = tabStrip.tabContainer.AddUIComponent<TabPage>();
-			page.name = page.TabName.ToString();
+			page.name = page.TabMode.ToString();
 			var tab = tabStrip.AddTabOnly(page.name);
 
 			int index = tabStrip.tabCount - 1;

@@ -25,10 +25,13 @@ namespace CamOpr.GUI
             textColor = Helper.GrayScale(250);
             horizontalAlignment = UIHorizontalAlignment.Left;
             size = new Vector2(70, 22);
-            padding = Helper.Padding(0, 6);
+            padding = Helper.Padding(2, 6); //テキストボックス内のテキストの位置を指定
             relativePosition = new Vector2(0, 0);
-            padding = Helper.Padding(4, 3, 3);
         }
 
+    protected override void OnSizeChanged()
+        {
+            base.OnSizeChanged();
+        }
     }
 }
