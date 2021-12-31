@@ -94,7 +94,6 @@ namespace CamOpr
         {
             c.autoLayout = true;
             c.autoLayoutDirection = direction;
-            c.autoLayoutStart = start;
             c.autoLayoutPadding = padding ?? Helper.ZeroOffset;
         }
     }

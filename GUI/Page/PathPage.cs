@@ -1,11 +1,12 @@
 ﻿using CamOpr.Tool;
+using ColossalFramework.UI;
 using UnityEngine;
 
 namespace CamOpr.GUI
 {
     public class PathPage : BaseTabPage<CameraConfigPanel, ScrollablePanel, PlaybackPanel>
     {
-        public override CameraMode TabName => CameraMode.Path;
+        public override CameraMode TabMode => CameraMode.Path;
 
         private PathTool tool;
 
@@ -14,10 +15,11 @@ namespace CamOpr.GUI
             base.Awake();
             CameraSettingPanel.AddButton.OnButtonClick += OnAddKnotButtonClick;
             void OnAddKnotButtonClick() => AddKnot();
-            tool = (PathTool)CamOpr.CameraOperator.Modes[new Tuple(TabName, "default")];
+            tool = (PathTool)CamOpr.CameraOperator.Modes[new Tuple(TabMode, "default")];
 
             PlayPanel.PlaybackButton.OnButtonClick += OnPlayButtonClick;
             void OnPlayButtonClick() => Play();
+            ListPanel.ListPanel.eventSelectedIndexChanged += RefreshDetailPanel;
         }
 
         public void Start()
@@ -27,9 +29,18 @@ namespace CamOpr.GUI
                 Debug.Log("Adding knots failed!");
 
                 tool = new GameObject("tool").AddComponent<PathTool>();
+
             }
         }
 
+        public void RefreshDetailPanel(UIComponent component, int index)
+        {
+            Debug.Log("Detail display" + index);
+
+            CameraConfig cp = tool.Knots[index];
+            ListPanel.DetailPanel.Refresh(cp);
+
+        }
         public override void AddKnot()
         {
                 var cameraConfig = CameraUtils.CaptureCamera();

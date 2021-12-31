@@ -5,8 +5,7 @@ namespace CamOpr.GUI
 {
     public class SliderPanel : EditorPropertyItem
     {
-        public FieldProperty TextField { get; set; }
-
+        public FieldType TextField { get; set; }
         public SliderProperty FieldSlider { get; set; }
 
         public bool HasField = true;
@@ -17,38 +16,42 @@ namespace CamOpr.GUI
 
         public  SliderPanel()
         {
-            TextField = AddUIComponent<FieldProperty>();
-            FieldSlider = AddUIComponent<SliderProperty>();
+            TextField = Content.AddUIComponent<FieldType>();
+            FieldSlider = Content.AddUIComponent<SliderProperty>();
             InitPanel();
         }
 
         protected override void InitPanel()
         {
+            autoLayoutStart = LayoutStart.BottomLeft;
+
             autoLayoutDirection = LayoutDirection.Horizontal;
 
             size = new Vector2(CameraOperator.DefaultRect.width, DefaultHeight);
             autoLayoutPadding = Helper.Padding(0, ItemsPadding, 0, 0);
-            padding = Helper.Padding(0, 0, 0, 14);
+            padding = Helper.Padding(0, 0, 0, 4);
 
             // autoFitChildrenVertically = true; //いらない
             clipChildren = false;
             autoLayout = true;
 
-            TextField.Init();
+            //TextField.Init();
             InitTextField();
 
             FieldSlider.Slider.eventValueChanged += (c, value) => {
                 if (TextField != null)
                 {
-                    TextField.Content.text = value.ToString();
+                    TextField.text = value.ToString();
                 }
             };
         }
 
         private void InitTextField()
         {
-            TextField.relativePosition = new Vector2(0,(DefaultHeight - TextField.height) / 2);
+            //TextField.relativePosition = new Vector2(0,(DefaultHeight - TextField.height) / 2);
 
+            TextField.width = 57;
+            TextField.horizontalAlignment = UIHorizontalAlignment.Right;
             //TextField.eventTextSubmitted += (c, text) => {
             //    if (text == "") return;
             //    try
@@ -73,7 +76,10 @@ namespace CamOpr.GUI
             FieldSlider.Slider.value = defaultValue;
         }
 
-
+        public override void UpdateValues<T>(T value)
+        {
+            FieldSlider.UpdateValues(value);
+        }
 
         public class SliderProperty : EditorPropertyItem
         {
@@ -85,7 +91,7 @@ namespace CamOpr.GUI
             {
                 size = new Vector2(CameraOperator.DefaultRect.width, DefaultHeight);
 
-                Slider = AddUIComponent<UISlider>();
+                Slider = Content.AddUIComponent<UISlider>();
                 Thumb = Slider.AddUIComponent<UISlicedSprite>();
                 InitPanel();
             }
@@ -106,31 +112,14 @@ namespace CamOpr.GUI
                 Alignment.width = 345f;
 
                 Slider.thumbObject = Thumb;
+
+                autoLayout = true;
+
             }
 
-            protected override void OnSizeChanged()
+            public override void UpdateValues<T>(T value)
             {
-                base.OnSizeChanged();
-                SetSize();
-            }
-
-            public override void Init()
-            {
-                base.Init();
-                SetSize();
-            }
-
-            protected virtual void SetSize(float? width = null, float? height = null)
-            {
-                if (!(Slider is null))
-                {
-                    if (!(width is null)) base.width = Slider.width;
-                    //if (!(height is null)) Slider.height = (float)height;
-
-                    base.size = Slider.size;
-                }
-                base.OnSizeChanged();
-
+                throw new System.NotImplementedException();
             }
         }
     }

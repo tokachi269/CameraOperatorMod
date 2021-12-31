@@ -1,37 +1,45 @@
-﻿
+﻿using System.ComponentModel;
 using UnityEngine;
-using System.ComponentModel;
 
 namespace CamOpr.Tool
 {
 	public class CameraConfig
 	{
-		public int ListIndex = -1;
+		public int ListIndex { get; set; } = -1;
 
-		public Vector3 Position;
+		//カメラの座標
+		public Vector3 Position { get; set; }
 
-		public Quaternion Rotation;
+		//向き
+		public Quaternion Rotation { get; set; }
 
-		public float Length;
+		//ユーザー制御点間の長さ
+		public float Length { get; set; }
 
-		public float Size;
+		public float Size { get; set; }
 
-		public float Height;
+		public float Height { get; set; }
+
 
 		[DefaultValue(2f)]
-		public float Duration = 2f;
+		public float Duration { get; set; } = 2f;
 
+		//一時停止時間
 		[DefaultValue(0f)]
-		public float Delay;
+		public float Delay { get; set; }
 
+		//画角
 		[DefaultValue(45f)]
-		public float Fov;
+		public float Fov { get; set; }
 
+		//座標、向き、画角の適用設定
 		public ApplyItems ApplyItems = new ApplyItems(true, true, true);
 
+		//Easing設定
 		[DefaultValue(EasingMode.Auto)]
 		public EasingMode EasingMode;
 
+		//カメラの注視設定
 		public bool IsLookAt;
 
 		public CameraConfig(Vector3 position, Quaternion rotation, float fov ,bool? isLookAt = null)

@@ -1,11 +1,10 @@
 ﻿using ColossalFramework.UI;
-using System;
 using CamOpr.Tool;
 using UnityEngine;
 
 namespace CamOpr.GUI
 {
-    public class KnotItem : UIPanel, IUIFastListRow
+    public class KnotItemRow : UIPanel, IUIFastListRow
     {
         private static float ItemHeight = 20f;
         
@@ -13,7 +12,7 @@ namespace CamOpr.GUI
         private bool initialized;
         CameraConfig cp;
 
-        public KnotItem()
+        public KnotItemRow()
         {
             width = CameraOperator.DefaultRect.width / 3;
             height = ItemHeight;
@@ -43,7 +42,6 @@ namespace CamOpr.GUI
                     IndexLabel.text = cp.ListIndex.ToString().PadLeft(3);
                 }
             }
-
         }
 
         public void Deselect(bool isRowOdd)
@@ -76,11 +74,15 @@ namespace CamOpr.GUI
             {
                 color = Helper.GrayScale(236);
             }
+            else
+            {
+                color = Helper.GrayScale(236);
+            }
         }
 
         public void Select(bool isRowOdd)
         {
-            color = Helper.GrayScale(230);
+            color = Helper.GrayScale(120);
         }
     }
 }
