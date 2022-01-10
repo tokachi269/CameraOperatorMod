@@ -1,4 +1,5 @@
-﻿using ColossalFramework.UI;
+﻿using System;
+using ColossalFramework.UI;
 using UnityEngine;
 
 namespace CamOpr.GUI
@@ -36,6 +37,11 @@ namespace CamOpr.GUI
             PlaybackButton.Init(55f, 55f, "▶", 3f);
             PlaybackButton.relativePosition = new Vector2(415f, 0f);
 
+        }
+
+        internal void SetAvailable(bool value)
+        {
+            throw new NotImplementedException();
         }
     }
 }

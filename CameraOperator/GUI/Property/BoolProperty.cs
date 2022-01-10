@@ -34,6 +34,9 @@ namespace CamOpr.GUI
             checkBox.relativePosition = new Vector3(ItemsPadding, (height - Height) / 2);
         }
 
-
+        public override void UpdateValues<T>(T value)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

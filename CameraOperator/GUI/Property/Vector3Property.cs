@@ -5,42 +5,54 @@ namespace CamOpr.GUI
 {
     public class Vector3Property : EditorPropertyItem
     {
-        protected FieldProperty FieldX { get; set; }
-        protected FieldProperty FieldY { get; set; }
-        protected FieldProperty FieldZ { get; set; }
+        protected FieldType FieldX { get; set; }
+        protected FieldType FieldY { get; set; }
+        protected FieldType FieldZ { get; set; }
 
         public override int ItemsPadding => 4;
         public override float DefaultHeight => 28;
-        public override bool hasLabel => true;
+        public override bool HasLabel => true;
+
         public Vector3Property()
         {
-            FieldX = Content.AddUIComponent<FieldProperty>();
-            FieldY = Content.AddUIComponent<FieldProperty>();
-            FieldZ = Content.AddUIComponent<FieldProperty>();
+            FieldX = Content.AddUIComponent<FieldType>();
+            FieldY = Content.AddUIComponent<FieldType>();
+            FieldZ = Content.AddUIComponent<FieldType>();
             InitPanel();
         }
 
         protected override void InitPanel()
         {
-
             autoLayoutDirection = LayoutDirection.Horizontal;
             clipChildren = false;
-            autoLayoutPadding = Helper.Padding(ItemsPadding, ItemsPadding, 0, 0);
-
-            FieldX.size = new Vector2(width - ItemsPadding * 2, DefaultHeight);
-            FieldX.relativePosition = new Vector3(ItemsPadding, (height - DefaultHeight) / 2);
-
-            FieldY.size = new Vector2(width - ItemsPadding * 2, DefaultHeight);
-            FieldY.relativePosition = new Vector3(ItemsPadding, (height - DefaultHeight) / 2);
-
-            FieldZ.size = new Vector2(width - ItemsPadding * 2, DefaultHeight);
-            FieldZ.relativePosition = new Vector3(ItemsPadding, (height - DefaultHeight) / 2);
+            autoLayoutPadding = Helper.Padding(0, ItemsPadding, 0, ItemsPadding);
 
             autoLayout = true;
-            autoLayout = false;
-            autoLayout = true;
 
-            Content.autoLayout = true;
+            Label.width = base.width - Content.width;
+        }
+
+        public override void UpdateValues<T>(T value)
+        {
+            Vector3 vector3;
+
+            if (value is Vector3)
+            {
+                vector3 = (Vector3)(object)value;
+            }
+            else if (value is Quaternion)
+            {
+                vector3 = ((Quaternion)(object)value).eulerAngles;
+            }
+            else
+            {
+                Debug.Log("Must be a Vector3 type");
+                return;
+            }
+
+            FieldX.text = vector3.x.ToString();
+            FieldY.text = vector3.y.ToString();
+            FieldZ.text = vector3.z.ToString();
         }
     }
 }

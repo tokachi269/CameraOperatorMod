@@ -74,6 +74,7 @@
     <Compile Include="GUI\Page\AboutPage.cs" />
     <Compile Include="GUI\Page\UtilsPage.cs" />
     <Compile Include="GUI\Panel\PathDetailsPanel.cs" />
+    <Compile Include="GUI\UIExtension.cs" />
     <Compile Include="Tool\Bezier\Bezier3D.cs" />
     <Compile Include="Tool\Bezier\BezierControls.cs" />
     <Compile Include="Tool\Bezier\BezierUtil.cs" />
@@ -96,11 +97,9 @@
     <Compile Include="GUI\HeaderPanel.cs" />
     <Compile Include="GUI\Panel\ScrollablePanel.cs" />
     <Compile Include="GUI\Panel\CameraConfigPanel.cs" />
-    <Compile Include="GUI\Config.cs" />
     <Compile Include="GUI\Helper.cs" />
-    <Compile Include="GUI\IConfigurableComponent.cs" />
     <Compile Include="GUI\Page\BaseTabPage.cs" />
-    <Compile Include="GUI\Panel\List\KnotItem.cs" />
+    <Compile Include="GUI\Panel\List\KnotItemRow.cs" />
     <Compile Include="GUI\Panel\PlaybackPanel.cs" />
     <Compile Include="GUI\Page\RotatePage.cs" />
     <Compile Include="GUI\Page\PathPage.cs" />
@@ -113,23 +112,20 @@
     <Compile Include="GUI\Property\FieldType.cs" />
     <Compile Include="GUI\Property\Vector2Property.cs" />
     <Compile Include="GUI\Property\Vector3Property.cs" />
-    <Compile Include="GUI\Rect.cs" />
     <Compile Include="GUI\Property\SliderPanel.cs" />
     <Compile Include="GUI\CameraOperator.cs" />
     <Compile Include="GUI\Panel\List\UIFastList.cs" />
-    <Compile Include="GUI\SliderPane.cs" />
-    <Compile Include="GUI\UIExtension.cs" />
     <Compile Include="Patcher\CalculateCornerPatch.cs" />
     <Compile Include="Resources\ResourceLoader.cs" />
     <Compile Include="Debug\DebugUtils.cs" />
     <Compile Include="GUI\CameraOperatorButton.cs" />
-    <Compile Include="GUI\UIBase.cs" />
     <Compile Include="ModInfo.cs" />
     <Compile Include="OptionsKeymapping.cs" />
     <Compile Include="UserMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Tool\LICENSE" />
     <None Include="Tool\MyAssembly.asmdef" />
     <None Include="Tool\SimpleVertexColorShader.shader" />

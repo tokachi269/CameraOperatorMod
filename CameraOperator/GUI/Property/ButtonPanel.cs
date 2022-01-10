@@ -1,8 +1,6 @@
-﻿using ColossalFramework.UI;
-
-using System;
+﻿using System;
+using ColossalFramework.UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace CamOpr.GUI
 {

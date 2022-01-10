@@ -2,7 +2,7 @@
 {
     public class AboutPage : BaseTabPage
     {
-        public override CameraMode TabName => CameraMode.About;
+        public override CameraMode TabMode => CameraMode.About;
 
         public override bool AvailableSetting { get; set; }= false;
         public override bool AvailableContent { get; set; }= false;

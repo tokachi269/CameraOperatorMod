@@ -1,12 +1,11 @@
 ﻿using ColossalFramework.UI;
-using System.Collections;
 using UnityEngine;
 
 namespace CamOpr.GUI
 {
     public abstract class BaseTabPage : UIComponent
     {
-        public abstract CameraMode TabName { get; }
+        public abstract CameraMode TabMode { get; }
 
         public abstract bool AvailableSetting { get; set; }
         public abstract bool AvailableContent { get; set; }
