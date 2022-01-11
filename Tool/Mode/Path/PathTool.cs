@@ -192,7 +192,6 @@ namespace CamOpr.Tool
             List<CameraConfig> tempKnots = Knots;
             DefaultCameraConfig = CameraUtils.CameraPosition();
             CameraUtils.SetFreeCamera(true);
-            CameraOperator.CameraController.enabled = false;
 
             Debug.Log("Start playing");
 
@@ -321,7 +320,6 @@ namespace CamOpr.Tool
             // render.moveCameraCube.transform.position = DefaultCameraConfig.Position;
             // render.moveCameraCube.transform.rotation = DefaultCameraConfig.Rotation;
             CameraUtils.SetFreeCamera(false);
-            CameraOperator.CameraController.enabled = true;
 
             //  CameraOperator.mainWindow.isVisible = true;
             Debug.Log("End playing");

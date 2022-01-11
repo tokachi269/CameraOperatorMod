@@ -89,6 +89,8 @@ namespace CamOpr.Tool
             {
                 try
                 {
+                    CameraOperator.CameraController.enabled = !value;
+
                     CameraOperator.EnsureUIComponentsLayout();
                     // UIView.Show(!value);
                 }

@@ -1,0 +1,150 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D781FCE0-1ED6-4284-AE6D-40154170ECA5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>CameraOperatorMod</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>CameraOperatorMod</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Program Files (x86)\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Aliases>global,Cities</Aliases>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ColossalManaged">
+      <HintPath>C:\Program Files (x86)\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\ColossalManaged.dll</HintPath>
+    </Reference>
+    <Reference Include="ICities">
+      <HintPath>C:\Program Files (x86)\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\ICities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build.Framework">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.5\Microsoft.Build.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files (x86)\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>C:\Program Files (x86)\SteamLibrary\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CameraOperator.cs" />
+    <Compile Include="GUI\Page\AboutPage.cs" />
+    <Compile Include="GUI\Page\UtilsPage.cs" />
+    <Compile Include="GUI\Panel\PathDetailsPanel.cs" />
+    <Compile Include="GUI\UIExtension.cs" />
+    <Compile Include="Tool\Bezier\Bezier3D.cs" />
+    <Compile Include="Tool\Bezier\BezierControls.cs" />
+    <Compile Include="Tool\Bezier\BezierUtil.cs" />
+    <Compile Include="Tool\Bezier\ExtendBezierControls.cs" />
+    <Compile Include="Tool\Bezier\KCurves.cs" />
+    <Compile Include="Tool\CameraMover.cs" />
+    <Compile Include="Tool\Constant.cs" />
+    <Compile Include="Tool\Math3D.cs" />
+    <Compile Include="Tool\Mode\BaseCameraMode.cs" />
+    <Compile Include="Tool\Mode\CameraConfig.cs" />
+    <Compile Include="Tool\Mode\CameraUtils.cs" />
+    <Compile Include="Tool\Mode\Easing.cs" />
+    <Compile Include="Tool\Mode\Path\PathTool.cs" />
+    <Compile Include="Tool\Mode\PerlinCameraShake.cs" />
+    <Compile Include="Tool\Mode\Rotate\RotateTool.cs" />
+    <Compile Include="Tool\PipeMeshGenerator.cs" />
+    <Compile Include="Tool\Squad.cs" />
+    <Compile Include="Tool\ToolController.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="GUI\HeaderPanel.cs" />
+    <Compile Include="GUI\Panel\ScrollablePanel.cs" />
+    <Compile Include="GUI\Panel\CameraConfigPanel.cs" />
+    <Compile Include="GUI\Helper.cs" />
+    <Compile Include="GUI\Page\BaseTabPage.cs" />
+    <Compile Include="GUI\Panel\List\KnotItemRow.cs" />
+    <Compile Include="GUI\Panel\PlaybackPanel.cs" />
+    <Compile Include="GUI\Page\RotatePage.cs" />
+    <Compile Include="GUI\Page\PathPage.cs" />
+    <Compile Include="GUI\Panel\TabstripPanel.cs" />
+    <Compile Include="GUI\Property\BoolProperty.cs" />
+    <Compile Include="GUI\Property\ButtonPanel.cs" />
+    <Compile Include="GUI\Property\base\EditorItem.cs" />
+    <Compile Include="GUI\Property\base\EditorPropertyItem.cs" />
+    <Compile Include="GUI\Property\FieldProperty.cs" />
+    <Compile Include="GUI\Property\FieldType.cs" />
+    <Compile Include="GUI\Property\Vector2Property.cs" />
+    <Compile Include="GUI\Property\Vector3Property.cs" />
+    <Compile Include="GUI\Property\SliderPanel.cs" />
+    <Compile Include="GUI\CameraOperator.cs" />
+    <Compile Include="GUI\Panel\List\UIFastList.cs" />
+    <Compile Include="Patcher\CalculateCornerPatch.cs" />
+    <Compile Include="Resources\ResourceLoader.cs" />
+    <Compile Include="Debug\DebugUtils.cs" />
+    <Compile Include="GUI\CameraOperatorButton.cs" />
+    <Compile Include="ModInfo.cs" />
+    <Compile Include="OptionsKeymapping.cs" />
+    <Compile Include="UserMod.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Tool\LICENSE" />
+    <None Include="Tool\MyAssembly.asmdef" />
+    <None Include="Tool\SimpleVertexColorShader.shader" />
+    <None Include="Tool\StyleCop.Analyzers.ruleset" />
+    <None Include="packages.config" />
+    <None Include="StyleCop.Analyzers.ruleset" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Tool\Mode\Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "%25LOCALAPPDATA%25\Colossal Order\Cities_Skylines\Addons\Mods\$(SolutionName)"
+del "%25LOCALAPPDATA%25\Colossal Order\Cities_Skylines\Addons\Mods\$(SolutionName)\$(TargetFileName)"
+xcopy /y "$(TargetPath)" "%25LOCALAPPDATA%25\Colossal Order\Cities_Skylines\Addons\Mods\$(SolutionName)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
