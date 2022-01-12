@@ -1,5 +1,5 @@
 [submodule "kcurves"]
-	path = kcurves
+	path = kcurves/Assets/Tool
 	url = https://github.com/tokachi269/kcurves.git
 	branch = master
 [submodule "DbConnector"]
