@@ -1,3 +1,6 @@
 [submodule "Tool"]
 	path = Tool
 	url = https://github.com/tokachi269/kcurves.git
+[submodule "kcurves"]
+	path = kcurves
+	url = https://github.com/tokachi269/kcurves.git
