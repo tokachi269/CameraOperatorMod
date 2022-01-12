@@ -1,0 +1,4 @@
+[submodule "kcurves"]
+	path = kcurves
+	url = https://github.com/tokachi269/kcurves.git
+	branch = master
