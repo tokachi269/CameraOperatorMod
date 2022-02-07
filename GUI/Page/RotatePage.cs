@@ -31,5 +31,10 @@ namespace CamOpr.GUI
             Debug.Log("Play");
             Tool.Play();
         }
+
+        public override void RemoveKnot()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -8,15 +8,16 @@ namespace CamOpr.GUI
 {
     public class PathDetailsPanel : UIPanel
     {
-        Dictionary<EPropaties, EditorPropertyItem> Propertys = new Dictionary<EPropaties, EditorPropertyItem>();
+        public Dictionary<EPropaties, EditorPropertyItem> Propertys = new Dictionary<EPropaties, EditorPropertyItem>();
 
-        private enum EPropaties
+        public enum EPropaties
         {
             Index,
             Position,
             Rotation,
             FOV,
             Duration,
+            Button
         }
 
         private int defaultHeight = 26;
@@ -42,6 +43,7 @@ namespace CamOpr.GUI
             AddProperty(EPropaties.Rotation, AddUIComponent<Vector3Property>());
             AddProperty(EPropaties.FOV, AddUIComponent<FieldProperty>());
             AddProperty(EPropaties.Duration, AddUIComponent<FieldProperty>());
+            AddProperty(EPropaties.Button, AddUIComponent<ButtonProperty>());
 
             SetRowHeights();
         }
@@ -63,7 +65,10 @@ namespace CamOpr.GUI
         {
             Propertys.Add(key, property);
             property.name = key.ToString();
-            property.Label.text = key.ToString();
+            if (property.HasLabel)
+            {
+                property.Label.text = key.ToString();
+            }
         }
 
         protected override void OnSizeChanged()

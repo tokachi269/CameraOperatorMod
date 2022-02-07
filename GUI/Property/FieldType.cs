@@ -24,7 +24,7 @@ namespace CamOpr.GUI
             color = Helper.GrayScale(100);
             textColor = Helper.GrayScale(250);
             horizontalAlignment = UIHorizontalAlignment.Left;
-            size = new Vector2(70, 22);
+            size = CameraOperator.DefaultFormSize;
             padding = Helper.Padding(2, 6); //テキストボックス内のテキストの位置を指定
             relativePosition = new Vector2(0, 0);
         }

@@ -11,6 +11,7 @@ namespace CamOpr.GUI
 
 		private float HeaderHeight => 30f;
 		private float TabStripHeight => 28f;
+		public static Vector2 DefaultFormSize => new Vector2(70, 22);
 
 		private Vector2 EditorSize => size - new Vector2(0, Header.height + tabStrip.height);
 		private Vector2 EditorPosition => new Vector2(0, tabStrip.relativePosition.y + tabStrip.height);

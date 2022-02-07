@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using CamOpr.Tool;
 using ColossalFramework.UI;
 using UnityEngine;
@@ -27,19 +28,30 @@ namespace CamOpr.GUI
             ListPanel.rowHeight = 20f;
             ListPanel.AutoHideScrollbar = true;
             ListPanel.CanSelect = true;
-            
+
             DetailPanel = AddUIComponent<PathDetailsPanel>();
             DetailPanel.size = new Vector2(CameraOperator.DefaultRect.width / 1.5f, DefaultHeight);
             DetailPanel.relativePosition = new Vector2(CameraOperator.DefaultRect.width / 3, 0);
             DetailPanel.backgroundSprite = "UnlockingItemBackground";
         }
 
-        public void AddRow(List<CameraConfig> cameraConfigs)
+        public void AddRow(ReadOnlyCollection<CameraConfig> cameraConfigs)
+        {
+            Reflesh(cameraConfigs);
+        }
+
+        public void RemoveRow(ReadOnlyCollection<CameraConfig> cameraConfigs)
+        {
+            Reflesh(cameraConfigs);
+        }
+
+        public void Reflesh(ReadOnlyCollection<CameraConfig> cameraConfigs)
         {
             FastList<object> cameraConfigs1 = new FastList<object>();
             int index = 0;
 
-            foreach (var cp in cameraConfigs) {
+            foreach (var cp in cameraConfigs)
+            {
                 cp.ListIndex = index++;
                 cameraConfigs1.Add(cp);
             }

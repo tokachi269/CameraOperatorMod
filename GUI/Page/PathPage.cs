@@ -13,13 +13,20 @@ namespace CamOpr.GUI
         public void Awake()
         {
             base.Awake();
+
+            tool = (PathTool)CamOpr.CameraOperator.Modes[new Tuple(TabMode, "default")];
+
             CameraSettingPanel.AddButton.OnButtonClick += OnAddKnotButtonClick;
             void OnAddKnotButtonClick() => AddKnot();
-            tool = (PathTool)CamOpr.CameraOperator.Modes[new Tuple(TabMode, "default")];
 
             PlayPanel.PlaybackButton.OnButtonClick += OnPlayButtonClick;
             void OnPlayButtonClick() => Play();
+
             ListPanel.ListPanel.eventSelectedIndexChanged += RefreshDetailPanel;
+
+            var button = (ButtonProperty)ListPanel.DetailPanel.Propertys[PathDetailsPanel.EPropaties.Button];
+            button.OnButtonClick += OnRemoveKnotButtonClick;
+            void OnRemoveKnotButtonClick() => RemoveKnot();
         }
 
         public void Start()
@@ -47,6 +54,14 @@ namespace CamOpr.GUI
                 tool.AddKnot(cameraConfig);
                 ListPanel.AddRow(tool.Knots);
                 Debug.Log("knot has been added");
+        }
+
+        public override void RemoveKnot()
+        {
+            int index = ListPanel.ListPanel.selectedIndex;
+            tool.RemoveKnot();
+            ListPanel.Reflesh(tool.Knots);
+            Debug.Log("knot has been removed");
         }
 
         public override void Play()

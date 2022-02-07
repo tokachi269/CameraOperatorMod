@@ -50,6 +50,7 @@ namespace CamOpr.GUI
         protected TPlayPanelType PlayPanel { get; set; }
 
         public abstract void AddKnot();
+        public abstract void RemoveKnot();
         public abstract void Play();
 
         public sealed override bool AvailableSetting

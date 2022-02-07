@@ -53,7 +53,7 @@ namespace CamOpr.GUI
 
 			dragHandle.target = parent;
 			dragHandle.relativePosition = Vector3.zero;
-			DebugUtils.Log("Camera Operator MainWindow created");
+			Debug.Log("Camera Operator MainWindow created");
 
 			UIButton uibutton = AddUIComponent<UIButton>();
 			uibutton.size = new Vector2(30f, 30f);

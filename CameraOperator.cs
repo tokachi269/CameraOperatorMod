@@ -58,7 +58,7 @@ namespace CamOpr
         {
             if (ToolsModifierControl.GetCurrentTool<CameraTool>() != null)
             {
-                DebugUtils.Log("Exiting Free Camera Mode");
+                Debug.Log("Exiting Free Camera Mode");
                 UIView.GetAView().FindUIComponent<UIButton>("Freecamera").SimulateClick();
 
                 // SupportTool.SetVisible(true);

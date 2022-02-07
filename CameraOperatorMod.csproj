@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -8,7 +8,8 @@
     <AssemblyName>CameraOperatorMod</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +21,7 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>
     </CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <RootNamespace>CameraOperatorMod</RootNamespace>
@@ -73,26 +76,11 @@
     <Compile Include="CameraOperator.cs" />
     <Compile Include="GUI\Page\AboutPage.cs" />
     <Compile Include="GUI\Page\UtilsPage.cs" />
+    <Compile Include="GUI\Property\ButtonProperty.cs" />
     <Compile Include="GUI\Panel\PathDetailsPanel.cs" />
+    <Compile Include="GUI\Property\ButtonType.cs" />
+    <Compile Include="GUI\Tool\CameraUtils.cs" />
     <Compile Include="GUI\UIExtension.cs" />
-    <Compile Include="Tool\Bezier\Bezier3D.cs" />
-    <Compile Include="Tool\Bezier\BezierControls.cs" />
-    <Compile Include="Tool\Bezier\BezierUtil.cs" />
-    <Compile Include="Tool\Bezier\ExtendBezierControls.cs" />
-    <Compile Include="Tool\Bezier\KCurves.cs" />
-    <Compile Include="Tool\CameraMover.cs" />
-    <Compile Include="Tool\Constant.cs" />
-    <Compile Include="Tool\Math3D.cs" />
-    <Compile Include="Tool\Mode\BaseCameraMode.cs" />
-    <Compile Include="Tool\Mode\CameraConfig.cs" />
-    <Compile Include="Tool\Mode\CameraUtils.cs" />
-    <Compile Include="Tool\Mode\Easing.cs" />
-    <Compile Include="Tool\Mode\Path\PathTool.cs" />
-    <Compile Include="Tool\Mode\PerlinCameraShake.cs" />
-    <Compile Include="Tool\Mode\Rotate\RotateTool.cs" />
-    <Compile Include="Tool\PipeMeshGenerator.cs" />
-    <Compile Include="Tool\Squad.cs" />
-    <Compile Include="Tool\ToolController.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="GUI\HeaderPanel.cs" />
     <Compile Include="GUI\Panel\ScrollablePanel.cs" />
@@ -115,9 +103,25 @@
     <Compile Include="GUI\Property\SliderPanel.cs" />
     <Compile Include="GUI\CameraOperator.cs" />
     <Compile Include="GUI\Panel\List\UIFastList.cs" />
+    <Compile Include="kcurves\Assets\Tool\Bezier\Bezier3D.cs" />
+    <Compile Include="kcurves\Assets\Tool\Bezier\BezierControls.cs" />
+    <Compile Include="kcurves\Assets\Tool\Bezier\BezierUtil.cs" />
+    <Compile Include="kcurves\Assets\Tool\Bezier\ExtendBezierControls.cs" />
+    <Compile Include="kcurves\Assets\Tool\Bezier\KCurves.cs" />
+    <Compile Include="kcurves\Assets\Tool\Constant.cs" />
+    <Compile Include="kcurves\Assets\Tool\Math3D.cs" />
+    <Compile Include="kcurves\Assets\Tool\Mode\BaseCameraMode.cs" />
+    <Compile Include="kcurves\Assets\Tool\Mode\CameraConfig.cs" />
+    <Compile Include="kcurves\Assets\Tool\Mode\CameraUtil.cs" />
+    <Compile Include="kcurves\Assets\Tool\Mode\Easing.cs" />
+    <Compile Include="kcurves\Assets\Tool\Mode\Path\BezierTransition.cs" />
+    <Compile Include="kcurves\Assets\Tool\Mode\Path\PathTool.cs" />
+    <Compile Include="kcurves\Assets\Tool\Mode\PerlinCameraShake.cs" />
+    <Compile Include="kcurves\Assets\Tool\Mode\Rotate\RotateTool.cs" />
+    <Compile Include="kcurves\Assets\Tool\PipeMeshGenerator.cs" />
+    <Compile Include="kcurves\Assets\Tool\Squad.cs" />
     <Compile Include="Patcher\CalculateCornerPatch.cs" />
     <Compile Include="Resources\ResourceLoader.cs" />
-    <Compile Include="Debug\DebugUtils.cs" />
     <Compile Include="GUI\CameraOperatorButton.cs" />
     <Compile Include="ModInfo.cs" />
     <Compile Include="OptionsKeymapping.cs" />
@@ -126,16 +130,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
-    <None Include="Tool\LICENSE" />
-    <None Include="Tool\MyAssembly.asmdef" />
-    <None Include="Tool\SimpleVertexColorShader.shader" />
-    <None Include="Tool\StyleCop.Analyzers.ruleset" />
     <None Include="packages.config" />
     <None Include="StyleCop.Analyzers.ruleset" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
-    <Folder Include="Tool\Mode\Utils\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
