@@ -6,9 +6,10 @@ using UnityEngine;
 
 namespace CamOpr.GUI
 {
-    public class PathDetailsPanel : UIPanel
+    public class PathDetailsPanel : EditorPropertyItem
     {
-        public Dictionary<EPropaties, EditorPropertyItem> Propertys = new Dictionary<EPropaties, EditorPropertyItem>();
+        public Dictionary<EPropaties, EditorPropertyItem> Properties = new Dictionary<EPropaties, EditorPropertyItem>();
+        public ButtonProperty ButtonPanel;
 
         public enum EPropaties
         {
@@ -38,32 +39,43 @@ namespace CamOpr.GUI
             padding = Helper.Padding(2, 4, 4);
             color = Helper.RGBA(149, 157, 163, 215);
             backgroundSprite = "WhiteRect";
-
-            AddProperty(EPropaties.Position, AddUIComponent<Vector3Property>());
-            AddProperty(EPropaties.Rotation, AddUIComponent<Vector3Property>());
-            AddProperty(EPropaties.FOV, AddUIComponent<FieldProperty>());
-            AddProperty(EPropaties.Duration, AddUIComponent<FieldProperty>());
-            AddProperty(EPropaties.Button, AddUIComponent<ButtonProperty>());
-
+            Content.autoLayout = true;
+            Content.autoLayoutDirection = LayoutDirection.Vertical;
+            Content.height = 200f; 
+            AddProperty(EPropaties.Position, Content.AddUIComponent<Vector3Property>());
+            AddProperty(EPropaties.Rotation, Content.AddUIComponent<Vector3Property>());
+            AddProperty(EPropaties.FOV, Content.AddUIComponent<FieldProperty>());
+            AddProperty(EPropaties.Duration, Content.AddUIComponent<FieldProperty>());
+            // AddProperty(EPropaties.Button, Content.AddUIComponent<ButtonProperty>());
             SetRowHeights();
+            Content.autoLayout = true;
+
+            ButtonPanel = AddUIComponent<ButtonProperty>();
+
+            InitPanel();
+            Content.autoLayout = true;
+
         }
 
         internal void Refresh(CameraConfig cp)
         {
-            Propertys[EPropaties.Position].UpdateValues(cp.Position);
-            Propertys[EPropaties.Rotation].UpdateValues(cp.Rotation);
-            Propertys[EPropaties.FOV].UpdateValues(cp.Fov);
-            Propertys[EPropaties.Duration].UpdateValues(cp.Duration);
+            Properties[EPropaties.Position].UpdateValues(cp.Position);
+            Properties[EPropaties.Rotation].UpdateValues(cp.Rotation);
+            Properties[EPropaties.FOV].UpdateValues(cp.Fov);
+            Properties[EPropaties.Duration].UpdateValues(cp.Duration);
         }
 
-        protected void InitPanel()
+        protected override void InitPanel()
         {
-            SetRowHeights();
+            Debug.Log("☆☆☆PathDetailsPanel InitPanel()");
+            ButtonPanel.Button.text = "Delete";
+            ButtonPanel.autoLayout = false;
+            ButtonPanel.relativePosition = new Vector2(height - ButtonPanel.height, 0);
         }
 
         private void AddProperty(EPropaties key, EditorPropertyItem property)
         {
-            Propertys.Add(key, property);
+            Properties.Add(key, property);
             property.name = key.ToString();
             if (property.HasLabel)
             {
@@ -73,7 +85,7 @@ namespace CamOpr.GUI
 
         protected override void OnSizeChanged()
         {
-            foreach (var p in Propertys)
+            foreach (var p in Properties)
             {
                 p.Value.Refresh(false);
             }
@@ -81,12 +93,17 @@ namespace CamOpr.GUI
 
         private void SetRowHeights()
         {
-            foreach (var p in Propertys)
+            foreach (var p in Properties)
             {
                 p.Value.size = new Vector2((CameraOperator.DefaultRect.width / 1.5f) - padding.horizontal, DefaultHeight);
                 p.Value.color = Helper.GrayScale(30);
                 p.Value.autoLayoutStart = LayoutStart.BottomLeft;
             }
+        }
+
+        public override void UpdateValues<T>(T value)
+        {
+            throw new NotImplementedException();
         }
     }
 }

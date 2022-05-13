@@ -24,7 +24,8 @@ namespace CamOpr.GUI
 
             ListPanel.ListPanel.eventSelectedIndexChanged += RefreshDetailPanel;
 
-            var button = (ButtonProperty)ListPanel.DetailPanel.Propertys[PathDetailsPanel.EPropaties.Button];
+            //var button = (ButtonProperty)ListPanel.DetailPanel.Propertys[PathDetailsPanel.EPropaties.Button];
+            var button = (ButtonProperty)ListPanel.DetailPanel.ButtonPanel;
             button.OnButtonClick += OnRemoveKnotButtonClick;
             void OnRemoveKnotButtonClick() => RemoveKnot();
         }
@@ -66,9 +67,7 @@ namespace CamOpr.GUI
 
         public override void Play()
         {
-            CameraUtils.SetFreeCamera(true);
             tool.StartPlay();
-
             // Tool.Play();
         }
     }

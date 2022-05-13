@@ -31,8 +31,8 @@ namespace CamOpr.GUI
             ZoomSlider.name = nameof(ZoomSlider);
             ZoomSlider.Init(minValue: 10f, maxValue: 1000f, stepSize: 0.0001f, defaultValue: 1f);
             ZoomSlider.FieldSlider.Slider.eventValueChanged += delegate (UIComponent c, float p)
-            {
 
+            {
                 /*
                  * イメージセンサーサイズ参考
                  * フルサイズ ：(水平*垂直)  36mm *   24mm
@@ -44,8 +44,8 @@ namespace CamOpr.GUI
                     (float)(CamOpr.CameraOperator.MainCamera.fieldOfView * aspect);
                 CamOpr.CameraOperator.CameraController.m_targetSize =
                     (float)(CamOpr.CameraOperator.MainCamera.fieldOfView * aspect);
-
             };
+
             autoLayoutDirection = LayoutDirection.Vertical;
 
             autoLayout = true;
@@ -55,7 +55,6 @@ namespace CamOpr.GUI
             AddButton.name = nameof(AddButton);
             AddButton.Init(40f, 40f, "+", 2f);
             AddButton.relativePosition = new Vector2(425f, 0f);
-
         }
     }
 }

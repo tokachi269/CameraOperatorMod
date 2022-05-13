@@ -79,7 +79,8 @@
     <Compile Include="GUI\Property\ButtonProperty.cs" />
     <Compile Include="GUI\Panel\PathDetailsPanel.cs" />
     <Compile Include="GUI\Property\ButtonType.cs" />
-    <Compile Include="GUI\Tool\CameraUtils.cs" />
+    <Compile Include="kcurves\Assets\Tool\CameraConfig.cs" />
+    <Compile Include="kcurves\Assets\Tool\CameraUtils.cs" />
     <Compile Include="GUI\UIExtension.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="GUI\HeaderPanel.cs" />
@@ -108,18 +109,16 @@
     <Compile Include="kcurves\Assets\Tool\Bezier\BezierUtil.cs" />
     <Compile Include="kcurves\Assets\Tool\Bezier\ExtendBezierControls.cs" />
     <Compile Include="kcurves\Assets\Tool\Bezier\KCurves.cs" />
+    <Compile Include="kcurves\Assets\Tool\CamOprTransformUtils.cs" />
     <Compile Include="kcurves\Assets\Tool\Constant.cs" />
     <Compile Include="kcurves\Assets\Tool\Math3D.cs" />
     <Compile Include="kcurves\Assets\Tool\Mode\BaseCameraMode.cs" />
-    <Compile Include="kcurves\Assets\Tool\Mode\CameraConfig.cs" />
-    <Compile Include="kcurves\Assets\Tool\Mode\CameraUtil.cs" />
     <Compile Include="kcurves\Assets\Tool\Mode\Easing.cs" />
     <Compile Include="kcurves\Assets\Tool\Mode\Path\BezierTransition.cs" />
     <Compile Include="kcurves\Assets\Tool\Mode\Path\PathTool.cs" />
     <Compile Include="kcurves\Assets\Tool\Mode\PerlinCameraShake.cs" />
     <Compile Include="kcurves\Assets\Tool\Mode\Rotate\RotateTool.cs" />
     <Compile Include="kcurves\Assets\Tool\PipeMeshGenerator.cs" />
-    <Compile Include="kcurves\Assets\Tool\Squad.cs" />
     <Compile Include="Patcher\CalculateCornerPatch.cs" />
     <Compile Include="Resources\ResourceLoader.cs" />
     <Compile Include="GUI\CameraOperatorButton.cs" />
@@ -134,6 +133,7 @@
     <None Include="StyleCop.Analyzers.ruleset" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="GUI\Tool\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>

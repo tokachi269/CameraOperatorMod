@@ -7,7 +7,7 @@ namespace CamOpr.GUI
     public abstract class EditorPropertyItem : EditorItem
     {
         public UILabel Label { get; set; }
-        protected ContentPanel Content { get; set; }
+        public ContentPanel Content { get; set; }
 
         public virtual bool HasLabel => false;
 
@@ -91,8 +91,9 @@ namespace CamOpr.GUI
 
         }
 
-        protected class ContentPanel : UIPanel
+        public class ContentPanel : UIPanel
         {
+
             public ContentPanel()
             {
                 autoLayoutDirection = LayoutDirection.Horizontal;
@@ -106,13 +107,16 @@ namespace CamOpr.GUI
                 base.OnSizeChanged();
                 Refresh();
             }
+
             public void Refresh()
             {
                 autoLayout = true;
                 autoLayout = false;
 
                 foreach (var item in components)
+                {
                     item.relativePosition = new Vector2(item.relativePosition.x, (height - item.height) / 2);
+                }
             }
 
         }

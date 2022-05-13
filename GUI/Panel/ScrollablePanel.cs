@@ -31,8 +31,9 @@ namespace CamOpr.GUI
 
             DetailPanel = AddUIComponent<PathDetailsPanel>();
             DetailPanel.size = new Vector2(CameraOperator.DefaultRect.width / 1.5f, DefaultHeight);
-            DetailPanel.relativePosition = new Vector2(CameraOperator.DefaultRect.width / 3, 0);
+            //DetailPanel.relativePosition = new Vector2(CameraOperator.DefaultRect.width / 3, 0);
             DetailPanel.backgroundSprite = "UnlockingItemBackground";
+            DetailPanel.Content.autoLayout = true;
         }
 
         public void AddRow(ReadOnlyCollection<CameraConfig> cameraConfigs)

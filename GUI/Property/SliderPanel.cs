@@ -14,7 +14,7 @@ namespace CamOpr.GUI
 
         public override bool SupportAlignment => false;
 
-        public  SliderPanel()
+        public SliderPanel()
         {
             TextField = Content.AddUIComponent<FieldType>();
             FieldSlider = Content.AddUIComponent<SliderProperty>();

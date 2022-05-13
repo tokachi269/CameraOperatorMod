@@ -40,6 +40,7 @@ namespace CamOpr
         public static Dictionary<Tuple, UnityEngine.Object> Modes = new Dictionary<Tuple, UnityEngine.Object>();
 
         public static Coroutine crt;
+        public static float PathThickness { get; set; } = 0.1f;
 
         internal void Initialize()
         {
@@ -47,6 +48,10 @@ namespace CamOpr
             Modes.Add(new Tuple(CameraMode.Path, "default"), this.gameObject.AddComponent<PathTool>());
             Modes.Add(new Tuple(CameraMode.Rotate, "default"), this.gameObject.AddComponent<RotateTool>());
 
+            if ((UIComponent)GetComponent(typeof(GUI.CameraOperator)))
+            {
+                Helper.DeepDestroy((UIComponent)GetComponent(typeof(GUI.CameraOperator)));
+            } 
             GUI.CameraOperator.CreatePanel();
             MainCamera = Camera.main;
             CameraController = MainCamera.GetComponent<CameraController>();

@@ -46,20 +46,27 @@ namespace CamOpr
             UIHelperBase group = helper.AddGroup("Stereoscopic View");
 
             group.AddButton("UI Initialize", () => CameraOperator.Instance.Initialize());
+            group.AddSlider("Thickness of the display path", 1, 3, 0.1f, 0.1f, delegate(float p) { CameraOperator.PathThickness = p; });
         }
-
 
         public override void OnLevelLoaded(LoadMode mode)
         {
             if (this.CameraManegerGameObject == null)
             {
+                if (GameObject.Find("CameraManeger") != null)
+                {
+                    Object.Destroy(GameObject.Find("CameraManeger"));
+                }
                 this.CameraManegerGameObject = new GameObject("CameraManeger");
                 CameraOperator.Instance = CameraManegerGameObject.AddComponent<CameraOperator>();
                 CameraOperator.Instance.Initialize();
-                Debug.Log("OnLevelLoaded");
+                Debug.Log("OnEnabled");
 
             }
+            else
+            {
 
+            }
         }
 
         public override void OnLevelUnloading()
@@ -79,8 +86,8 @@ namespace CamOpr
                 CameraOperator.Instance = null;
             }
         }
+
         public GameObject CameraManegerGameObject;
         public static readonly string SettingsFileName = "CameraOperatorMod";
     }
-
 }
